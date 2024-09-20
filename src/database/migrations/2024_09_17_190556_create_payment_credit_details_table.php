@@ -19,7 +19,6 @@ class CreatePaymentCreditDetailsTable extends Migration
             $table->string('card_holder_name', 255);
             $table->string('card_number', 255);
             $table->string('expiration_date', 255);
-            $table->string('security_code', 255);
             $table->timestamps();
 
             // 外部キー制約

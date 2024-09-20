@@ -15,15 +15,8 @@ class CreateConditionsTable extends Migration
     {
         Schema::create('conditions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('item_id');
             $table->string('condition', 255);
             $table->timestamps();
-
-            // 外部キー制約
-            $table->foreign('item_id')
-                ->references('id')
-                ->on('items')
-                ->onDelete('cascade');
         });
     }
 
