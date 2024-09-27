@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PaymentMethod extends Model
+class DeliveryAddress extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'description',
+        'user_id',
+        'postcode',
+        'address',
+        'building',
     ];
 
-    public function purchases()
+    public function user()
     {
-        return $this->hasMany(Purchase::class);
+        return $this->belongsTo(User::class);
     }
 }

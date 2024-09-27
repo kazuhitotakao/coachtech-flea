@@ -35,6 +35,23 @@ class Category extends Model
     }
 
     /**
+     * このカテゴリとそのすべての親カテゴリを取得します。
+     */
+    public function getAncestors()
+    {
+        $ancestors = collect();
+        $category = $this; // 現在のカテゴリから開始
+
+        // 再帰的に親カテゴリを取得
+        while ($category) {
+            $ancestors->prepend($category);
+            $category = $category->parentCategory; // 関連を使って親カテゴリを取得
+        }
+
+        return $ancestors;
+    }
+
+    /**
      * 子カテゴリとのリレーション (Category: 1対多)
      * このカテゴリに属する子カテゴリを取得するリレーション
      */

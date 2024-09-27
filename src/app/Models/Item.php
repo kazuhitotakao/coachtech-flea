@@ -13,8 +13,8 @@ class Item extends Model
         'name',
         'item_image_id',
         'condition_id',
-        'overview',
-        'amount',
+        'description',
+        'sale_price',
         'user_id',
     ];
 
@@ -80,11 +80,10 @@ class Item extends Model
     }
 
     /**
-     * 購入履歴とのリレーション (多対多)
+     * 購入履歴とのリレーション (1対1)
      */
-    public function purchases()
+    public function purchase()
     {
-        return $this->belongsToMany(User::class, 'purchases')
-            ->withTimestamps();
+        return $this->hasOne(Purchase::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentMethodUserTable extends Migration
+class CreateDeliveryAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreatePaymentMethodUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment_method_user', function (Blueprint $table) {
+        Schema::create('delivery_addresses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('payment_method_id');
             $table->unsignedBigInteger('user_id');
+            $table->string('postcode', 10)->nullable();
+            $table->string('address', 255)->nullable();
+            $table->string('building', 255)->nullable();
             $table->timestamps();
-
-            // 外部キー設定
-            $table->foreign('payment_method_id')
-                ->references('id')
-                ->on('payment_methods')
-                ->onDelete('cascade');
 
             $table->foreign('user_id')
                 ->references('id')
@@ -39,6 +35,6 @@ class CreatePaymentMethodUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_method_user');
+        Schema::dropIfExists('delivery_addresses');
     }
 }

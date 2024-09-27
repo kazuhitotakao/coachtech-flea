@@ -18,8 +18,8 @@ class CreateItemsTable extends Migration
             $table->string('name', 255);
             $table->unsignedBigInteger('item_image_id')->nullable();
             $table->unsignedBigInteger('condition_id')->nullable();
-            $table->string('overview', 255)->nullable();
-            $table->integer('amount')->nullable();
+            $table->string('description', 255)->nullable();
+            $table->decimal('sale_price', 9, 2)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

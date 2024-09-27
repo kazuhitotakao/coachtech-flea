@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentMethodsTableSeeder::class);
         $this->call(ConditionsTableSeeder::class);
         $this->call(BrandsTableSeeder::class);
-        $this->call(AddressesTableSeeder::class);
-        $this->call(PaymentBankDetailsTableSeeder::class);
-        $this->call(PaymentCreditDetailsTableSeeder::class);
+        $this->call(ResidentialAddressesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(ItemsTableSeeder::class);
         $this->call(ItemImagesTableSeeder::class);
+        $this->call(BrandItemTableSeeder::class);
+        $this->call(CategoryItemTableSeeder::class);
     }
 }

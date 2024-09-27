@@ -13,9 +13,6 @@
 /src/Homestead.yaml
 /src/npm-debug.log
 /src/yarn-error.log
-/src/.idea
-/src/.vscode
+/src/.route
 /docker/mysql/data
-/vendor
 /.vscode
-.route

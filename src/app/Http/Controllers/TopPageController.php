@@ -2,12 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Item;
+use App\Models\ItemImage;
+use Illuminate\Support\Facades\Storage;
 
 class TopPageController extends Controller
 {
-    public function index()
+    public function userIndex()
     {
-        return view('index');
+        $items = Item::with(['condition', 'user'])->get();
+        $imagesUrl = [];
+
+        foreach ($items as $item) {
+            //itemの画像idを取得
+            $itemImageId = $item->item_image_id;
+            //item_Imagesテーブルから画像パスを取得
+            $imagePath = ItemImage::find($itemImageId)->image_path;
+            if (strpos($imagePath, 'http') === 0) {
+                // 公開URLの場合
+                $imagesUrl[] = $imagePath;
+            } else {
+                // ストレージ内の画像の場合
+                $imagesUrl[] = Storage::url($imagePath);
+            }
+        }
+        return view('top_page', compact('items', 'imagesUrl'));
     }
 }

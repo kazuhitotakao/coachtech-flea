@@ -51,29 +51,19 @@ class User extends Authenticatable
     }
 
     /**
-     * ユーザーの住所とのリレーション (1対多)
+     * ユーザーの住所とのリレーション (1対1)
      */
-    public function addresses()
+    public function residentialAddress()
     {
-        return $this->hasMany(Address::class);
-    }
+        return $this->hasOne(ResidentialAddress::class);
 
-    /**
-     * 支払い方法との多対多リレーション
-     */
-    public function paymentMethods()
-    {
-        return $this->belongsToMany(PaymentMethod::class)
-            ->withTimestamps();
     }
-
     /**
-     * ユーザーが購入したアイテムとの多対多リレーション
+     * ユーザーの配送先とのリレーション (1対1)
      */
-    public function purchases()
+    public function deliveryAddress()
     {
-        return $this->belongsToMany(Item::class, 'purchases')
-            ->withTimestamps();
+        return $this->hasOne(DeliveryAddress::class);
     }
 
     /**
@@ -93,6 +83,22 @@ class User extends Authenticatable
         return $this->belongsToMany(Item::class, 'comments')
             ->withPivot('comment')
             ->withTimestamps();
+    }
+
+    /**
+     * ユーザーが購入者として関わる購入履歴を取得します（hasManyリレーション）。
+     */
+    public function purchasesAsBuyer()
+    {
+        return $this->hasMany(Purchase::class, 'buyer_id');
+    }
+
+    /**
+     * ユーザーが出品者として関わる購入履歴を取得します（hasManyリレーション）。
+     */
+    public function purchasesAsSeller()
+    {
+        return $this->hasMany(Purchase::class, 'seller_id');
     }
 
     /**
