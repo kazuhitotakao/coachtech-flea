@@ -76,13 +76,11 @@ class User extends Authenticatable
     }
 
     /**
-     * ユーザーがコメントしたアイテムとの多対多リレーション
+     * ユーザーとコメントとの１対多リレーション
      */
     public function comments()
     {
-        return $this->belongsToMany(Item::class, 'comments')
-            ->withPivot('comment')
-            ->withTimestamps();
+        return $this->hasMany(Comment::class);
     }
 
     /**

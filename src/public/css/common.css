@@ -21,22 +21,51 @@
 
 .header__logo {
     text-decoration: none;
-    padding: 20px 0 ;
+    padding: 20px 0;
+    width: 300px;
+}
+
+.header__logo-image {
+    width: 100%;
+}
+
+/* s 検索 */
+.search-form {
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
 }
 
 .search-form__keyword-input {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    padding: 10px 20px;
-    width: 35%;
+    padding: 5px 20px;
     border-radius: 5px;
     border: none;
+    width: 65%;
+}
+
+.search-form__button {
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.2rem 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* e 検索 */
+
+.nav {
+    display: block;
 }
 
 .header-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 1rem;
 }
 
 .header-nav__link {
@@ -57,7 +86,7 @@
 
 .header-nav__listing-button {
     color: #000;
-    background: "fff";
+    background-color: #fff;
     border: none;
     border-radius: 3px;
     padding: 0.2rem 1rem;
@@ -66,3 +95,168 @@
     cursor: pointer;
 }
 
+.hamburger__search-form,
+.nav_toggle,
+.hamburger__nav {
+    display: none;
+}
+
+/* レスポンシブ対応：992pxのデバイス */
+@media (max-width: 992px) {
+    .header-nav {
+        margin-top: 0.9rem;
+    }
+
+    .search-form {
+        width: 290px;
+    }
+
+    .search-form__keyword-input,
+    .search-form__button,
+    .header-nav__button,
+    .header-nav__link,
+    .header-nav__listing-button {
+        font-size: 1.8vw;
+    }
+}
+
+/* 768px以下 */
+@media screen and (max-width: 768px) {
+    .nav,
+    .search-form {
+        display: none;
+    }
+    /* s ハンバーガーメニュー */
+    /* ハンバーガーのマーク */
+    .nav_toggle {
+        display: block;
+        position: relative;
+        width: 1.75rem;
+        height: 1.5rem;
+        margin-right: 10px;
+        z-index: 2;
+        cursor: pointer;
+    }
+    .nav_toggle i {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        position: absolute;
+        /* transition: transform 0.3s, opacity 0.3s; */
+    }
+    .nav_toggle i:nth-child(1) {
+        top: 0;
+    }
+    .nav_toggle i:nth-child(2) {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .nav_toggle i:nth-child(3) {
+        bottom: 0;
+    }
+
+    /* クリックされた後のハンバーガーのマーク */
+    .nav_toggle.show i:nth-child(1) {
+        transform: translateY(10px) rotate(-45deg);
+    }
+    .nav_toggle.show i:nth-child(2) {
+        opacity: 0;
+    }
+    .nav_toggle.show i:nth-child(3) {
+        transform: translateY(-12px) rotate(45deg);
+    }
+
+    /* クリックで表示されるメニュー：クリックされる前 */
+    .hamburger__nav {
+        display: flex;
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        visibility: hidden;
+        background-color: gray;
+        z-index: 1;
+    }
+
+    .nav_menu_li {
+        margin-bottom: 30px;
+    }
+    .nav_menu_li a {
+        color: #000;
+        text-decoration: none;
+    }
+    .nav_menu_li button {
+        color: #000;
+    }
+
+    .header-nav__button {
+        font-size: 20px;
+    }
+    .header-nav__listing-button {
+        color: #000;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    /* s 検索フォーム（ハンバーガーメニュー） */
+    .hamburger__search-form {
+        display: flex;
+        flex-direction: column; /* 子要素を縦に並べる */
+        align-items: center; /* 横方向の中央揃え */
+        justify-content: center; /* 縦方向の中央揃え */
+        position: fixed;
+        top: 15%;
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 2;
+        width: 100%; /* 横幅を100%に設定し、親要素いっぱいに広がるようにする */
+    }
+
+    .search-form__keyword-input {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #000;
+        width: 80%; /* 入力フォームの幅を80%に設定 */
+    }
+
+    .search-form__button {
+        color: #fff;
+        background-color: #000;
+        border: none;
+        border-radius: 3px;
+        padding: 0.2rem 1rem;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 0.4rem;
+    }
+    /* e 検索 */
+
+    /* クリックで表示されるメニュー：クリックされた後 */
+    .hamburger__nav.show {
+        opacity: 1;
+        visibility: visible;
+        width: 35%;
+        text-align: center;
+    }
+
+    .hamburger__search-form.show {
+        opacity: 1;
+        visibility: visible;
+        width: 35%;
+        text-align: center;
+        margin-left: 0 5px;
+    }
+    /* e ハンバーガーメニュー */
+}

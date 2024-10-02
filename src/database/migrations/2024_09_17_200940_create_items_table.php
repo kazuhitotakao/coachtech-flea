@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('name', 255);
             $table->unsignedBigInteger('item_image_id')->nullable();
             $table->unsignedBigInteger('condition_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->string('description', 255)->nullable();
             $table->decimal('sale_price', 9, 2)->nullable();
             $table->unsignedBigInteger('user_id');
@@ -25,6 +26,7 @@ class CreateItemsTable extends Migration
 
             // 外部キー制約
             $table->foreign('condition_id')->references('id')->on('conditions')->onDelete('set null');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

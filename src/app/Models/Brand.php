@@ -15,12 +15,10 @@ class Brand extends Model
     ];
 
     /**
-     * アイテムとの多対多リレーション (Item: 多対多)
-     * 中間テーブル brand_item を介して関連付けられる
+     * アイテムとの１対多リレーション
      */
     public function items()
     {
-        return $this->belongsToMany(Item::class, 'brand_item')
-            ->withTimestamps();
+        return $this->hasMany(Item::class);
     }
 }

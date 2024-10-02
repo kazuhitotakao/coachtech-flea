@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Item extends Model
 {
@@ -13,10 +14,41 @@ class Item extends Model
         'name',
         'item_image_id',
         'condition_id',
+        'brand_id',
         'description',
         'sale_price',
         'user_id',
     ];
+
+    public static function getItems()
+    {
+        $items = Item::with(['condition', 'brand', 'user'])->with(
+            'favorites',
+            function ($query) {
+                $query->where('user_id', Auth::id());
+            }
+        )->get();
+
+        return $items;
+    }
+
+    public function scopeSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            return $query->where(function ($q) use ($keyword) {
+                $q->where('name', 'like', '%' . $keyword . '%')
+                ->orWhereHas('brand', function ($q) use ($keyword) {
+                    $q->where('name', 'like', '%' . $keyword . '%');
+                })
+                    ->orWhereHas('categories', function ($q) use ($keyword) {
+                        $q->where('name', 'like', '%' . $keyword . '%')
+                        ->orWhereHas('parentCategory', function ($q) use ($keyword) {
+                            $q->where('name', 'like', '%' . $keyword . '%');
+                        });
+                    });
+            });
+        }
+    }
 
     /**
      * ユーザーとのリレーション (多対1)
@@ -29,7 +61,7 @@ class Item extends Model
     /**
      * アイテム画像とのリレーション (1対多)
      */
-    public function images()
+    public function itemImages()
     {
         return $this->hasMany(ItemImage::class);
     }
@@ -43,12 +75,11 @@ class Item extends Model
     }
 
     /**
-     * ブランドとのリレーション (多対多)
+     * ブランドとのリレーション (多対1)
      */
-    public function brands()
+    public function brand()
     {
-        return $this->belongsToMany(Brand::class, 'brand_item')
-            ->withTimestamps();
+        return $this->belongsTo(Brand::class);
     }
 
     /**
@@ -61,13 +92,11 @@ class Item extends Model
     }
 
     /**
-     * コメントとのリレーション (多対多)
+     * コメントとのリレーション (1対多）
      */
     public function comments()
     {
-        return $this->belongsToMany(User::class, 'comments')
-            ->withPivot('comment')
-            ->withTimestamps();
+        return $this->hasMany(Comment::class);
     }
 
     /**

@@ -1,0 +1,20 @@
+/* s いいねボタン */
+.like-btn {
+    cursor: pointer;
+    color: rgb(188, 188, 188);
+    font-size: 1.8rem;
+    vertical-align: middle;
+}
+
+.liked {
+    font-size: 1.8rem;
+    color: red;
+    font-weight: 900;
+    z-index: 10;
+}
+
+.item__like-btn {
+    border: none;
+    background-color: #fff;
+}
+/* e いいねボタン */

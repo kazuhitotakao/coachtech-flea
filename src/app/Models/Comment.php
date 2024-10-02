@@ -15,19 +15,11 @@ class Comment extends Model
         'comment',
     ];
 
-    /**
-     * ユーザーとのリレーション (User: 多対多)
-     * 中間テーブル comments でリレーションを管理
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * アイテムとのリレーション (Item: 多対多)
-     * 中間テーブル comments でリレーションを管理
-     */
     public function item()
     {
         return $this->belongsTo(Item::class);
