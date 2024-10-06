@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\Item;
 use App\Models\ItemImage;
@@ -52,6 +53,9 @@ class ItemDetailController extends Controller
         // お気に入りの総数
         $favorites_count = Favorite::where('item_id', $item_id)->count();
 
+        // コメントの総数
+        $comments_count = Comment::where('item_id', $item_id)->count();
+
         return view('item_detail', [
             'item' => $item,
             'brand_name' => $brand_name,
@@ -59,6 +63,7 @@ class ItemDetailController extends Controller
             'imagesUrl' => $imagesUrl,
             'imageUrl_thumbnail' => $imageUrl_thumbnail,
             'favorites_count' => $favorites_count,
+            'comments_count' => $comments_count,
         ]);
     }
 }

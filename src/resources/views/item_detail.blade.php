@@ -46,7 +46,7 @@
                 </div>
                 <div class="item__comment">
                     <form class="item__comment-form" action="{{ route('comment.show', ['item_id' => $item->id]) }}" method="get">
-                        <button class="item__comment-btn" data-comments="test">
+                        <button class="item__comment-btn" data-comments="{{ $comments_count }}">
                             <i class="las la-comment comment-btn"></i>
                         </button>
                     </form>

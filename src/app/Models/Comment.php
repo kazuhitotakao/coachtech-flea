@@ -15,6 +15,18 @@ class Comment extends Model
         'comment',
     ];
 
+    public static function createComment($user_id, $item_id, $comment_content)
+    {
+        $param = [
+            "user_id" => $user_id,
+            "item_id" => $item_id,
+            "comment" => $comment_content,
+        ];
+        $comment = Comment::create($param);
+
+        return $comment;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

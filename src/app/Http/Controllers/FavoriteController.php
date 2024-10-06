@@ -17,6 +17,6 @@ class FavoriteController extends Controller
     public function delete($item_id)
     {
         Favorite::where('user_id', Auth::id())->where('item_id', $item_id)->delete();
-        return redirect()->back();;
+        return redirect()->back();
     }
 }

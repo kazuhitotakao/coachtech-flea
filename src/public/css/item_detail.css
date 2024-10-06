@@ -107,7 +107,7 @@
 
 .item__comment-btn::after {
     position: absolute;
-    content: attr(data-comments); /* 表示したいお気に入りの数 */
+    content: attr(data-comments);
     font-size: 16px;
     top: 70%;
     left: 50%;
