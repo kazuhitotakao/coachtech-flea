@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous" defer></script>
     <script src="{{ asset('js/hamburger.js')}}" defer></script>
+    @yield('js')
     @yield('css')
 </head>
 
@@ -31,7 +32,7 @@
                 </a>
                 @endguest
                 @php
-                $specificRoutes = ['login', 'register', 'sell.index', 'purchase.edit.address'];
+                $specificRoutes = ['login', 'register', 'sell.index', 'purchase.edit.address', 'guest.unauthorized_access'];
                 @endphp
                 @unless(\Route::currentRouteNamed(...$specificRoutes))
                 <form class="search-form" action="/search" method="get">
@@ -53,6 +54,9 @@
                         <li class="header-nav__item">
                             <a class="header-nav__link" href="/my-page">マイページ</a>
                         </li>
+                        <form class="form__header" action="/sell" method="get">
+                            <button class="header-nav__listing-button">出品</button>
+                        </form>
                         @endauth
                         @guest
                         <li class="header-nav__item">
@@ -66,10 +70,11 @@
                                 <button class="header-nav__button">会員登録</button>
                             </form>
                         </li>
-                        @endguest
-                        <form class="form__header" action="/sell" method="get">
+                        <form class="form__header" action="/guest/unauthorized_access" method="get">
                             <button class="header-nav__listing-button">出品</button>
                         </form>
+                        @endguest
+
                     </ul>
                 </nav>
                 <!-- ハンバーガーメニュー -->

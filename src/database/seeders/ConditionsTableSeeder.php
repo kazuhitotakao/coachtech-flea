@@ -15,27 +15,27 @@ class ConditionsTableSeeder extends Seeder
     public function run()
     {
         Condition::create([
-            'condition' => '新品',
+            'name' => '新品',
         ]);
 
         Condition::create([
-            'condition' => '未使用に近い',
+            'name' => '未使用に近い',
         ]);
 
         Condition::create([
-            'condition' => '目立った傷や汚れなし',
+            'name' => '目立った傷や汚れなし',
         ]);
 
         Condition::create([
-            'condition' => 'やや傷や汚れあり',
+            'name' => 'やや傷や汚れあり',
         ]);
 
         Condition::create([
-            'condition' => '傷や汚れあり',
+            'name' => '傷や汚れあり',
         ]);
 
         Condition::create([
-            'condition' => 'ジャンク品',
+            'name' => 'ジャンク品',
         ]);
     }
 }

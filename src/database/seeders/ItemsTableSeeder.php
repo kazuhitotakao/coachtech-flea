@@ -73,7 +73,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'ドライヤー',
                 'item_image_id' => null,
                 'condition_id' => 3,
-                'brand_id' => 12,
+                'brand_id' => 8,
                 'description' => '1年使用。正常に動作します。',
                 'sale_price' => 3000,
                 'user_id' => 4,

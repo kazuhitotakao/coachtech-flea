@@ -10,7 +10,7 @@ class Condition extends Model
     use HasFactory;
 
     protected $fillable = [
-        'condition',
+        'name',
     ];
 
     public function items()

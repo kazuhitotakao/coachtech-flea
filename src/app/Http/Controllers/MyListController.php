@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\ItemImage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class TopPageController extends Controller
+class MyListController extends Controller
 {
-    public function userIndex()
+    public function index()
     {
-        $items = Item::getItems();
+        $items = Item::getLikeItems();
         $imagesUrl = [];
 
         foreach ($items as $item) {
@@ -26,7 +27,6 @@ class TopPageController extends Controller
                 $imagesUrl[] = Storage::url($imagePath);
             }
         }
-        return view('top_page', compact('items', 'imagesUrl'));
+        return view('my_list', compact('items', 'imagesUrl'));
     }
-
 }

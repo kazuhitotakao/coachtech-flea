@@ -3,7 +3,9 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DeliveryAddressController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ItemDetailController;
+use App\Http\Controllers\MyListController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
@@ -22,13 +24,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/guest', [TopPageController::class, 'guestIndex']);
-Route::get('/guest/item/{item_id}', [ItemDetailController::class, 'guestItemDetail'])->name('items.guest_detail');
+
+Route::get('/guest', [GuestController::class, 'guestIndex']);
+Route::get('/guest/item/{item_id}', [GuestController::class, 'guestItemDetail'])->name('items.guest_detail');
+Route::get('/guest/unauthorized_access', [GuestController::class, 'unauthorizedAccess'])->name('guest.unauthorized_access');
 Route::get('/search', [SearchController::class, 'resultSearch']);
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [TopPageController::class, 'userIndex']);
+    Route::get('/my-list', [MyListController::class, 'index']);
     Route::get('/item/{item_id}', [ItemDetailController::class, 'userItemDetail'])->name('items.user_detail');
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'showPurchase'])->name('purchase.show');
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('items.purchase');

@@ -15,6 +15,23 @@ class Category extends Model
     ];
 
     /**
+     * 子のカテゴリとそのすべての親カテゴリを取得します。
+     */
+    public function getAncestors()
+    {
+        $ancestors = collect();
+        $category = $this; // 現在のカテゴリから開始
+
+        // 再帰的に親カテゴリを取得
+        while ($category) {
+            $ancestors->prepend($category);
+            $category = $category->parentCategory; // 関連を使って親カテゴリを取得
+        }
+
+        return $ancestors;
+    }
+
+    /**
      * アイテムとの多対多リレーション (Item: 多対多)
      * 中間テーブル category_item を介して関連付けられる
      */
@@ -32,23 +49,6 @@ class Category extends Model
     public function parentCategory()
     {
         return $this->belongsTo(Category::class, 'parent_id');
-    }
-
-    /**
-     * このカテゴリとそのすべての親カテゴリを取得します。
-     */
-    public function getAncestors()
-    {
-        $ancestors = collect();
-        $category = $this; // 現在のカテゴリから開始
-
-        // 再帰的に親カテゴリを取得
-        while ($category) {
-            $ancestors->prepend($category);
-            $category = $category->parentCategory; // 関連を使って親カテゴリを取得
-        }
-
-        return $ancestors;
     }
 
     /**

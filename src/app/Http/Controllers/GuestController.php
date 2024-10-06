@@ -8,9 +8,30 @@ use App\Models\ItemImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ItemDetailController extends Controller
+class GuestController extends Controller
 {
-    public function userItemDetail(Request $request)
+    public function guestIndex()
+    {
+        $items = Item::with(['condition', 'brand'])->get();
+        $imagesUrl = [];
+
+        foreach ($items as $item) {
+            //itemの画像idを取得
+            $itemImageId = $item->item_image_id;
+            //item_Imagesテーブルから画像パスを取得
+            $imagePath = ItemImage::find($itemImageId)->image_path;
+            if (strpos($imagePath, 'http') === 0) {
+                // 公開URLの場合
+                $imagesUrl[] = $imagePath;
+            } else {
+                // ストレージ内の画像の場合
+                $imagesUrl[] = Storage::url($imagePath);
+            }
+        }
+        return view('guest.top_page', compact('items', 'imagesUrl'));
+    }
+
+    public function guestItemDetail(Request $request)
     {
         $item_id = $request->item_id;
         $item = Item::getItem($item_id);
@@ -52,7 +73,7 @@ class ItemDetailController extends Controller
         // お気に入りの総数
         $favorites_count = Favorite::where('item_id', $item_id)->count();
 
-        return view('item_detail', [
+        return view('guest.item_detail', [
             'item' => $item,
             'brand_name' => $brand_name,
             'categories_name' => $categories_name,
@@ -60,5 +81,10 @@ class ItemDetailController extends Controller
             'imageUrl_thumbnail' => $imageUrl_thumbnail,
             'favorites_count' => $favorites_count,
         ]);
+    }
+
+    public function unauthorizedAccess()
+    {
+        return view('guest.unauthorized_access');
     }
 }

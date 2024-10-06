@@ -22,7 +22,7 @@ class Item extends Model
 
     public static function getItems()
     {
-        $items = Item::with(['condition', 'brand', 'user'])->with(
+        $items = Item::with(['condition', 'brand', 'user', 'itemImages'])->with(
             'favorites',
             function ($query) {
                 $query->where('user_id', Auth::id());
@@ -32,19 +32,44 @@ class Item extends Model
         return $items;
     }
 
+    public static function getItem($item_id)
+    {
+        $item = Item::with(['condition', 'brand', 'user', 'itemImages'])->with(
+            'favorites',
+            function ($query) {
+                $query->where('user_id', Auth::id());
+            }
+        )->find($item_id);
+
+        return $item;
+    }
+
+    public static function getLikeItems()
+    {
+        $userId = Auth::id();
+
+        $items = Item::with(['condition', 'brand', 'user'])
+            ->whereHas('favorites', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })
+            ->get();
+
+        return $items;
+    }
+
     public function scopeSearch($query, $keyword)
     {
         if (!empty($keyword)) {
             return $query->where(function ($q) use ($keyword) {
                 $q->where('name', 'like', '%' . $keyword . '%')
-                ->orWhereHas('brand', function ($q) use ($keyword) {
-                    $q->where('name', 'like', '%' . $keyword . '%');
-                })
+                    ->orWhereHas('brand', function ($q) use ($keyword) {
+                        $q->where('name', 'like', '%' . $keyword . '%');
+                    })
                     ->orWhereHas('categories', function ($q) use ($keyword) {
                         $q->where('name', 'like', '%' . $keyword . '%')
-                        ->orWhereHas('parentCategory', function ($q) use ($keyword) {
-                            $q->where('name', 'like', '%' . $keyword . '%');
-                        });
+                            ->orWhereHas('parentCategory', function ($q) use ($keyword) {
+                                $q->where('name', 'like', '%' . $keyword . '%');
+                            });
                     });
             });
         }
