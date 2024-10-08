@@ -128,6 +128,10 @@
     max-height: 50%;
 }
 
+.comments-container p {
+    margin-bottom: 0;
+}
+
 .comment__content {
     display: block;
     margin: 5px;
@@ -138,12 +142,12 @@
 }
 
 .comment__content.left {
-    background-color: rgb(225, 225, 225); /* 出品者用の色 */
+    background-color: #a9ffe2; /* 出品者用の色 */
 }
 
 .comment__content.right {
     margin-left: auto;
-    background-color: rgb(200, 225, 255); /* 買い手用の色 */
+    background-color: #b3ebfb; /* 買い手用の色 */
 }
 
 .comment__user-name {
@@ -186,6 +190,7 @@
 }
 
 .comment-submit__content {
+    padding: 5px;
     width: 100%;
     height: 7rem;
     border-radius: 5px;

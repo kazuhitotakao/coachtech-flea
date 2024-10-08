@@ -29,7 +29,6 @@
             <div class="icon__wrapper">
                 <div class="item__favorite">
                     <form class="item__favorite-form" action="/guest/unauthorized_access" method="get">
-                        @csrf
                         <button class="item__like-btn" data-favorites="{{ $favorites_count }}">
                             <i class="lar la-star like-btn"></i>
                         </button>
@@ -37,7 +36,7 @@
                 </div>
                 <div class="item__comment">
                     <form class="item__comment-form" action="/guest/unauthorized_access" method="get">
-                        <button class="item__comment-btn" data-comments="test">
+                        <button class="item__comment-btn" data-comments="{{ $comments_count }}">
                             <i class="las la-comment comment-btn"></i>
                         </button>
                     </form>

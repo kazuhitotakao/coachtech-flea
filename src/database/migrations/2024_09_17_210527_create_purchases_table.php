@@ -18,7 +18,7 @@ class CreatePurchasesTable extends Migration
             $table->unsignedBigInteger('item_id');  // 商品ID
             $table->unsignedBigInteger('buyer_id');  // 購入者ID
             $table->unsignedBigInteger('seller_id');  // 出品者ID
-            $table->unsignedBigInteger('payment_method_id')->nullable();  // 支払い方法ID（NULL許容）
+            $table->unsignedBigInteger('payment_detail_id')->nullable();;  // 支払方法詳細(null許容)
             $table->decimal('paid_price', 9, 2);  // 支払金額（小数点以下2桁）
             $table->timestamps();  // created_at, updated_at
 
@@ -26,7 +26,7 @@ class CreatePurchasesTable extends Migration
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
             $table->foreign('buyer_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('set null');
+            $table->foreign('payment_detail_id')->references('id')->on('payment_details')->onDelete('set null');
         });
     }
 

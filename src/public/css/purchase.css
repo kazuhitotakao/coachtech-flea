@@ -1,0 +1,130 @@
+/* s 商品セクション */
+.item__content {
+    padding: 0 5%;
+}
+
+.item__purchase-wrapper {
+    display: flex;
+}
+
+.item__image-thumbnail {
+    display: inline-block;
+    width: 20%;
+    margin: 1rem;
+}
+
+.item__image-thumbnail img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item__info {
+    margin: 1rem 0 0 3rem;
+}
+
+.item__name {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.item__sale-price {
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+    margin: 0;
+}
+
+.purchase__link {
+    text-decoration: none;
+    margin: auto 0;
+}
+
+.item__payment-method {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 2rem 5rem 0rem;
+}
+
+.item__delivery-address {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 2rem 1rem 0rem;
+}
+
+.item__payment-method-title,
+.item__delivery-address-title {
+    display: inline-block;
+}
+
+/* s 配送先テーブル */
+.item__delivery-address-table {
+    margin-left: 1.8rem;
+    width: 100%;
+}
+
+.item__delivery-address-row {
+    height: 2rem;
+    font-size: 18px;
+}
+
+.item__delivery-address-label {
+    width: 30%;
+}
+
+.item__delivery-address-data {
+    width: 70%;
+}
+/* e 配送先テーブル */
+/* e 商品セクション */
+
+/* s 購入セクション */
+.purchase__summary {
+    border: solid 1px #000;
+}
+
+.purchase__summary-table {
+    margin: 2rem;
+    width: 100%;
+}
+
+.purchase__summary-row {
+    height: 2.5rem;
+    font-size: 18px;
+}
+
+.purchase__summary-label {
+    width: 45%;
+}
+
+.purchase__summary-data {
+    width: 55%;
+}
+
+.purchase__summary-label-sale-price {
+    width: 45%;
+    padding-bottom: 3rem;
+}
+
+.purchase__summary-data-sale-price {
+    width: 55%;
+    padding-bottom: 3rem;
+}
+
+.purchase__form {
+    margin: 3rem 0;
+    width: 100%;
+}
+
+.purchase__button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5555;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* e 購入セクション */

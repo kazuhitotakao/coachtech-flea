@@ -104,7 +104,7 @@ hr {
 .liked {
     font-size: 2rem;
     color: red;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     font-weight: 900;
     z-index: 10;
 }
@@ -136,6 +136,14 @@ hr {
 @media (max-width: 480px) {
     .grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recommended {
+        margin: 20px 0px 0px 20px;
+    }
+
+    .my-list {
+        margin: 20px 0px 0px 20px;
     }
 }
 

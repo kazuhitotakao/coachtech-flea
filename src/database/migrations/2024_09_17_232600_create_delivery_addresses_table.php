@@ -16,7 +16,7 @@ class CreateDeliveryAddressesTable extends Migration
         Schema::create('delivery_addresses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('postcode', 10)->nullable();
+            $table->string('postcode', 7)->nullable();
             $table->string('address', 255)->nullable();
             $table->string('building', 255)->nullable();
             $table->timestamps();

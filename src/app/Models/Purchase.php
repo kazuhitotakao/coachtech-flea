@@ -13,7 +13,7 @@ class Purchase extends Model
         'item_id',
         'buyer_id',
         'seller_id',
-        'payment_method_id',
+        'payment_detail_id',
         'paid_price'
     ];
 
@@ -42,10 +42,11 @@ class Purchase extends Model
     }
 
     /**
-     * 購入で使用された支払い方法を取得。
+     * 支払詳細を取得。
      */
-    public function paymentMethod()
+    public function PaymentDetail()
     {
-        return $this->belongsTo(PaymentMethod::class);
+        return $this->belongsTo(PaymentDetail::class);
     }
+
 }

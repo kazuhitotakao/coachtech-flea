@@ -137,6 +137,14 @@ hr {
     .grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .recommended {
+        margin: 20px 0px 0px 20px;
+    }
+
+    .my-list {
+        margin: 20px 0px 0px 20px;
+    }
 }
 
 /* 画面幅が320px以下の場合、カラム数を1に減らす */

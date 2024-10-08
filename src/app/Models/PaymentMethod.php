@@ -14,8 +14,8 @@ class PaymentMethod extends Model
         'description',
     ];
 
-    public function purchases()
+    public function paymentDetails()
     {
-        return $this->hasMany(Purchase::class);
+        return $this->hasMany(PaymentDetail::class);
     }
 }

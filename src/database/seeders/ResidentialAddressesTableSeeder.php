@@ -16,20 +16,20 @@ class ResidentialAddressesTableSeeder extends Seeder
     {
         $residential_addresses = [
             [
-                'user_id' => 1,
-                'postcode' => '100-0001',
+                'user_id' => 2,
+                'postcode' => 1000001,
                 'address' => '東京都千代田区千代田',
                 'building' => 'パレスサイドビル',
             ],
             [
-                'user_id' => 2,
-                'postcode' => '530-0017',
+                'user_id' => 3,
+                'postcode' => 5300017,
                 'address' => '大阪府大阪市北区角田町8-47',
                 'building' => '阪急グランドビル',
             ],
             [
-                'user_id' => 3,
-                'postcode' => '812-0013',
+                'user_id' => 4,
+                'postcode' => 8120013,
                 'address' => '福岡県福岡市博多区博多駅東2丁目5-19',
                 'building' => '博多第2ビル',
             ],

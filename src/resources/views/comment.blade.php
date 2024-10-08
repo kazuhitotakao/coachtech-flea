@@ -55,10 +55,10 @@
             <div class="comments-container">
                 @foreach ($comments as $comment)
                 <div class="comment__user-name {{ $comment->user_id === $item->user_id ? 'left' : 'right' }}">
-                    <div>{{ $comment->user->name }}</div>
+                    <p>{{ $comment->user->name }}</p>
                 </div>
-                <div class=" comment__content {{ $comment->user_id === $item->user_id ? 'left' : 'right' }}">
-                    <div>{{ $comment->comment }}</div>
+                <div class="comment__content {{ $comment->user_id === $item->user_id ? 'left' : 'right' }}">
+                    <p>{{ $comment->comment }}</p>
                 </div>
                 @endforeach
             </div>

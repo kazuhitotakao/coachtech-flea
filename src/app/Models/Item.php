@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Item extends Model
 {
@@ -73,6 +74,33 @@ class Item extends Model
                     });
             });
         }
+    }
+
+    /**
+     * すべての画像のURLを取得する。
+     */
+    public function getImageUrls()
+    {
+        return $this->itemImages->map(function ($itemImage) {
+            return $this->resolveImageUrl($itemImage->image_path);
+        })->all();
+    }
+
+    /**
+     * サムネイル画像（detailページの大きい画像に使用）のURLを取得する。
+     */
+    public function getThumbnailUrl()
+    {
+        $thumbnailImage = $this->item_image_id ? ItemImage::find($this->item_image_id) : null;
+        return $thumbnailImage ? $this->resolveImageUrl($thumbnailImage->image_path) : '';
+    }
+
+    /**
+     * 画像パスからURLを解決するヘルパーメソッド。
+     */
+    private function resolveImageUrl($imagePath)
+    {
+        return strpos($imagePath, 'http') === 0 ? $imagePath : Storage::url($imagePath);
     }
 
     /**

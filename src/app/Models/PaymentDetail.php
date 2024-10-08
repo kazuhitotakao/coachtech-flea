@@ -5,25 +5,29 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ResidentialAddress extends Model
+class PaymentDetail extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'payment_method_id',
         'user_id',
-        'postcode',
-        'address',
-        'building',
+        'details',
     ];
 
-    public function getFormattedPostalCode()
+    public function payments()
     {
-        return '〒' . substr($this->postcode, 0, 3) . '-' . substr($this->postcode, 3);
+        return $this->hasMany(Purchase::class);
     }
 
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 }

@@ -11,12 +11,11 @@
 <hr>
 
 <div class="wrapper grid">
-    @php $count = 0; @endphp
     @foreach($items as $item)
     <div class="item__card">
         <div class="card__container">
             <a href="{{ route('items.user_detail', ['item_id' => $item->id]) }}">
-                <img class="card__image-image" src="{{ $imagesUrl[$count] }}" alt="item_image">
+                <img class="card__image-image" src="{{ $item->thumbnailUrl }}" alt="item_image">
             </a>
             <div class="card__favorite">
                 @if(count($item->favorites) === 0)
@@ -39,7 +38,6 @@
             {{ $item->name }}
         </div>
     </div>
-    @php $count++ ; @endphp
     @endforeach
 </div>
 
