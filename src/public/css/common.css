@@ -227,7 +227,7 @@
     }
 
     .search-form__keyword-input {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bold;
         padding: 10px 20px;
         border-radius: 5px;
@@ -246,22 +246,38 @@
         cursor: pointer;
         margin-top: 0.4rem;
     }
-    /* e 検索 */
+    /* e 検索フォーム（ハンバーガーメニュー）  */
 
     /* クリックで表示されるメニュー：クリックされた後 */
     .hamburger__nav.show {
         opacity: 1;
         visibility: visible;
-        width: 35%;
+        width: 50%;
         text-align: center;
     }
 
     .hamburger__search-form.show {
         opacity: 1;
         visibility: visible;
-        width: 35%;
+        width: 50%;
         text-align: center;
         margin-left: 0 5px;
     }
     /* e ハンバーガーメニュー */
+}
+
+/* 480px以下 */
+@media screen and (max-width: 480px) {
+    /* クリックで表示されるメニュー：クリックされた後 */
+    .hamburger__nav.show {
+        width: 100%;
+    }
+
+    .hamburger__search-form.show {
+        width: 100%;
+    }
+
+    .search-form__keyword-input {
+        font-size: 20px;
+    }
 }

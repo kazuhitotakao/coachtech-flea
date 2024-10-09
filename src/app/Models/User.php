@@ -52,18 +52,12 @@ class User extends Authenticatable
     /**
      * ユーザーの住所とのリレーション (1対1)
      */
-    public function residentialAddress()
+    public function address()
     {
-        return $this->hasOne(ResidentialAddress::class);
+        return $this->hasOne(Address::class);
 
     }
-    /**
-     * ユーザーの配送先とのリレーション (1対1)
-     */
-    public function deliveryAddress()
-    {
-        return $this->hasOne(DeliveryAddress::class);
-    }
+
 
     /**
      * ユーザーがお気に入りにしたアイテムとの多対多リレーション

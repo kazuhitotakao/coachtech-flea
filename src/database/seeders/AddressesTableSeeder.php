@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\ResidentialAddress;
+use App\Models\Address;
 use Illuminate\Database\Seeder;
 
-class ResidentialAddressesTableSeeder extends Seeder
+class AddressesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,11 @@ class ResidentialAddressesTableSeeder extends Seeder
      */
     public function run()
     {
-        $residential_addresses = [
+        $addresses = [
             [
                 'user_id' => 2,
                 'postcode' => 1000001,
-                'address' => '東京都千代田区千代田',
+                'address' => '東京都千代田区千代田15-5',
                 'building' => 'パレスサイドビル',
             ],
             [
@@ -35,8 +35,8 @@ class ResidentialAddressesTableSeeder extends Seeder
             ],
         ];
 
-        foreach ($residential_addresses as $residential_address) {
-            ResidentialAddress::create($residential_address);
+        foreach ($addresses as $address) {
+            Address::create($address);
         }
     }
 }

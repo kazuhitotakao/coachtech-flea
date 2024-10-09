@@ -15,7 +15,7 @@ class PaymentDetail extends Model
         'details',
     ];
 
-    public function payments()
+    public function purchases()
     {
         return $this->hasMany(Purchase::class);
     }

@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DeliveryAddress;
+use App\Models\Address;
 use App\Models\Item;
-use App\Models\ResidentialAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DeliveryAddressController extends Controller
+class AddressController extends Controller
 {
-    public function editDeliveryAddress(Request $request)
+    public function editAddress(Request $request)
     {
         $item_id = $request->item_id;
         $item = Item::find($item_id);
+        $address = Address::with('user')->where('user_id', Auth::id())->first();
 
-        return view('delivery_address', compact('item'));
+        return view('address', compact('item', 'address'));
     }
 
-    public function updateDeliveryAddress(Request $request)
+    public function updateAddress(Request $request)
     {
         $item_id = $request->item_id;
 
@@ -29,11 +29,11 @@ class DeliveryAddressController extends Controller
             "building" => $request->building,
         ];
 
-        $data_delivery_address = DeliveryAddress::with('user')->where('user_id', Auth::id())->first();
-        if (empty($data_delivery_address)) {
-            DeliveryAddress::create($param);
+        $address = Address::with('user')->where('user_id', Auth::id())->first();
+        if (empty($address)) {
+            Address::create($param);
         } else {
-            $data_delivery_address->update($param);
+            $address->update($param);
         }
         return redirect()->route('purchase.show', ['item_id' => $item_id]);
     }

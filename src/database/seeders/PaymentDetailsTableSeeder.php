@@ -25,13 +25,16 @@ class PaymentDetailsTableSeeder extends Seeder
                 ])
             ],
             [
-                'user_id' => 3,
+                'user_id' => 2,
                 'payment_method_id' => 3,
+            ],
+            [
+                'user_id' => 3,
+                'payment_method_id' => 1,
                 'details' => json_encode([
-                    'bank_name' => 'みずほ銀行',
-                    'branch_name' => '渋谷支店',
-                    'account_number' => '123456789',
-                    'account_name' => '利用者2',
+                    'card_number' => '4000432143214321',
+                    'cardholder_name' => '利用者2',
+                    'expiration_date' => '2027-01',
                 ])
             ],
             [

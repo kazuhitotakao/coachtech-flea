@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\DeliveryAddressController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\MyListController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SearchController;
@@ -37,8 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/item/{item_id}', [ItemDetailController::class, 'userItemDetail'])->name('items.user_detail');
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'showPurchase'])->name('purchase.show');
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('items.purchase');
-    Route::get('/purchase/address/{item_id}', [DeliveryAddressController::class, 'editDeliveryAddress'])->name('purchase.edit.address');
-    Route::post('/purchase/address/{item_id}', [DeliveryAddressController::class, 'updateDeliveryAddress'])->name('purchase.update.address');
+    Route::get('/purchase/address/{item_id}', [AddressController::class, 'editAddress'])->name('purchase.edit.address');
+    Route::post('/purchase/address/{item_id}', [AddressController::class, 'updateAddress'])->name('purchase.update.address');
+    Route::get('/payment-method', [PaymentMethodController::class, 'showPaymentMethod']);
+    Route::post('/payment-method', [PaymentMethodController::class, 'updatePaymentMethod']);
+    Route::get('/payment-method/add', [PaymentMethodController::class, 'showAddPaymentMethod']);
+    Route::post('/payment-method/add', [PaymentMethodController::class, 'addPaymentMethod']);
+    Route::post('/payment-method/delete', [PaymentMethodController::class, 'deletePaymentMethod']);
     Route::get('/comment/{item_id}', [CommentController::class, 'show'])->name('comment.show');
     Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
     Route::get('/my-page', [MyPageController::class, 'index']);

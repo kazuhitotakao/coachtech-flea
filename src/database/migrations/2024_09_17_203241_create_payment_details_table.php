@@ -17,7 +17,7 @@ class CreatePaymentDetailsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('payment_method_id');
             $table->unsignedBigInteger('user_id');
-            $table->json('details'); // JSON型のカラムを追加
+            $table->json('details')->nullable(); // JSON型のカラムを追加
             $table->timestamps();
 
             // 外部キー制約

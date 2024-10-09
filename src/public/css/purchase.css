@@ -43,36 +43,94 @@
 .item__payment-method {
     display: flex;
     justify-content: space-between;
-    margin: 2rem 2rem 5rem 0rem;
+    margin: 2rem 2rem 1rem 0rem;
 }
 
-.item__delivery-address {
+.item__payment-method-card-list {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 0 0 1.8rem;
+    margin-bottom: 0;
+}
+
+.item__address {
     display: flex;
     justify-content: space-between;
     margin: 2rem 2rem 1rem 0rem;
 }
 
 .item__payment-method-title,
-.item__delivery-address-title {
+.item__address-title {
     display: inline-block;
 }
 
-/* s 配送先テーブル */
-.item__delivery-address-table {
-    margin-left: 1.8rem;
+/* s 支払方法クレジットカードテーブル */
+.item__payment-method-card-wrapper {
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0.5rem auto;
+    padding: 1rem;
+}
+
+.item__payment-method-card-table {
     width: 100%;
 }
 
-.item__delivery-address-row {
+.item__payment-method-card-row {
     height: 2rem;
     font-size: 18px;
 }
 
-.item__delivery-address-label {
+.item__payment-method-card-label {
     width: 30%;
 }
 
-.item__delivery-address-data {
+.item__payment-method-card-data {
+    width: 70%;
+}
+/* e 支払方法クレジットカードテーブル */
+
+.item__payment-method-wrapper {
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 80%;
+    padding: 1rem 0;
+    margin-left: 1.8rem;
+    text-align: center;
+}
+
+.item__payment-method-label {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+/* s 配送先テーブル */
+.item__address-wrapper {
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 80%;
+    margin: 1rem auto;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.item__address-table {
+    width: 100%;
+}
+
+.item__address-row {
+    height: 2rem;
+    font-size: 18px;
+}
+
+.item__address-label {
+    width: 30%;
+    white-space: nowrap;
+}
+
+.item__address-data {
     width: 70%;
 }
 /* e 配送先テーブル */
@@ -80,11 +138,12 @@
 
 /* s 購入セクション */
 .purchase__summary {
+    padding: 1rem;
     border: solid 1px #000;
+    border-radius: 5px;
 }
 
 .purchase__summary-table {
-    margin: 2rem;
     width: 100%;
 }
 
@@ -94,20 +153,20 @@
 }
 
 .purchase__summary-label {
-    width: 45%;
+    width: 40%;
 }
 
 .purchase__summary-data {
-    width: 55%;
+    width: 60%;
 }
 
 .purchase__summary-label-sale-price {
-    width: 45%;
+    width: 40%;
     padding-bottom: 3rem;
 }
 
 .purchase__summary-data-sale-price {
-    width: 55%;
+    width: 60%;
     padding-bottom: 3rem;
 }
 
@@ -128,3 +187,46 @@
     cursor: pointer;
 }
 /* e 購入セクション */
+
+/* 画面幅が992px以下の場合 */
+@media (max-width: 992px) {
+    .item__payment-method-card-list {
+        padding: 0;
+    }
+}
+
+/* 画面幅が768px以下の場合 */
+@media (max-width: 768px) {
+    .item__payment-method-card-wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .item__address-wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .item__payment-method-card-list {
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .item__payment-method-card-label {
+        width: 35%;
+    }
+
+    .item__payment-method-card-data {
+        width: 65%;
+    }
+
+    .item__address-label {
+        width: 35%;
+        white-space: nowrap;
+    }
+
+    .item__address-data {
+        width: 65%;
+    }
+}
