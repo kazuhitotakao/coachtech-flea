@@ -9,7 +9,6 @@
 <a href="/" class="recommended">おすすめ</a>
 <a href="/my-list" class="my-list">マイリスト</a>
 <hr>
-
 <div class="wrapper grid">
     @foreach($items as $item)
     <div class="item__card">

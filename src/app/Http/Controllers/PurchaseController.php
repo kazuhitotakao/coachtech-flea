@@ -19,9 +19,9 @@ class PurchaseController extends Controller
 
         // 直近の支払い詳細取得
         $latest_payment_detail = Purchase::getLatestPaymentDetail(Auth::id());
+        $payment_detail_id = null;
         $payment_method_id = null;
         $payment_method_name = null;
-        $payment_detail_id = null;
         $card_number = null;
         $expiration_date = null;
         if (!empty($latest_payment_detail)) {
@@ -35,10 +35,10 @@ class PurchaseController extends Controller
         }
 
         // 支払金額計算（手数料）
-        if ($payment_method_id === 2) {
+        if ($payment_method_id == 2) {
             $paid_price = $item->sale_price + 500; //コンビニ手数料
             $paid_price_format = number_format($item->sale_price + 500) . '（手数料500円）';
-        } elseif ($payment_method_id === 3) {
+        } elseif ($payment_method_id == 3) {
             $paid_price = $item->sale_price + 300; //銀行振込手数料
             $paid_price_format = number_format($item->sale_price + 300) . '（手数料300円）';
         } else {
@@ -67,15 +67,15 @@ class PurchaseController extends Controller
     {
         $item = Item::find($request->item_id);
 
-        $param = [
-            "item_id" => $request->item_id,
-            "buyer_id" => $item->user_id,
-            "seller_id" => Auth::id(),
-            "payment_detail_id" => $request->payment_detail_id,
-            "address_id" => $request->address_id,
-            "paid_price" => $request->paid_price,
+        $purchase = [
+            'item_id' => $request->item_id,
+            'buyer_id' => Auth::id(),
+            'seller_id' => $item->user_id,
+            'payment_detail_id' => $request->payment_detail_id,
+            'address_id' => $request->address_id,
+            'paid_price' => $request->paid_price,
         ];
-        Purchase::create($param);
-        echo "{$item->name}を購入する決済画面";
+        Purchase::create($purchase);
+        echo '{$item->name}を購入する決済画面';
     }
 }

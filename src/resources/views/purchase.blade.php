@@ -19,10 +19,10 @@
             </div>
             <div class="item__payment-method">
                 <h3 class=" item__payment-method-title">支払い方法</h3>
-                <a class="purchase__link" href="/payment-method">変更する</a>
+                <a class="purchase__link" href="{{ route('payment_method.show', ['item_id' => $item->id]) }}">変更する</a>
             </div>
             <div class="item__payment-method-container">
-                @if($payment_method_id === 1)
+                @if($payment_method_id == 1)
                 <p class="item__payment-method-card-list">クレジットカード</p>
                 <div class="item__payment-method-card-wrapper">
                     <table class="item__payment-method-card-table">
@@ -32,22 +32,22 @@
                         </tr>
                         <tr class="item__payment-method-card-row">
                             <th class="item__payment-method-card-label">有効期限</th>
-                            <td class="item__payment-method-card-data">{{$expiration_date }}</td>
+                            <td class="item__payment-method-card-data">{{ $expiration_date }}</td>
                         </tr>
                     </table>
                 </div>
                 @endif
-                @if($payment_method_id === 2)
+                @if($payment_method_id == 2)
                 <div class="item__payment-method-wrapper">
                     <p class="item__payment-method-label">コンビニ払い</p>
                 </div>
                 @endif
-                @if($payment_method_id === 3)
+                @if($payment_method_id == 3)
                 <div class="item__payment-method-wrapper">
                     <p class="item__payment-method-label">銀行振込</p>
                 </div>
                 @endif
-                @if($payment_method_id === null)
+                @if($payment_method_id == null)
                 <div class="item__payment-method-wrapper">
                     <p class="item__payment-method-label">※支払方法を設定してください</p>
                 </div>
@@ -105,9 +105,10 @@
                 @csrf
                 @if(!empty($address))
                 <input type="hidden" name="address_id" value="{{ $address->id }}">
+                @endif
+                <input type="hidden" name="payment_method_id" value="{{ $payment_method_id }}">
                 <input type="hidden" name="payment_detail_id" value="{{ $payment_detail_id }}">
                 <input type="hidden" name="paid_price" value="{{ $paid_price }}">
-                @endif
                 <button class="purchase__button">購入する</button>
             </form>
         </div>

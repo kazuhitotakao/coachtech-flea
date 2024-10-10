@@ -40,11 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('items.purchase');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'editAddress'])->name('purchase.edit.address');
     Route::post('/purchase/address/{item_id}', [AddressController::class, 'updateAddress'])->name('purchase.update.address');
-    Route::get('/payment-method', [PaymentMethodController::class, 'showPaymentMethod']);
-    Route::post('/payment-method', [PaymentMethodController::class, 'updatePaymentMethod']);
-    Route::get('/payment-method/add', [PaymentMethodController::class, 'showAddPaymentMethod']);
-    Route::post('/payment-method/add', [PaymentMethodController::class, 'addPaymentMethod']);
-    Route::post('/payment-method/delete', [PaymentMethodController::class, 'deletePaymentMethod']);
+    Route::get('/payment-method/{item_id}', [PaymentMethodController::class, 'showPaymentMethod'])->name('payment_method.show');
+    Route::post('/payment-method/{item_id}', [PaymentMethodController::class, 'updatePaymentMethod'])->name('payment_method.update');
+    Route::get('/payment-method/add/{item_id}', [PaymentMethodController::class, 'showAddPaymentMethod'])->name('payment_method.add.show');
+    Route::post('/payment-method/add/{item_id}', [PaymentMethodController::class, 'addPaymentMethod'])->name('payment_method.add.submit');
+    Route::delete('/payment-method/delete/{item_id}', [PaymentMethodController::class, 'deletePaymentMethod'])->name('payment_method.delete');
     Route::get('/comment/{item_id}', [CommentController::class, 'show'])->name('comment.show');
     Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
     Route::get('/my-page', [MyPageController::class, 'index']);

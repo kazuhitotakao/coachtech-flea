@@ -8,21 +8,21 @@
 
 <div class="payment-method-add__content">
     <div class="payment-method-add__content-title">
-        <h2>住所の変更</h2>
+        <h2>クレジットカードの追加</h2>
     </div>
-    <form class="payment-method-add__form" action="" method="post">
+    <form class="payment-method-add__form" action="{{ route('payment_method.add.submit', ['item_id' => $item_id]) }}" method="POST">
         @csrf
         <div class="payment-method-add__form-row">
-            <label class="payment-method-add__form-label" for="postcode">郵便番号</label>
-            <input class="payment-method-add__form-input" type="text" name="postcode" id="postcode" value="{{}}">
+            <label class="payment-method-add__form-label" for="card_number">カード番号</label>
+            <input class="payment-method-add__form-input" type="text" name="card_number" id="card_number" value="">
         </div>
         <div class="payment-method-add__form-row">
-            <label class="payment-method-add__form-label" for="address">住所</label>
-            <input class="payment-method-add__form-input" type="text" name="address" id="address" value="{{}}">
+            <label class="payment-method-add__form-label" for="cardholder_name">名義人</label>
+            <input class="payment-method-add__form-input" type="text" name="cardholder_name" id="cardholder_name" value="">
         </div>
         <div class="payment-method-add__form-row">
-            <label class="payment-method-add__form-label" for="building">建物名</label>
-            <input class="payment-method-add__form-input" type="text" name="building" id="building" value=" {{}}">
+            <label class="payment-method-add__form-label" for="expiration_date">有効期限</label>
+            <input class="payment-method-add__form-input" type="text" name="expiration_date" id="expiration_date" value="">
         </div>
         <div class=" payment-method-add__form-row">
             <button class="payment-method-add__form-button">追加する</button>
