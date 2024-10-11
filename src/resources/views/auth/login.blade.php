@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="login__content">
-    <div class="login-form__heading">
+<div class="login">
+    <div class="login__form-heading">
         <h2>ログイン</h2>
     </div>
     <form class="form" action="/login" method="post">
@@ -41,8 +41,8 @@
             <button class="form__button-submit" type="submit">ログインする</button>
         </div>
     </form>
-    <div class="register__link">
-        <a class="register__button-submit" href="/register">会員登録はこちら</a>
+    <div class="register-link">
+        <a class="register-button" href="/register">会員登録はこちら</a>
     </div>
 </div>
 @endsection

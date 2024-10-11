@@ -7,72 +7,72 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="item__content col-lg-7 mt-5">
-            <div class="item__purchase-wrapper">
-                <div class="item__image-thumbnail">
+        <div class="purchase__item-content col-lg-7 mt-5">
+            <div class="purchase__item-wrapper">
+                <div class="purchase__item-image-thumbnail">
                     <img src="{{ $imageUrl_thumbnail }}" alt="item_thumbnail">
                 </div>
-                <div class="item__info">
-                    <h2 class="item__name">{{ $item->name }}</h2>
-                    <p class="item__sale-price">¥{{ number_format($item->sale_price)}}</p>
+                <div class="purchase__item-info">
+                    <h2 class="purchase__item-name">{{ $item->name }}</h2>
+                    <p class="purchase__item-sale-price">¥{{ number_format($item->sale_price)}}</p>
                 </div>
             </div>
-            <div class="item__payment-method">
-                <h3 class=" item__payment-method-title">支払い方法</h3>
+            <div class="purchase__payment-method">
+                <h3 class=" purchase__payment-method-title">支払い方法</h3>
                 <a class="purchase__link" href="{{ route('payment_method.show', ['item_id' => $item->id]) }}">変更する</a>
             </div>
-            <div class="item__payment-method-container">
+            <div class="purchase__payment-method-details">
                 @if($payment_method_id == 1)
-                <p class="item__payment-method-card-list">クレジットカード</p>
-                <div class="item__payment-method-card-wrapper">
-                    <table class="item__payment-method-card-table">
-                        <tr class="item__payment-method-card-row">
-                            <th class="item__payment-method-card-label">カード番号</th>
-                            <td class="item__payment-method-card-data">{{ $card_number }}</td>
+                <p class="purchase__payment-method-card-type">クレジットカード</p>
+                <div class="purchase__payment-method-card">
+                    <table class="purchase__payment-method-card-table">
+                        <tr class="purchase__payment-method-card-row">
+                            <th class="purchase__payment-method-card-label">カード番号</th>
+                            <td class="purchase__payment-method-card-data">{{ $card_number }}</td>
                         </tr>
-                        <tr class="item__payment-method-card-row">
-                            <th class="item__payment-method-card-label">有効期限</th>
-                            <td class="item__payment-method-card-data">{{ $expiration_date }}</td>
+                        <tr class="purchase__payment-method-card-row">
+                            <th class="purchase__payment-method-card-label">有効期限</th>
+                            <td class="purchase__payment-method-card-data">{{ $expiration_date }}</td>
                         </tr>
                     </table>
                 </div>
                 @endif
                 @if($payment_method_id == 2)
-                <div class="item__payment-method-wrapper">
-                    <p class="item__payment-method-label">コンビニ払い</p>
+                <div class="purchase__payment-method-type">
+                    <p class="purchase__payment-method-label">コンビニ払い</p>
                 </div>
                 @endif
                 @if($payment_method_id == 3)
-                <div class="item__payment-method-wrapper">
-                    <p class="item__payment-method-label">銀行振込</p>
+                <div class="purchase__payment-method-type">
+                    <p class="purchase__payment-method-label">銀行振込</p>
                 </div>
                 @endif
                 @if($payment_method_id == null)
-                <div class="item__payment-method-wrapper">
-                    <p class="item__payment-method-label">※支払方法を設定してください</p>
+                <div class="purchase__payment-method-type">
+                    <p class="purchase__payment-method-label">※支払方法を設定してください</p>
                 </div>
                 @endif
             </div>
 
 
-            <div class="item__address">
-                <h3 class="item__address-title">配送先</h3>
+            <div class="purchase__address">
+                <h3 class="purchase__address-title">配送先</h3>
                 <a class="purchase__link" href="{{ route('purchase.edit.address', ['item_id' => $item->id]) }}">変更する</a>
             </div>
             @if(!empty($address))
-            <div class="item__address-wrapper">
-                <table class="item__address-table">
-                    <tr class="item__address-row">
-                        <th class="item__address-label">郵便番号</th>
-                        <td class="item__address-data">{{ $address->getFormattedPostalCode() }}</td>
+            <div class="purchase__address-wrapper">
+                <table class="purchase__address-table">
+                    <tr class="purchase__address-row">
+                        <th class="purchase__address-label">郵便番号</th>
+                        <td class="purchase__address-data">{{ $address->getFormattedPostalCode() }}</td>
                     </tr>
-                    <tr class="item__address-row">
-                        <th class="item__address-label">配送先住所</th>
-                        <td class="item__address-data">{{ $address->address }}</td>
+                    <tr class="purchase__address-row">
+                        <th class="purchase__address-label">配送先住所</th>
+                        <td class="purchase__address-data">{{ $address->address }}</td>
                     </tr>
-                    <tr class="item__address-row">
-                        <th class="item__address-label">建物名</th>
-                        <td class="item__address-data">{{ $address->building }}</td>
+                    <tr class="purchase__address-row">
+                        <th class="purchase__address-label">建物名</th>
+                        <td class="purchase__address-data">{{ $address->building }}</td>
                     </tr>
                 </table>
             </div>

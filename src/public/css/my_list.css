@@ -1,4 +1,4 @@
-.recommended {
+.top-page__recommended {
     display: inline-block;
     text-decoration: none;
     color: #000;
@@ -13,7 +13,7 @@
     text-align: center;
 }
 
-.my-list {
+.top-page__my-list {
     display: inline-block;
     text-decoration: none;
     color: #000;
@@ -35,13 +35,13 @@ hr {
     margin: 0;
 }
 
-.wrapper {
+.top-page__wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 4%;
 }
 
-.grid {
+.top-page__grid {
     display: grid;
     gap: 1.5rem 1.5rem;
     grid-template-columns: repeat(5, 1fr);
@@ -51,7 +51,7 @@ hr {
     padding-right: 2rem;
 }
 
-.item__card {
+.item-card {
     width: 100%;
     background-color: #fff;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
@@ -59,23 +59,23 @@ hr {
     margin-bottom: 20px;
 }
 
-.card__container {
+.item-card__container {
     position: relative;
 }
 
-.card__image-image {
+.item-card__image {
     width: 100%;
     height: 30vh;
     object-fit: cover;
 }
 
-.card__favorite {
+.item-card__favorite {
     position: absolute;
     top: 5%;
     right: 5%;
 }
 
-.card__price {
+.item-card__price {
     display: inline;
     position: absolute;
     left: 0;
@@ -88,7 +88,7 @@ hr {
     font-weight: bold;
 }
 
-.card__content {
+.item-card__name {
     padding: 10px 5px;
     font-weight: 800;
 }
@@ -109,7 +109,7 @@ hr {
     z-index: 10;
 }
 
-.item__like-btn {
+.item-card__like-btn {
     border: none;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
@@ -120,36 +120,36 @@ hr {
 
 /* 画面幅が1024px以下の場合、カラム数を4に減らす */
 @media (max-width: 1024px) {
-    .grid {
+    .top-page__grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
 /* 画面幅が768px以下の場合、カラム数を3に減らす */
 @media (max-width: 768px) {
-    .grid {
+    .top-page__grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* 画面幅が480px以下の場合、カラム数を2に減らす */
 @media (max-width: 480px) {
-    .grid {
+    .top-page__grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .recommended {
+    .top-page__recommended {
         margin: 20px 0px 0px 20px;
     }
 
-    .my-list {
+    .top-page__my-list {
         margin: 20px 0px 0px 20px;
     }
 }
 
 /* 画面幅が320px以下の場合、カラム数を1に減らす */
 @media (max-width: 320px) {
-    .grid {
+    .top-page__grid {
         grid-template-columns: 1fr; /* 1列のみ */
     }
 }

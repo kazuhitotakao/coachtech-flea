@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let navToggle = document.querySelector(".nav_toggle");
-    let nav = document.querySelector(".hamburger__nav");
-    let searchForm = document.querySelector(".hamburger__search-form");
+    let navToggle = document.querySelector(".header__hamburger-toggle");
+    let nav = document.querySelector(".header__hamburger-nav");
+    let searchForm = document.querySelector(".header__hamburger-search-form");
     navToggle.addEventListener("click", function () {
         navToggle.classList.toggle("show");
         nav.classList.toggle("show");

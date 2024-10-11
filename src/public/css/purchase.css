@@ -1,38 +1,44 @@
 /* s 商品セクション */
-.item__content {
+.purchase__item-content {
     padding: 0 5%;
 }
 
-.item__purchase-wrapper {
+.purchase__item-wrapper {
     display: flex;
 }
 
-.item__image-thumbnail {
+.purchase__item-image-thumbnail {
     display: inline-block;
     width: 20%;
     margin: 1rem;
 }
 
-.item__image-thumbnail img {
+.purchase__item-image-thumbnail img {
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.item__info {
+.purchase__item-info {
     margin: 1rem 0 0 3rem;
 }
 
-.item__name {
+.purchase__item-name {
     margin: 0;
     font-size: 1.8rem;
 }
 
-.item__sale-price {
+.purchase__item-sale-price {
     font-size: 1.8rem;
     margin-top: 0.5rem;
     margin: 0;
+}
+
+.purchase__payment-method {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 2rem 1rem 0rem;
 }
 
 .purchase__link {
@@ -41,32 +47,26 @@
     margin: auto 0;
 }
 
-.item__payment-method {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 2rem 1rem 0rem;
-}
-
-.item__payment-method-card-list {
+.purchase__payment-method-card-type {
     font-size: 24px;
     font-weight: bold;
     padding: 0 0 0 1.8rem;
     margin-bottom: 0;
 }
 
-.item__address {
+.purchase__address {
     display: flex;
     justify-content: space-between;
     margin: 1rem 2rem 1rem 0rem;
 }
 
-.item__payment-method-title,
-.item__address-title {
+.purchase__payment-method-title,
+.purchase__address-title {
     display: inline-block;
 }
 
 /* s 支払方法クレジットカードテーブル */
-.item__payment-method-card-wrapper {
+.purchase__payment-method-card {
     border: 1px solid #000;
     border-radius: 5px;
     width: 80%;
@@ -74,25 +74,25 @@
     padding: 1rem;
 }
 
-.item__payment-method-card-table {
+.purchase__payment-method-card-table {
     width: 100%;
 }
 
-.item__payment-method-card-row {
+.purchase__payment-method-card-row {
     height: 2rem;
     font-size: 18px;
 }
 
-.item__payment-method-card-label {
+.purchase__payment-method-card-label {
     width: 30%;
 }
 
-.item__payment-method-card-data {
+.purchase__payment-method-card-data {
     width: 70%;
 }
 /* e 支払方法クレジットカードテーブル */
 
-.item__payment-method-wrapper {
+.purchase__payment-method-type {
     border: 1px solid #000;
     border-radius: 5px;
     width: 80%;
@@ -101,14 +101,14 @@
     text-align: center;
 }
 
-.item__payment-method-label {
+.purchase__payment-method-label {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 0;
 }
 
 /* s 配送先テーブル */
-.item__address-wrapper {
+.purchase__address-wrapper {
     border: 1px solid #000;
     border-radius: 5px;
     width: 80%;
@@ -117,21 +117,21 @@
     padding: 1rem;
 }
 
-.item__address-table {
+.purchase__address-table {
     width: 100%;
 }
 
-.item__address-row {
+.purchase__address-row {
     height: 2rem;
     font-size: 18px;
 }
 
-.item__address-label {
+.purchase__address-label {
     width: 30%;
     white-space: nowrap;
 }
 
-.item__address-data {
+.purchase__address-data {
     width: 70%;
 }
 /* e 配送先テーブル */
@@ -191,48 +191,48 @@
 
 /* 画面幅が992px以下の場合 */
 @media (max-width: 992px) {
-    .item__payment-method-card-list {
+    .purchase__payment-method-card-type {
         padding: 0;
     }
 }
 
 /* 画面幅が768px以下の場合 */
 @media (max-width: 768px) {
-    .item__payment-method-card-wrapper {
+    .purchase__payment-method-card {
         width: 100%;
         margin: 0 auto;
     }
 
-    .item__payment-method-wrapper {
+    .purchase__payment-method-type {
         width: 100%;
         margin: 0 auto;
     }
 
-    .item__address-wrapper {
+    .purchase__address-wrapper {
         width: 100%;
         margin: 0 auto;
     }
 
-    .item__payment-method-card-list {
+    .purchase__payment-method-card-type {
         margin: 0;
         font-size: 24px;
         font-weight: bold;
     }
 
-    .item__payment-method-card-label {
+    .purchase__payment-method-card-label {
         width: 35%;
     }
 
-    .item__payment-method-card-data {
+    .purchase__payment-method-card-data {
         width: 65%;
     }
 
-    .item__address-label {
+    .purchase__address-label {
         width: 35%;
         white-space: nowrap;
     }
 
-    .item__address-data {
+    .purchase__address-data {
         width: 65%;
     }
 }

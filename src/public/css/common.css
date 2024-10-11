@@ -9,13 +9,13 @@
     max-width: 1230px;
 }
 
-.header-utilities {
+.header__utilities {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.header-utilities nav {
+.header__utilities nav {
     width: 30%;
 }
 
@@ -25,18 +25,18 @@
     width: 300px;
 }
 
-.header__logo-image {
+.header__logo--image {
     width: 100%;
 }
 
 /* s 検索 */
-.search-form {
+.header__search-form {
     display: flex;
     justify-content: space-around;
     width: 35%;
 }
 
-.search-form__keyword-input {
+.header__search-input {
     font-size: 18px;
     font-weight: bold;
     padding: 5px 20px;
@@ -45,7 +45,7 @@
     width: 65%;
 }
 
-.search-form__button {
+.header__search-button {
     color: #000;
     background-color: #fff;
     border: none;
@@ -57,25 +57,25 @@
 }
 /* e 検索 */
 
-.nav {
+.header__nav {
     display: block;
 }
 
-.header-nav {
+.header__nav-list {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
 }
 
-.header-nav__link {
+.header__nav-link {
     color: #fff;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
 }
 
-.header-nav__button {
+.header__nav-button {
     color: #fff;
     border: none;
     background: transparent;
@@ -84,7 +84,7 @@
     cursor: pointer;
 }
 
-.header-nav__listing-button {
+.header__nav-button--listing {
     color: #000;
     background-color: #fff;
     border: none;
@@ -95,26 +95,26 @@
     cursor: pointer;
 }
 
-.hamburger__search-form,
-.nav_toggle,
-.hamburger__nav {
+.header__hamburger-search-form,
+.header__hamburger-toggle,
+.header__hamburger-nav {
     display: none;
 }
 
 /* レスポンシブ対応：992pxのデバイス */
 @media (max-width: 992px) {
-    .header-nav {
+    .header-nav-list {
         margin-top: 0.9rem;
     }
 
-    .search-form {
+    .header__search-form {
         width: 290px;
     }
 
-    .search-form__keyword-input,
-    .search-form__button,
-    .header-nav__button,
-    .header-nav__link,
+    .header__search-input,
+    .header__search-button,
+    .header__nav-button,
+    .header__nav-link,
     .header-nav__listing-button {
         font-size: 1.8vw;
     }
@@ -122,13 +122,13 @@
 
 /* 768px以下 */
 @media screen and (max-width: 768px) {
-    .nav,
-    .search-form {
+    .header__nav-list,
+    .header__search-form {
         display: none;
     }
     /* s ハンバーガーメニュー */
     /* ハンバーガーのマーク */
-    .nav_toggle {
+    .header__hamburger-toggle {
         display: block;
         position: relative;
         width: 1.75rem;
@@ -137,7 +137,7 @@
         z-index: 2;
         cursor: pointer;
     }
-    .nav_toggle i {
+    .header__hamburger-toggle i {
         display: block;
         width: 100%;
         height: 2px;
@@ -145,31 +145,31 @@
         position: absolute;
         /* transition: transform 0.3s, opacity 0.3s; */
     }
-    .nav_toggle i:nth-child(1) {
+    .header__hamburger-toggle i:nth-child(1) {
         top: 0;
     }
-    .nav_toggle i:nth-child(2) {
+    .header__hamburger-toggle i:nth-child(2) {
         top: 0;
         bottom: 0;
         margin: auto;
     }
-    .nav_toggle i:nth-child(3) {
+    .header__hamburger-toggle i:nth-child(3) {
         bottom: 0;
     }
 
     /* クリックされた後のハンバーガーのマーク */
-    .nav_toggle.show i:nth-child(1) {
+    .header__hamburger-toggle.show i:nth-child(1) {
         transform: translateY(10px) rotate(-45deg);
     }
-    .nav_toggle.show i:nth-child(2) {
+    .header__hamburger-toggle.show i:nth-child(2) {
         opacity: 0;
     }
-    .nav_toggle.show i:nth-child(3) {
+    .header__hamburger-toggle.show i:nth-child(3) {
         transform: translateY(-12px) rotate(45deg);
     }
 
     /* クリックで表示されるメニュー：クリックされる前 */
-    .hamburger__nav {
+    .header__hamburger-nav {
         display: flex;
         position: fixed;
         align-items: center;
@@ -184,35 +184,36 @@
         z-index: 1;
     }
 
-    .nav_menu_li {
+    .header__hamburger-nav-item {
         margin-bottom: 30px;
     }
-    .nav_menu_li a {
-        color: #000;
-        text-decoration: none;
-    }
-    .nav_menu_li button {
-        color: #000;
-    }
 
-    .header-nav__button {
-        font-size: 20px;
-    }
-
-    .header-nav__link {
-        font-size: 20px;
-    }
-
-    .header-nav__listing-button {
+    .header__hamburger-nav-link {
         color: #000;
         border: none;
         background: transparent;
         font-size: 20px;
         font-weight: bold;
-        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .header__hamburger-nav-button {
+        color: #000;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .header__hamburger-nav-button--listing {
+        color: #000;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-weight: bold;
     }
     /* s 検索フォーム（ハンバーガーメニュー） */
-    .hamburger__search-form {
+    .header__hamburger-search-form {
         display: flex;
         flex-direction: column; /* 子要素を縦に並べる */
         align-items: center; /* 横方向の中央揃え */
@@ -226,7 +227,7 @@
         width: 100%; /* 横幅を100%に設定し、親要素いっぱいに広がるようにする */
     }
 
-    .search-form__keyword-input {
+    .header__hamburger-search-input {
         font-size: 18px;
         font-weight: bold;
         padding: 10px 20px;
@@ -235,7 +236,7 @@
         width: 80%; /* 入力フォームの幅を80%に設定 */
     }
 
-    .search-form__button {
+    .header__hamburger-search-button {
         color: #fff;
         background-color: #000;
         border: none;
@@ -249,14 +250,14 @@
     /* e 検索フォーム（ハンバーガーメニュー）  */
 
     /* クリックで表示されるメニュー：クリックされた後 */
-    .hamburger__nav.show {
+    .header__hamburger-nav.show {
         opacity: 1;
         visibility: visible;
         width: 50%;
         text-align: center;
     }
 
-    .hamburger__search-form.show {
+    .header__hamburger-search-form.show {
         opacity: 1;
         visibility: visible;
         width: 50%;
@@ -269,15 +270,15 @@
 /* 480px以下 */
 @media screen and (max-width: 480px) {
     /* クリックで表示されるメニュー：クリックされた後 */
-    .hamburger__nav.show {
+    .header__hamburger-nav.show {
         width: 100%;
     }
 
-    .hamburger__search-form.show {
+    .header__hamburger-search-form.show {
         width: 100%;
     }
 
-    .search-form__keyword-input {
+    .header__hamburger-search-button {
         font-size: 20px;
     }
 }

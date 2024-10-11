@@ -27,32 +27,32 @@
             <span class="item__brand-name">{{ $brand_name }}</span>
             <p class="item__sale-price">¥{{ number_format($item->sale_price)}}</p>
             <div class="icon__wrapper">
-                <div class="item__favorite">
+                <div class="icon__favorite">
                     @if(count($item->favorites) === 0)
-                    <form class="item__favorite-form" action="{{ route('like', ['item_id' => $item->id]) }}" method="POST">
+                    <form class="icon__favorite-form" action="{{ route('like', ['item_id' => $item->id]) }}" method="POST">
                         @csrf
-                        <button class="item__like-btn" data-favorites="{{ $favorites_count }}">
+                        <button class="icon__like-btn" data-favorites="{{ $favorites_count }}">
                             <i class="lar la-star like-btn"></i>
                         </button>
                     </form>
                     @else
-                    <form class="item__favorite-form" action="{{ route('unlike', ['item_id' => $item->id]) }}" method="POST">
+                    <form class="icon__favorite-form" action="{{ route('unlike', ['item_id' => $item->id]) }}" method="POST">
                         @csrf
-                        <button class="item__like-btn" data-favorites="{{ $favorites_count }}">
+                        <button class="icon__like-btn" data-favorites="{{ $favorites_count }}">
                             <i class="las la-star like-btn liked"></i>
                         </button>
                     </form>
                     @endif
                 </div>
-                <div class="item__comment">
-                    <form class="item__comment-form" action="{{ route('comment.show', ['item_id' => $item->id]) }}" method="get">
-                        <button class="item__comment-btn" data-comments="{{ $comments_count }}">
+                <div class="icon__comment">
+                    <form class="icon__comment-form" action="{{ route('comment.show', ['item_id' => $item->id]) }}" method="get">
+                        <button class="icon__comment-btn" data-comments="{{ $comments_count }}">
                             <i class="las la-comment comment-btn"></i>
                         </button>
                     </form>
                 </div>
             </div>
-            <div class="comments-container">
+            <div class="comment__list">
                 @foreach ($comments as $comment)
                 <div class="comment__user-name {{ $comment->user_id === $item->user_id ? 'left' : 'right' }}">
                     <p>{{ $comment->user->name }}</p>
@@ -62,11 +62,11 @@
                 </div>
                 @endforeach
             </div>
-            <form class="comment-submit__form" action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="post">
+            <form class="comment__form" action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="post">
                 @csrf
-                <h4 class="comment-submit__title">商品へのコメント</h4>
-                <textarea name="comment" class="comment-submit__content"></textarea>
-                <button class="comment-submit__button">コメントを送信する</button>
+                <h4 class="comment__form-title">商品へのコメント</h4>
+                <textarea name="comment" class="comment__form-content"></textarea>
+                <button class="comment__form-button">コメントを送信する</button>
             </form>
         </div>
     </div>

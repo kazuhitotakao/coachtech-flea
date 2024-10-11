@@ -20,7 +20,7 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <div class="header-utilities">
+            <div class="header__utilities">
                 @auth
                 <a class="header__logo" href="/">
                     <img src="{{ asset('images/logo.svg') }}" alt="Logo">
@@ -28,50 +28,48 @@
                 @endauth
                 @guest
                 <a class="header__logo" href="/guest">
-                    <img class="header__logo-image" src="{{ asset('images/logo.svg') }}" alt="Logo">
+                    <img class="header__logo--image" src="{{ asset('images/logo.svg') }}" alt="Logo">
                 </a>
                 @endguest
                 @php
                 $specificRoutes = ['login', 'register', 'sell.index', 'purchase.edit.address', 'guest.unauthorized_access'];
                 @endphp
                 @unless(\Route::currentRouteNamed(...$specificRoutes))
-                <form class="search-form" action="/search" method="get">
-                    <input class="search-form__keyword-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
+                <form class="header__search-form" action="/search" method="get">
+                    <input class="header__search-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
                     <div class="btn__wrap">
-                        <button class="search-form__button">検索</button>
+                        <button class="header__search-button">検索</button>
                     </div>
                 </form>
-                <nav class="nav">
-                    <ul class="header-nav">
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
                         @auth
-                        <li class="header-nav__item">
-                            <form class="form__header" action="/logout" method="post">
+                        <li class="header__nav-item">
+                            <form action="/logout" method="post">
                                 @csrf
-                                <button class="header-nav__button">ログアウト</button>
+                                <button class="header__nav-button">ログアウト</button>
                             </form>
                         </li>
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="/my-page">マイページ</a>
                         </li>
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/my-page">マイページ</a>
-                        </li>
-                        <form class="form__header" action="/sell" method="get">
-                            <button class="header-nav__listing-button">出品</button>
+                        <form action="/sell" method="get">
+                            <button class="header__nav-button header__nav-button--listing">出品</button>
                         </form>
                         @endauth
                         @guest
-                        <li class="header-nav__item">
-                            <form class="form__header" action="/login" method="get">
-                                <button class="header-nav__button">ログイン</button>
+                        <li class="header__nav-item">
+                            <form action="/login" method="get">
+                                <button class="header__nav-button">ログイン</button>
                             </form>
                         </li>
-                        </li>
-                        <li class="header-nav__item">
-                            <form class="form__header" action="/register" method="get">
-                                <button class="header-nav__button">会員登録</button>
+                        <li class="header__nav-item">
+                            <form action="/register" method="get">
+                                <button class="header__nav-button">会員登録</button>
                             </form>
                         </li>
-                        <form class="form__header" action="/guest/unauthorized_access" method="get">
-                            <button class="header-nav__listing-button">出品</button>
+                        <form action="/guest/unauthorized_access" method="get">
+                            <button class="header__nav-button header__nav-button--listing">出品</button>
                         </form>
                         @endguest
 
@@ -79,48 +77,49 @@
                 </nav>
                 <!-- ハンバーガーメニュー -->
                 <!-- クリックする３本線の部分 -->
-                <span class="nav_toggle">
+                <span class="header__hamburger-toggle">
                     <i></i>
                     <i></i>
                     <i></i>
                 </span>
                 <!-- クリックで表示されるメニュー -->
-                <form class="hamburger__search-form" action="/search" method="get">
-                    <input class="search-form__keyword-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
+                <form class="header__hamburger-search-form" action="/search" method="get">
+                    <input class="header__hamburger-search-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
                     <div class="btn__wrap">
-                        <button class="search-form__button">検索</button>
+                        <button class="header__hamburger-search-button">検索</button>
                     </div>
                 </form>
-                <nav class="hamburger__nav">
-                    <ul class="nav_menu_ul">
+                <nav class="header__hamburger-nav">
+                    <ul class="header__hamburger-nav-list">
                         @auth
-                        <li class="nav_menu_li">
-                            <form class="form__header" action="/logout" method="post">
+                        <li class="header__hamburger-nav-item">
+                            <form action="/logout" method="post">
                                 @csrf
-                                <button class="header-nav__button">ログアウト</button>
+                                <button class="header__hamburger-nav-button">ログアウト</button>
                             </form>
                         </li>
+                        <li class="header__hamburger-nav-item">
+                            <a class="header__hamburger-nav-link" href="/my-page">マイページ</a>
                         </li>
-                        <li class="nav_menu_li">
-                            <a class="header-nav__link" href="/my-page">マイページ</a>
-                        </li>
+                        <form action="/sell" method="get">
+                            <button class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>
+                        </form>
                         @endauth
                         @guest
-                        <li class="nav_menu_li">
-                            <form class="form__header" action="/login" method="get">
-                                <button class="header-nav__button">ログイン</button>
+                        <li class="header__hamburger-nav-item">
+                            <form action="/login" method="get">
+                                <button class="header__hamburger-nav-button">ログイン</button>
                             </form>
                         </li>
-                        </li>
-                        <li class="nav_menu_li">
-                            <form class="form__header" action="/register" method="get">
-                                <button class="header-nav__button">会員登録</button>
+                        <li class="header__hamburger-nav-item">
+                            <form action="/register" method="get">
+                                <button class="header__hamburger-nav-button">会員登録</button>
                             </form>
                         </li>
-                        @endguest
-                        <form class="form__header" action="/sell" method="get">
-                            <button class="header-nav__listing-button">出品</button>
+                        <form action="/guest/unauthorized_access" method="get">
+                            <button class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>
                         </form>
+                        @endguest
                     </ul>
                 </nav>
                 @endunless

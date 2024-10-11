@@ -1,11 +1,11 @@
-.login__content{
+.login {
     margin: 0 auto;
     padding: 30px 15px;
     height: 80vh;
     max-width: 1230px;
 }
 
-.login-form__heading{
+.login__form-heading{
     text-align: center;
     margin-bottom: 40px;
     font-size: 22px;
@@ -62,13 +62,13 @@
     cursor: pointer;
 }
 
-.register__link {
+.register-link {
     margin-top: 15px;
     text-align: center;
     font-size: 18px;
 }
 
-.register__button-submit{
+.register-button{
     text-decoration: none;
     font-weight: bold;
     color: #0073cc;

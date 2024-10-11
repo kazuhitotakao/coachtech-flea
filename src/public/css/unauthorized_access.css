@@ -1,12 +1,12 @@
 /* s main */
-.unauthorized__content {
+.unauthorized {
     text-align: center;
     margin: 0 auto;
     margin: 20vh auto;
     height: 100vh;
 }
 
-.card {
+.unauthorized-card {
     margin: 3vh auto;
     height: 15rem;
     width: 28rem;
@@ -19,17 +19,17 @@
     background-color: #f2f2f2;
 }
 
-.card__text {
+.unauthorized-card__text {
     text-align: left;
     font-size: 18px;
 }
 
-.card__link-container {
+.unauthorized-card__link-container {
     display: flex;
     justify-content: space-around;
 }
 
-.card__link {
+.unauthorized-card__link {
     text-decoration: none;
     font-weight: bold;
     border: none;
@@ -42,12 +42,12 @@
 }
 /* 768px以下 */
 @media screen and (max-width: 768px) {
-    .card {
+    .unauthorized-card {
         height: 15rem;
         width: 20rem;
     }
 
-    .card__link {
+    .unauthorized-card__link {
         width: 6rem;
     }
 }

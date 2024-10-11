@@ -26,28 +26,28 @@
             <h2 class="item__name">{{ $item->name }}</h2>
             <span class="item__brand-name">{{ $brand_name }}</span>
             <p class="item__sale-price">¥{{ number_format($item->sale_price)}}</p>
-            <div class="icon__wrapper">
-                <div class="item__favorite">
-                    <form class="item__favorite-form" action="/guest/unauthorized_access" method="get">
-                        <button class="item__like-btn" data-favorites="{{ $favorites_count }}">
+            <div class="icon">
+                <div class="icon__favorite">
+                    <form class="icon__favorite-form" action="/guest/unauthorized_access" method="get">
+                        <button class="icon__like-btn" data-favorites="{{ $favorites_count }}">
                             <i class="lar la-star like-btn"></i>
                         </button>
                     </form>
                 </div>
-                <div class="item__comment">
-                    <form class="item__comment-form" action="/guest/unauthorized_access" method="get">
-                        <button class="item__comment-btn" data-comments="{{ $comments_count }}">
+                <div class="icon__comment">
+                    <form class="icon__comment-form" action="/guest/unauthorized_access" method="get">
+                        <button class="icon__comment-btn" data-comments="{{ $comments_count }}">
                             <i class="las la-comment comment-btn"></i>
                         </button>
                     </form>
                 </div>
             </div>
-            <form class="purchase__form" action="/guest/unauthorized_access" method="get">
-                <button class="purchase__button">購入する</button>
+            <form class="item__purchase-form" action="/guest/unauthorized_access" method="get">
+                <button class="item__purchase-button">購入する</button>
             </form>
             <h4 class="item__description">商品説明</h4>
             <p class="item__description-content">{{$item->description}}</p>
-            <h4 class="table__title">商品の情報</h4>
+            <h4 class="item__table-title">商品の情報</h4>
             <table class="item__table">
                 <tr class="item__row">
                     <th class="item__label">カテゴリー</th>

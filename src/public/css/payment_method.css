@@ -2,7 +2,7 @@
     margin-top: 3rem;
 }
 
-.payment-method-update {
+.payment-method__update {
     margin-top: 4rem;
 }
 
@@ -18,22 +18,22 @@
 /* e 支払方法 */
 
 /* s クレジットカード詳細*/
-.payment-method__card-radio {
+.payment-method__detail-radio {
     display: flex;
     flex-direction: column;
 }
 
-.payment-method-entry {
+.payment-method__detail-entry {
     display: flex;
     align-items: center; /* 中央揃えを行う */
     margin-bottom: 10px;
 }
 
-.payment-method-entry__label {
+.payment-method__detail-entry-label {
     width: 90%;
 }
 
-.payment-method-card__wrapper {
+.payment-method__detail-wrapper {
     border: 1px solid #000;
     border-radius: 5px;
     width: 90%;
@@ -41,24 +41,24 @@
     padding: 0.2rem 1rem;
 }
 
-.payment-method-card__table {
+.payment-method__detail-table {
     width: 100%;
 }
 
-.payment-method-card__row {
+.payment-method__detail-row {
     height: 1.5rem;
     font-size: 18px;
 }
 
-.payment-method-card__label {
+.payment-method__detail-label {
     width: 30%;
 }
 
-.payment-method-card__data {
+.payment-method__detail-data {
     width: 70%;
 }
 
-.delete-form__button-submit {
+.payment-method__delete-button {
     padding: 5px;
     width: 100%;
     border: none;
@@ -68,12 +68,12 @@
 }
 /* e クレジットカード詳細*/
 
-.update-form {
+.payment-method__update-form {
     margin: 3rem 0;
     width: 100%;
 }
 
-.update-form__button-submit {
+.payment-method__update-button {
     width: 100%;
     height: 40px;
     border: none;
@@ -84,11 +84,11 @@
     font-size: 20px;
 }
 
-.add-form {
+.payment-method__add-form {
     margin: 1rem 0;
 }
 
-.add-form__button-submit {
+.payment-method__add-button {
     font-size: 22px;
     font-weight: bold;
     color: #ff5555;
@@ -150,7 +150,7 @@ input:checked + label::after {
 
 /* 画面幅が992px以下の場合 */
 @media (max-width: 992px) {
-    .payment-method-card__wrapper {
+    .payment-method__detail-wrapper {
         margin: 0.5rem 0 0.5rem 0.5rem;
         padding: 0.2rem 0.5rem;
     }
@@ -160,15 +160,15 @@ input:checked + label::after {
         font-size: 20px;
     }
 
-    .payment-method-card__data {
+    .payment-method__detail-data {
         padding-left: 1rem;
     }
 
-    .payment-method-card__row {
+    .payment-method__detail-row {
         font-size: 18px;
     }
 
-    .payment-method-entry__label {
+    .payment-method__detail-entry-label {
         width: 85%;
     }
 }
@@ -181,7 +181,7 @@ input:checked + label::after {
 }
 /* 画面幅が480px以下の場合 */
 @media (max-width: 480px) {
-    .payment-method-card__wrapper {
+    .payment-method__detail-wrapper {
         width: 90%;
         margin: 0.3rem 0 0.3rem 0.3rem;
         padding: 0.2rem 0.5rem;
@@ -192,21 +192,21 @@ input:checked + label::after {
         font-size: 20px;
     }
 
-    .payment-method-card__label {
+    .payment-method__detail-label {
         width: 30%;
         white-space: nowrap;
     }
 
-    .payment-method-card__data {
+    .payment-method__detail-data {
         padding-left: 1rem;
     }
 
-    .payment-method-card__row {
+    .payment-method__detail-row {
         height: 1.5rem;
         font-size: 16px;
     }
 
-    .payment-method-entry__label {
+    .payment-method__detail-entry-label {
         width: 85%;
     }
 }
