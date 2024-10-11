@@ -28,7 +28,7 @@ class AddressController extends Controller
             "address" => $request->address,
             "building" => $request->building,
         ];
-
+        
         $address = Address::with('user')->where('user_id', Auth::id())->first();
         if (empty($address)) {
             Address::create($param);

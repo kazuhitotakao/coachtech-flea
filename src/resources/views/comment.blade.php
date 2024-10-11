@@ -45,7 +45,7 @@
                     @endif
                 </div>
                 <div class="icon__comment">
-                    <form class="icon__comment-form" action="{{ route('comment.show', ['item_id' => $item->id]) }}" method="get">
+                    <form class="icon__comment-form" action="{{ route('comment.show', ['item_id' => $item->id]) }}" method="GET">
                         <button class="icon__comment-btn" data-comments="{{ $comments_count }}">
                             <i class="las la-comment comment-btn"></i>
                         </button>
@@ -62,7 +62,7 @@
                 </div>
                 @endforeach
             </div>
-            <form class="comment__form" action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="post">
+            <form class="comment__form" action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="POST">
                 @csrf
                 <h4 class="comment__form-title">商品へのコメント</h4>
                 <textarea name="comment" class="comment__form-content"></textarea>

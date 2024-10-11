@@ -5,7 +5,11 @@
 @endsection
 
 @section('content')
-
+@if (session('success'))
+    <div class="alert__success">
+        {!! session('success') !!}
+    </div>
+    @endif
 <a href="/" class="top-page__recommended">おすすめ</a>
 <a href="/my-list" class="top-page__my-list">マイリスト</a>
 <hr>

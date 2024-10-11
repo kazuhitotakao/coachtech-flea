@@ -28,7 +28,7 @@
                     <table class="purchase__payment-method-card-table">
                         <tr class="purchase__payment-method-card-row">
                             <th class="purchase__payment-method-card-label">カード番号</th>
-                            <td class="purchase__payment-method-card-data">{{ $card_number }}</td>
+                            <td class="purchase__payment-method-card-data">{{ $formatted_card_number }}</td>
                         </tr>
                         <tr class="purchase__payment-method-card-row">
                             <th class="purchase__payment-method-card-label">有効期限</th>
@@ -101,7 +101,7 @@
                     </tr>
                 </table>
             </div>
-            <form class="purchase__form" action="{{ route('items.purchase', ['item_id' => $item->id]) }}" method="post">
+            <form class="purchase__form" action="{{ route('items.purchase', ['item_id' => $item->id]) }}" method="POST">
                 @csrf
                 @if(!empty($address))
                 <input type="hidden" name="address_id" value="{{ $address->id }}">

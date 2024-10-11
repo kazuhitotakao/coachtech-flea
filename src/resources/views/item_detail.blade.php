@@ -45,14 +45,14 @@
                     @endif
                 </div>
                 <div class="icon__comment">
-                    <form class="icon__comment-form" action="{{ route('comment.show', ['item_id' => $item->id]) }}" method="get">
+                    <form class="icon__comment-form" action="{{ route('comment.show', ['item_id' => $item->id]) }}" method="GET">
                         <button class="icon__comment-btn" data-comments="{{ $comments_count }}">
                             <i class="las la-comment comment-btn"></i>
                         </button>
                     </form>
                 </div>
             </div>
-            <form class="item__purchase-form" action="{{ route('purchase.show', ['item_id' => $item->id]) }}" method="get">
+            <form class="item__purchase-form" action="{{ route('purchase.show', ['item_id' => $item->id]) }}" method="GET">
                 <button class="item__purchase-button">購入する</button>
             </form>
             <h4 class="item__description">商品説明</h4>

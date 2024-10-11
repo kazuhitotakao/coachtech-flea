@@ -32,7 +32,7 @@
                             <table class="payment-method__detail-table">
                                 <tr class="payment-method__detail-row">
                                     <th class="payment-method__detail-label">カード番号</th>
-                                    <td class="payment-method__detail-data">{{ $detail->card_number }}</td>
+                                    <td class="payment-method__detail-data">{{ $detail->formatted_card_number }}</td>
                                 </tr>
                                 <tr class="payment-method__detail-row">
                                     <th class="payment-method__detail-label">名義人</th>
@@ -53,7 +53,7 @@
                     </form>
                 </div>
                 @endforeach
-                <form class="payment-method__add-form" action="{{ route('payment_method.add.show', ['item_id' => $item_id]) }}" method="get">
+                <form class="payment-method__add-form" action="{{ route('payment_method.add.show', ['item_id' => $item_id]) }}" method="GET">
                     <button class="payment-method__add-button" type="submit">カードを追加する</button>
                 </form>
             </div>

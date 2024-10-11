@@ -35,7 +35,7 @@
                 $specificRoutes = ['login', 'register', 'sell.index', 'purchase.edit.address', 'guest.unauthorized_access'];
                 @endphp
                 @unless(\Route::currentRouteNamed(...$specificRoutes))
-                <form class="header__search-form" action="/search" method="get">
+                <form class="header__search-form" action="/search" method="GET">
                     <input class="header__search-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
                     <div class="btn__wrap">
                         <button class="header__search-button">検索</button>
@@ -45,7 +45,7 @@
                     <ul class="header__nav-list">
                         @auth
                         <li class="header__nav-item">
-                            <form action="/logout" method="post">
+                            <form action="/logout" method="POST">
                                 @csrf
                                 <button class="header__nav-button">ログアウト</button>
                             </form>
@@ -53,22 +53,22 @@
                         <li class="header__nav-item">
                             <a class="header__nav-link" href="/my-page">マイページ</a>
                         </li>
-                        <form action="/sell" method="get">
+                        <form action="/sell" method="GET">
                             <button class="header__nav-button header__nav-button--listing">出品</button>
                         </form>
                         @endauth
                         @guest
                         <li class="header__nav-item">
-                            <form action="/login" method="get">
+                            <form action="/login" method="GET">
                                 <button class="header__nav-button">ログイン</button>
                             </form>
                         </li>
                         <li class="header__nav-item">
-                            <form action="/register" method="get">
+                            <form action="/register" method="GET">
                                 <button class="header__nav-button">会員登録</button>
                             </form>
                         </li>
-                        <form action="/guest/unauthorized_access" method="get">
+                        <form action="/guest/unauthorized_access" method="GET">
                             <button class="header__nav-button header__nav-button--listing">出品</button>
                         </form>
                         @endguest
@@ -83,7 +83,7 @@
                     <i></i>
                 </span>
                 <!-- クリックで表示されるメニュー -->
-                <form class="header__hamburger-search-form" action="/search" method="get">
+                <form class="header__hamburger-search-form" action="/search" method="GET">
                     <input class="header__hamburger-search-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ request('keyword') }}">
                     <div class="btn__wrap">
                         <button class="header__hamburger-search-button">検索</button>
@@ -93,7 +93,7 @@
                     <ul class="header__hamburger-nav-list">
                         @auth
                         <li class="header__hamburger-nav-item">
-                            <form action="/logout" method="post">
+                            <form action="/logout" method="POST">
                                 @csrf
                                 <button class="header__hamburger-nav-button">ログアウト</button>
                             </form>
@@ -101,22 +101,22 @@
                         <li class="header__hamburger-nav-item">
                             <a class="header__hamburger-nav-link" href="/my-page">マイページ</a>
                         </li>
-                        <form action="/sell" method="get">
+                        <form action="/sell" method="GET">
                             <button class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>
                         </form>
                         @endauth
                         @guest
                         <li class="header__hamburger-nav-item">
-                            <form action="/login" method="get">
+                            <form action="/login" method="GET">
                                 <button class="header__hamburger-nav-button">ログイン</button>
                             </form>
                         </li>
                         <li class="header__hamburger-nav-item">
-                            <form action="/register" method="get">
+                            <form action="/register" method="GET">
                                 <button class="header__hamburger-nav-button">会員登録</button>
                             </form>
                         </li>
-                        <form action="/guest/unauthorized_access" method="get">
+                        <form action="/guest/unauthorized_access" method="GET">
                             <button class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>
                         </form>
                         @endguest

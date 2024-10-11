@@ -8,7 +8,7 @@
 
 <h2>商品の出品</h2>
 
-<form action="/sell" method="post">
+<form action="/sell" method="POST">
     @csrf
     <button>出品する</button>
 </form>

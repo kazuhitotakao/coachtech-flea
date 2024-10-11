@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'showPurchase'])->name('purchase.show');
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('items.purchase');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'editAddress'])->name('purchase.edit.address');
-    Route::post('/purchase/address/{item_id}', [AddressController::class, 'updateAddress'])->name('purchase.update.address');
+    Route::put('/purchase/address/{item_id}', [AddressController::class, 'updateAddress'])->name('purchase.update.address');
     Route::get('/payment-method/{item_id}', [PaymentMethodController::class, 'showPaymentMethod'])->name('payment_method.show');
     Route::post('/payment-method/{item_id}', [PaymentMethodController::class, 'updatePaymentMethod'])->name('payment_method.update');
     Route::get('/payment-method/add/{item_id}', [PaymentMethodController::class, 'showAddPaymentMethod'])->name('payment_method.add.show');
@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
     Route::get('/my-page', [MyPageController::class, 'index']);
     Route::get('/my-page/profile', [ProfileController::class, 'edit']);
-    Route::post('/my-page/profile', [ProfileController::class, 'update']);
+    Route::put('/my-page/profile', [ProfileController::class, 'update']);
     Route::get('/sell', [SellController::class, 'index'])->name('sell.index');
     Route::post('/sell', [SellController::class, 'store']);
     Route::post('/like/{item_id}', [FavoriteController::class, 'store'])->name('like');

@@ -28,21 +28,21 @@
             <p class="item__sale-price">¥{{ number_format($item->sale_price)}}</p>
             <div class="icon">
                 <div class="icon__favorite">
-                    <form class="icon__favorite-form" action="/guest/unauthorized_access" method="get">
+                    <form class="icon__favorite-form" action="/guest/unauthorized_access" method="GET">
                         <button class="icon__like-btn" data-favorites="{{ $favorites_count }}">
                             <i class="lar la-star like-btn"></i>
                         </button>
                     </form>
                 </div>
                 <div class="icon__comment">
-                    <form class="icon__comment-form" action="/guest/unauthorized_access" method="get">
+                    <form class="icon__comment-form" action="/guest/unauthorized_access" method="GET">
                         <button class="icon__comment-btn" data-comments="{{ $comments_count }}">
                             <i class="las la-comment comment-btn"></i>
                         </button>
                     </form>
                 </div>
             </div>
-            <form class="item__purchase-form" action="/guest/unauthorized_access" method="get">
+            <form class="item__purchase-form" action="/guest/unauthorized_access" method="GET">
                 <button class="item__purchase-button">購入する</button>
             </form>
             <h4 class="item__description">商品説明</h4>

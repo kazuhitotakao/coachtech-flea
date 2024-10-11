@@ -9,8 +9,9 @@
 
 <h1>プロフィール設定</h1>
 
-<form action="/my-page/profile" method="post">
+<form action="/my-page/profile" method="POST">
     @csrf
+    @method('PUT')
     <button>更新する</button>
 </form>
 

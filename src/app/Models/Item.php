@@ -103,6 +103,27 @@ class Item extends Model
         return strpos($imagePath, 'http') === 0 ? $imagePath : Storage::url($imagePath);
     }
 
+    public function calculatePaidPrice($payment_method_id)
+    {
+        $paid_price = $this->sale_price;
+        $paid_price_format = number_format($this->sale_price);
+
+        if ($payment_method_id == 2) {
+            $paid_price += 500;
+            $paid_price_format = number_format($paid_price) . '（手数料500円）';
+        } elseif ($payment_method_id == 3) {
+            $paid_price += 300;
+            $paid_price_format = number_format($paid_price) . '（手数料300円）';
+        }
+
+        return [
+            'paid_price' => $paid_price,
+            'paid_price_format' => $paid_price_format,
+        ];
+    }
+
+
+
     /**
      * ユーザーとのリレーション (多対1)
      */

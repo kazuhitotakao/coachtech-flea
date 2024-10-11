@@ -6,7 +6,7 @@
 
 @section('content')
 
-<form action="/my-page/profile" method="get">
+<form action="/my-page/profile" method="GET">
     <button>プロフィールを編集</button>
 </form>
 
