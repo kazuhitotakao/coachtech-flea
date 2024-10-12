@@ -18,7 +18,7 @@
     @foreach($items as $item)
     <div class="item-card">
         <div class="item-card__container">
-            <a href="{{ route('items.user_detail', ['item_id' => $item->id]) }}">
+            <a href="{{ route('item.user_detail', ['item_id' => $item->id]) }}">
                 <img class="item-card__image" src="{{ $item->thumbnailUrl }}" alt="item_image">
             </a>
             <div class="item-card__favorite">

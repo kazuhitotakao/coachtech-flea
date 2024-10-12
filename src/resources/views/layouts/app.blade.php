@@ -32,7 +32,7 @@
                 </a>
                 @endguest
                 @php
-                $specificRoutes = ['login', 'register', 'sell.index', 'purchase.edit.address', 'guest.unauthorized_access'];
+                $specificRoutes = ['login', 'register', 'sell.index', 'purchase.edit.address', 'guest.unauthorized_access', 'item.create'];
                 @endphp
                 @unless(\Route::currentRouteNamed(...$specificRoutes))
                 <form class="header__search-form" action="/search" method="GET">
@@ -53,7 +53,7 @@
                         <li class="header__nav-item">
                             <a class="header__nav-link" href="/my-page">マイページ</a>
                         </li>
-                        <form action="/sell" method="GET">
+                        <form action="/item/create" method="GET">
                             <button class="header__nav-button header__nav-button--listing">出品</button>
                         </form>
                         @endauth
@@ -101,7 +101,7 @@
                         <li class="header__hamburger-nav-item">
                             <a class="header__hamburger-nav-link" href="/my-page">マイページ</a>
                         </li>
-                        <form action="/sell" method="GET">
+                        <form action="/item/create" method="GET">
                             <button class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>
                         </form>
                         @endauth
