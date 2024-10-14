@@ -99,6 +99,7 @@ hr {
     color: rgb(188, 188, 188);
     font-size: 2rem;
     vertical-align: middle;
+    transform: translateY(-10%);
 }
 
 .liked {

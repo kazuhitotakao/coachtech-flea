@@ -76,6 +76,7 @@
 .like-btn {
     cursor: pointer;
     font-size: 2rem;
+    transform: translateY(-10%);
 }
 
 .liked {

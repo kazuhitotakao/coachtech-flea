@@ -17,7 +17,7 @@
                 <img src="{{ $imageUrl_thumbnail }}" alt="item_thumbnail">
             </div>
             <div class="item__images">
-                @foreach( $imagesUrl as $imageUrl )
+                @foreach( $imageUrls as $imageUrl )
                 <img src="{{ $imageUrl }}" alt="item_image">
                 @endforeach
             </div>

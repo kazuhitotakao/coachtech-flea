@@ -23,7 +23,7 @@ class Category extends Model
         $category = $this; // 現在のカテゴリから開始
 
         // 再帰的に親カテゴリを取得
-        while ($category) {
+        while ($category !== null) {
             $ancestors->prepend($category);
             $category = $category->parentCategory; // 関連を使って親カテゴリを取得
         }
@@ -38,7 +38,7 @@ class Category extends Model
     public function items()
     {
         return $this->belongsToMany(Item::class, 'category_item')
-        ->withTimestamps();
+            ->withTimestamps();
     }
 
     //カテゴリの階層構造を管理するための自己リレーション

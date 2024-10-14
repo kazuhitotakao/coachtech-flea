@@ -3,9 +3,6 @@
     padding: 0 5rem;
 }
 
-.item__detail {
-    padding: 0 10% 0 2rem;
-}
 
 .item__image-thumbnail {
     text-align: center;
@@ -27,6 +24,10 @@
     border-radius: 5px;
 }
 /* e 画像 */
+
+.item__detail {
+    padding: 0 10% 0 2rem;
+}
 
 .item__name {
     margin: 0;
@@ -76,6 +77,7 @@
 .like-btn {
     cursor: pointer;
     font-size: 2rem;
+    transform: translateY(-10%);
 }
 
 .liked {
@@ -170,6 +172,7 @@
     background-color: rgba(0, 0, 0, 0.2);
     padding: 0 1rem;
     border-radius: 15px; /* 角を丸める */
+    white-space: nowrap; /* 折り返しなし */
 }
 
 .item__data-condition {

@@ -76,14 +76,34 @@ class Item extends Model
         }
     }
 
+    // カテゴリ名を取得する（重複なしの一覧を配列として返す）
+    public function getCategoryNames()
+    {
+        return $this->categories->flatMap(function ($category) {
+            // ここで各カテゴリーのすべての祖先カテゴリーを取得し、その名前だけをリスト化
+            return $category->getAncestors()->pluck('name');
+        })->unique()->toArray(); // 重複を排除して、配列として返す
+    }
+
     /**
      * すべての画像のURLを取得する。
      */
     public function getImageUrls()
     {
-        return $this->itemImages->map(function ($itemImage) {
+        $imageUrls = $this->itemImages->map(function ($itemImage) {
             return $this->resolveImageUrl($itemImage->image_path);
         })->all();
+
+        // サムネイルとして設定されている画像のIDがある場合、その画像をリストの先頭に移動
+        if ($this->item_image_id) {
+            $thumbnailUrl = $this->getThumbnailUrl(); // サムネイル画像のURLを取得
+            if (($key = array_search($thumbnailUrl, $imageUrls)) !== false) {
+                unset($imageUrls[$key]); // 元の位置からサムネイル画像を削除
+                array_unshift($imageUrls, $thumbnailUrl); // 画像リストの最初にサムネイル画像を挿入
+            }
+        }
+
+        return $imageUrls;
     }
 
     /**

@@ -30,14 +30,14 @@ class GuestController extends Controller
         }
 
         //商品画像関連処理 URL変換をモデル内で処理
-        $imagesUrl = $item->getImageUrls();
+        $imageUrls = $item->getImageUrls();
         $imageUrl_thumbnail = $item->getThumbnailUrl();
 
         return view('guest.item_detail', [
             'item' => $item,
             'brand_name' => optional($item->brand)->name,
             'categories_name' => $categories_name,
-            'imagesUrl' => $imagesUrl,
+            'imageUrls' => $imageUrls,
             'imageUrl_thumbnail' => $imageUrl_thumbnail,
             'favorites_count' => $item->favorites->count(),
             'comments_count' => $item->comments->count(),
