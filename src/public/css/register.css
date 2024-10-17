@@ -1,19 +1,22 @@
 .register {
     margin: 0 auto;
-    padding: 30px 15px;
     height: 80vh;
     max-width: 1230px;
+    width: 40%;
 }
 
-.register-__form-heading{
+.register__form-heading {
     text-align: center;
-    margin-bottom: 40px;
-    font-size: 22px;
+    margin: 3rem auto;
+}
+
+.register__form-heading h2 {
+    font-size: 2rem;
 }
 
 .form {
     margin: 0 auto;
-    width: 40%;
+    width: 100%;
     text-align: center;
 }
 
@@ -28,7 +31,7 @@
     text-align: left;
 }
 
-.form__input--text  {
+.form__input--text {
     text-align: left;
 }
 
@@ -72,4 +75,18 @@
     text-decoration: none;
     font-weight: bold;
     color: #0073cc;
+}
+
+/* 画面幅が768px以下の場合*/
+@media (max-width: 768px) {
+    .register {
+        width: 60%;
+    }
+}
+
+/* 画面幅が480px以下の場合*/
+@media (max-width: 480px) {
+    .register {
+        width: 80%;
+    }
 }

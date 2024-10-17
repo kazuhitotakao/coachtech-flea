@@ -32,6 +32,7 @@
 .unauthorized-card__link {
     text-decoration: none;
     font-weight: bold;
+    font-size: 18px;
     border: none;
     color: #fff;
     background: #ff5555;

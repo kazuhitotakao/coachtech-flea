@@ -55,7 +55,7 @@
     font-weight: bold;
     margin: 20px 0px 0px 100px;
     padding: 10px 0;
-    width: 150px;
+    width: 160px;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 15px 15px 0 0; /* 角を丸める */
@@ -94,7 +94,8 @@ hr {
 .my-page__grid {
     display: grid;
     gap: 1.5rem 1.5rem;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fill, 190px);
+    justify-content: center;
     margin-top: 1.5rem;
     padding-bottom: 2rem;
     padding-left: 2rem;
@@ -115,7 +116,7 @@ hr {
 
 .item-card__image {
     width: 100%;
-    height: 30vh;
+    height: 190px;
     object-fit: cover;
 }
 
@@ -171,23 +172,15 @@ hr {
 /* e いいねボタン */
 /* e 商品 */
 
-/* 画面幅が1024px以下の場合、カラム数を4に減らす */
-@media (max-width: 1024px) {
-    .my-page__grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
+/* 画面幅が992px以下の場合 */
+@media (max-width: 992px) {
     .my-page__profile {
         margin: 20px 5% 20px;
     }
 }
 
-/* 画面幅が768px以下の場合、カラム数を3に減らす */
+/* 画面幅が768px以下の場合*/
 @media (max-width: 768px) {
-    .my-page__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     .my-page__profile {
         flex-wrap: wrap;
     }
@@ -199,23 +192,37 @@ hr {
     }
 }
 
-/* 画面幅が480px以下の場合、カラム数を2に減らす */
+/* 画面幅が480px以下の場合 */
 @media (max-width: 480px) {
     .my-page__grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, 150px);
+        justify-content: center;
+        gap: 1rem 1rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .item-card__image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
     }
 
     .my-page__listed-items {
         margin: 20px 0px 0px 20px;
+        font-size: 20px;
+        width: 140px;
     }
 
     .my-page__purchased-items {
         margin: 20px 0px 0px 20px;
+        font-size: 20px;
+        width: 140px;
     }
 
     .my-page__user-icon-background {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
     }
 
     .my-page__user-icon {
@@ -235,9 +242,21 @@ hr {
     }
 }
 
-/* 画面幅が320px以下の場合、カラム数を1に減らす */
+/* 画面幅が320px以下の場合 */
 @media (max-width: 320px) {
     .my-page__grid {
-        grid-template-columns: 1fr; /* 1列のみ */
+        grid-template-columns: 200px; /* 1列のみ */
+    }
+
+    .my-page__listed-items {
+        margin: 20px 0px 0px 20px;
+        font-size: 18px;
+        width: 120px;
+    }
+
+    .my-page__purchased-items {
+        margin: 20px 0px 0px 20px;
+        font-size: 18px;
+        width: 120px;
     }
 }

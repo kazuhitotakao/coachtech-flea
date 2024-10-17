@@ -45,6 +45,7 @@
     text-decoration: none;
     font-weight: bold;
     margin: auto 0;
+    font-size: 20px;
 }
 
 .purchase__payment-method-card-type {

@@ -92,7 +92,7 @@ hr {
 }
 
 .item-image__upload-btn {
-    width: 5rem;
+    width: 7rem;
     height: 40px;
     border: none;
     border-radius: 5px;
@@ -112,12 +112,7 @@ hr {
     font-weight: bold;
 }
 
-.form-select {
-    border: 1px solid gray;
-}
-
 .form-control {
-    border: 1px solid gray;
     margin-bottom: 1rem;
 }
 
