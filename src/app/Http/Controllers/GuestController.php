@@ -10,8 +10,8 @@ class GuestController extends Controller
     public function guestIndex()
     {
         $items = Item::getItems()->map(function ($item) {
-            // 各アイテムにthumbnailUrl属性を追加
-            $item->thumbnailUrl = $item->getThumbnailUrl();
+            // 各アイテムにthumbnail_url属性を追加
+            $item->thumbnail_url = $item->getThumbnailUrl();
             return $item;
         });
         return view('guest.top_page', compact('items'));
@@ -30,15 +30,15 @@ class GuestController extends Controller
         }
 
         //商品画像関連処理 URL変換をモデル内で処理
-        $imageUrls = $item->getImageUrls();
-        $imageUrl_thumbnail = $item->getThumbnailUrl();
+        $image_urls = $item->getImageUrls();
+        $image_url_thumbnail = $item->getThumbnailUrl();
 
         return view('guest.item_detail', [
             'item' => $item,
             'brand_name' => optional($item->brand)->name,
             'categories_name' => $categories_name,
-            'imageUrls' => $imageUrls,
-            'imageUrl_thumbnail' => $imageUrl_thumbnail,
+            'image_urls' => $image_urls,
+            'image_url_thumbnail' => $image_url_thumbnail,
             'favorites_count' => $item->favorites->count(),
             'comments_count' => $item->comments->count(),
         ]);

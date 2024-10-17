@@ -15,7 +15,7 @@ class ItemImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        $itemImages = [
+        $item_images = [
             ['item_id' => 1, 'image_path' => 'public/images/items/item1.jpeg'],
             ['item_id' => 1, 'image_path' => 'public/images/items/item2.jpeg'],
             ['item_id' => 2, 'image_path' => 'public/images/items/item4.jpeg'],
@@ -30,8 +30,8 @@ class ItemImagesTableSeeder extends Seeder
             ['item_id' => 6, 'image_path' => 'public/images/items/item12.jpeg'],
         ];
 
-        foreach ($itemImages as $itemImage) {
-            ItemImage::create($itemImage);
+        foreach ($item_images as $item_image) {
+            ItemImage::create($item_image);
         }
 
         /**

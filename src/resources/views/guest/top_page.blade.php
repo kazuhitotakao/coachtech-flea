@@ -15,7 +15,7 @@
     <div class="item-card">
         <div class="item-card__container">
             <a href="{{ route('items.guest_detail', ['item_id' => $item->id]) }}">
-                <img class="item-card__image" src="{{ $item->thumbnailUrl }}" alt="item_image">
+                <img class="item-card__image" src="{{ $item->thumbnail_url }}" alt="item_image">
             </a>
             <div class="item-card__price">
                 ¥{{ number_format($item->sale_price) }}

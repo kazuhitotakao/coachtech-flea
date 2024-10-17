@@ -28,12 +28,12 @@ class AddressController extends Controller
             "address" => $request->address,
             "building" => $request->building,
         ];
-        
-        $address = Address::with('user')->where('user_id', Auth::id())->first();
-        if (empty($address)) {
-            Address::create($param);
-        } else {
+
+        $address = Address::where('user_id', Auth::id())->first();
+        if ($address) {
             $address->update($param);
+        } else {
+            Address::create($param);
         }
         return redirect()->route('purchase.show', ['item_id' => $item_id]);
     }

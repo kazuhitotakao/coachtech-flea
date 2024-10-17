@@ -64,7 +64,7 @@ hr {
 }
 
 .selected-image {
-    border: 5px solid black; /* 選択された画像に黒い枠を追加 */
+    border: 5px solid #ffc107; /* 選択された画像に枠を追加 */
 }
 
 /* e サムネイル画像・画像一覧 */

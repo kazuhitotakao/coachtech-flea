@@ -10,7 +10,7 @@
         <div class="purchase__item-content col-lg-7 mt-5">
             <div class="purchase__item-wrapper">
                 <div class="purchase__item-image-thumbnail">
-                    <img src="{{ $imageUrl_thumbnail }}" alt="item_thumbnail">
+                    <img src="{{ $image_url_thumbnail }}" alt="item_thumbnail">
                 </div>
                 <div class="purchase__item-info">
                     <h2 class="purchase__item-name">{{ $item->name }}</h2>

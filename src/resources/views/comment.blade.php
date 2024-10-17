@@ -9,16 +9,15 @@
 @endsection
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="item__image col-md-6 mt-5">
             <div class="item__image-thumbnail">
-                <img src="{{ $imageUrl_thumbnail }}" alt="item_thumbnail">
+                <img src="{{ $image_url_thumbnail }}" alt="item_thumbnail">
             </div>
             <div class="item__images">
-                @foreach( $imageUrls as $imageUrl )
-                <img src="{{ $imageUrl }}" alt="item_image">
+                @foreach( $image_urls as $image_url )
+                <img src="{{ $image_url }}" alt="item_image">
                 @endforeach
             </div>
         </div>

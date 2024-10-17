@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,13 +46,38 @@ class Item extends Model
         return $item;
     }
 
+    public static function getListedItems()
+    {
+        $items = Item::with(['condition', 'brand', 'user', 'itemImages'])->with(
+            'favorites',
+            function ($query) {
+                $query->where('user_id', Auth::id());
+            }
+        )
+        ->where('user_id',Auth::id())
+        ->get();
+
+        return $items;
+    }
+
+    public static function getPurchasedItems()
+    {
+        $purchased_ids = Purchase::where('buyer_id', Auth::id())->pluck('item_id');
+
+        $items = Item::with(['condition', 'brand', 'user', 'itemImages', 'favorites'])
+            ->whereIn('id', $purchased_ids)
+            ->get();
+
+        return $items;
+    }
+
     public static function getLikeItems()
     {
-        $userId = Auth::id();
+        $user_id = Auth::id();
 
         $items = Item::with(['condition', 'brand', 'user'])
-            ->whereHas('favorites', function ($query) use ($userId) {
-                $query->where('user_id', $userId);
+            ->whereHas('favorites', function ($query) use ($user_id) {
+                $query->where('user_id', $user_id);
             })
             ->get();
 
@@ -90,37 +116,37 @@ class Item extends Model
      */
     public function getImageUrls()
     {
-        $imageUrls = $this->itemImages->map(function ($itemImage) {
-            return $this->resolveImageUrl($itemImage->image_path);
+        $image_urls = $this->itemImages->map(function ($item_image) {
+            return $this->resolveImageUrl($item_image->image_path);
         })->all();
 
         // サムネイルとして設定されている画像のIDがある場合、その画像をリストの先頭に移動
         if ($this->item_image_id) {
-            $thumbnailUrl = $this->getThumbnailUrl(); // サムネイル画像のURLを取得
-            if (($key = array_search($thumbnailUrl, $imageUrls)) !== false) {
-                unset($imageUrls[$key]); // 元の位置からサムネイル画像を削除
-                array_unshift($imageUrls, $thumbnailUrl); // 画像リストの最初にサムネイル画像を挿入
+            $thumbnail_url = $this->getThumbnailUrl(); // サムネイル画像のURLを取得
+            if (($key = array_search($thumbnail_url, $image_urls)) !== false) {
+                unset($image_urls[$key]); // 元の位置からサムネイル画像を削除
+                array_unshift($image_urls, $thumbnail_url); // 画像リストの最初にサムネイル画像を挿入
             }
         }
 
-        return $imageUrls;
+        return $image_urls;
     }
 
     /**
-     * サムネイル画像（detailページの大きい画像に使用）のURLを取得する。
+     * サムネイル画像のURLを取得する。
      */
     public function getThumbnailUrl()
     {
-        $thumbnailImage = $this->item_image_id ? ItemImage::find($this->item_image_id) : null;
-        return $thumbnailImage ? $this->resolveImageUrl($thumbnailImage->image_path) : '';
+        $thumbnail_image = $this->item_image_id ? ItemImage::find($this->item_image_id) : null;
+        return $thumbnail_image ? $this->resolveImageUrl($thumbnail_image->image_path) : '';
     }
 
     /**
      * 画像パスからURLを解決するヘルパーメソッド。
      */
-    private function resolveImageUrl($imagePath)
+    private function resolveImageUrl($image_path)
     {
-        return strpos($imagePath, 'http') === 0 ? $imagePath : Storage::url($imagePath);
+        return strpos($image_path, 'http') === 0 ? $image_path : Storage::url($image_path);
     }
 
     public function calculatePaidPrice($payment_method_id)
@@ -142,7 +168,57 @@ class Item extends Model
         ];
     }
 
+    // 商品を出品するメソッド
+    public static function createWithDetails(Request $request)
+    {
+        // 1 出品する商品レコードを作成 （itemsテーブルのidの作成）
+        $item = self::create([
+            'name' => $request->name,
+            'user_id' => Auth::id(),
+        ]);
+        // 2 画像一覧からitem_imagesテーブルを作成 (item_imagesテーブルのidの作成)
+        $item->storeImages(session()->get('uploaded_images_items', []));
+        // 3 サムネイルに選択した画像のidを取得し、出品する商品レコードのitem_image_idに保存
+        $item->setThumbnail($request->thumbnail_index);
+        // 4 選択されたカテゴリーid（複数可）をitemsとcategoriesの中間テーブルに保存
+        $item->attachCategories($request->category_ids);
+        // 5 その他の商品詳細を出品する商品レコードに保存
+        $item->updateItemDetails($request);
+        session()->forget('uploaded_images_items');
+    }
 
+    public function storeImages($image_paths)
+    {
+        $images_data = [];
+        foreach ($image_paths as $path) {
+            $images_data[] = new ItemImage(['image_path' => $path]);
+        }
+        $this->itemImages()->saveMany($images_data); // すべての画像データを一括でデータベースに保存
+    }
+
+    public function setThumbnail($index)
+    {
+        $thumbnail = $this->itemImages()->skip($index)->first(); //ユーザーが選択したインデックス（$index で指定）の数だけ画像レコードの取得をスキップ。
+        if ($thumbnail) {
+            $this->item_image_id = $thumbnail->id;
+            $this->save();
+        }
+    }
+
+    public function attachCategories($category_ids)
+    {
+        $this->categories()->attach($category_ids);
+    }
+
+    public function updateItemDetails(Request $request)
+    {
+        $this->update([
+            'condition_id' => $request->condition_id,
+            'brand_id' => $request->brand_id,
+            'description' => $request->description,
+            'sale_price' => $request->sale_price,
+        ]);
+    }
 
     /**
      * ユーザーとのリレーション (多対1)

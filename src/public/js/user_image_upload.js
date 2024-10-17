@@ -4,30 +4,29 @@ document.getElementById('images').addEventListener('change', function () {
     for (let i = 0; i < this.files.length; i++) {
         fileNames.push(this.files[i].name);
     }
-    document.getElementById('file-names').textContent = fileNames.join(', ') || '選択されたファイルはありません。';
+    document.getElementById('file_names').textContent = fileNames.join(', ') || '選択されたファイルはありません。';
 });
 
 // ラジオボタン選択によって、別のformのinputに値を反映させる。
 function updateThumbNailId(selectedId) {
-    document.getElementById('item-image-thumbnail-id').value = selectedId;
+    document.getElementById('profile_image_thumbnail_id').value = selectedId;
 }
 
 // サムネイル画像の切り替え
-const thumbnail = document.querySelector('.item-image-thumbnail img');
-const images = document.querySelectorAll('.item-images img');
+const thumbnail = document.querySelector('.profile-image-thumbnail img');
+const images = document.querySelectorAll('.profile-images img');
 images.forEach((image) => {
-    image.addEventListener('click', (event) => {
-        thumbnail.src = event.target.src;
-        thumbnail.animate({
-            opacity: [0, 1]
-        }, 100);
-    });
+        image.addEventListener('click', (event) => {
+            thumbnail.src = event.target.src;
+            thumbnail.animate({
+                opacity: [0, 1]
+            }, 100);
+        });
 });
 
-// サムネイル画像選択時にギャラリーの中かから目立たせる
+// サムネイル画像選択時にギャラリーの中から目立たせる
 document.addEventListener('DOMContentLoaded', function () {
-    const images = document.querySelectorAll('.item-images_image');
-    console.log(images);
+    const images = document.querySelectorAll('.profile-images_image');
     images.forEach(image => {
         image.addEventListener('click', function () {
             // すべての画像から 'selected-image' クラスを削除

@@ -46,7 +46,7 @@ class PaymentMethodController extends Controller
 
         return view('purchase', [
             'item' => $item,
-            'imageUrl_thumbnail' => $item->getThumbnailUrl(),
+            'image_url_thumbnail' => $item->getThumbnailUrl(),
             'payment_detail_id' => $payment_detail_id,
             'payment_method_id' => $payment_method_id,
             'payment_method_name' => PaymentMethod::find($payment_method_id)->name,

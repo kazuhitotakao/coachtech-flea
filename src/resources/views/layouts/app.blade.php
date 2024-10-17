@@ -23,7 +23,7 @@
             <div class="header__utilities">
                 @auth
                 <a class="header__logo" href="/">
-                    <img src="{{ asset('images/logo.svg') }}" alt="Logo">
+                    <img class="header__logo--image" src="{{ asset('images/logo.svg') }}" alt="Logo">
                 </a>
                 @endauth
                 @guest
@@ -51,7 +51,7 @@
                             </form>
                         </li>
                         <li class="header__nav-item">
-                            <a class="header__nav-link" href="/my-page">マイページ</a>
+                            <a class="header__nav-link" href="/my-page/listed">マイページ</a>
                         </li>
                         <form action="/item/create" method="GET">
                             <button class="header__nav-button header__nav-button--listing">出品</button>
@@ -99,7 +99,7 @@
                             </form>
                         </li>
                         <li class="header__hamburger-nav-item">
-                            <a class="header__hamburger-nav-link" href="/my-page">マイページ</a>
+                            <a class="header__hamburger-nav-link" href="/my-page/listed">マイページ</a>
                         </li>
                         <form action="/item/create" method="GET">
                             <button class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>

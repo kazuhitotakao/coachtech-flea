@@ -8,7 +8,7 @@ function updatePaymentDetailId(selectedId) {
 function handlePaymentMethodChange(selectedId) {
     document.getElementById('payment-method-id-input').value = selectedId;
     // クレジットカードの詳細表示/非表示のトグル
-    var detailsDiv = document.getElementById('credit-details');
+    var detailsDiv = document.getElementById('credit_details');
     if (selectedId == 1) {
         detailsDiv.style.display = 'block';
     } else {

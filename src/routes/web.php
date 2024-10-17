@@ -13,6 +13,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TopPageController;
+use App\Http\Controllers\UserImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,9 +51,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/payment-method/delete/{item_id}', [PaymentMethodController::class, 'deletePaymentMethod'])->name('payment_method.delete');
     Route::get('/comment/{item_id}', [CommentController::class, 'show'])->name('comment.show');
     Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
-    Route::get('/my-page', [MyPageController::class, 'index']);
+    Route::get('/my-page/listed', [MyPageController::class, 'indexListed']);
+    Route::get('/my-page/purchased', [MyPageController::class, 'indexPurchased']);
     Route::get('/my-page/profile', [ProfileController::class, 'edit']);
     Route::put('/my-page/profile', [ProfileController::class, 'update']);
+    Route::post('/user/images', [UserImageController::class, 'upload'])->name('user.images.upload');
     Route::post('/like/{item_id}', [FavoriteController::class, 'store'])->name('like');
     Route::post('/unlike/{item_id}', [FavoriteController::class, 'delete'])->name('unlike');
 });

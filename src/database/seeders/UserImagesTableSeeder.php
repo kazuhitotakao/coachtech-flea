@@ -15,17 +15,17 @@ class UserImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        $userImages = [
-            ['user_id' => 1, 'image_path' => 'public/images/users/user1.jpeg'],
-            ['user_id' => 1, 'image_path' => 'public/images/users/user2.jpeg'],
-            ['user_id' => 2, 'image_path' => 'public/images/users/user3.jpeg'],
-            ['user_id' => 2, 'image_path' => 'public/images/users/user4.jpeg'],
-            ['user_id' => 3, 'image_path' => 'public/images/users/user5.jpeg'],
-            ['user_id' => 3, 'image_path' => 'public/images/users/user6.jpeg'],
+        $user_images = [
+            ['user_id' => 2, 'image_path' => 'public/images/users/user1.jpeg'],
+            ['user_id' => 2, 'image_path' => 'public/images/users/user2.jpeg'],
+            ['user_id' => 3, 'image_path' => 'public/images/users/user3.jpeg'],
+            ['user_id' => 3, 'image_path' => 'public/images/users/user4.jpeg'],
+            ['user_id' => 4, 'image_path' => 'public/images/users/user5.jpeg'],
+            ['user_id' => 4, 'image_path' => 'public/images/users/user6.jpeg'],
         ];
 
-        foreach ($userImages as $userImage) {
-            UserImage::create($userImage);
+        foreach ($user_images as $user_image) {
+            UserImage::create($user_image);
         }
 
         /**

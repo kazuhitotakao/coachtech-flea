@@ -16,7 +16,7 @@ class PurchaseController extends Controller
         $user_id = Auth::id();
 
         //商品画像関連処理 URL変換をモデル内で処理
-        $imageUrl_thumbnail = $item->getThumbnailUrl();
+        $image_url_thumbnail = $item->getThumbnailUrl();
 
         // 直近の支払い詳細取得
         $payment_details = Purchase::getPaymentDetailsForUser($user_id);
@@ -29,7 +29,7 @@ class PurchaseController extends Controller
 
         return view('purchase', [
             'item' => $item,
-            'imageUrl_thumbnail' => $imageUrl_thumbnail,
+            'image_url_thumbnail' => $image_url_thumbnail,
             'payment_detail_id' => $payment_details['payment_detail_id'],
             'payment_method_id' => $payment_details['payment_method_id'],
             'payment_method_name' => $payment_details['payment_method_name'],

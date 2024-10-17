@@ -14,8 +14,8 @@ class SearchController extends Controller
             ->search($request->keyword)
             ->get()
             ->map(function ($item) {
-                // 各アイテムにthumbnailUrl属性を追加
-                $item->thumbnailUrl = $item->getThumbnailUrl();
+                // 各アイテムにthumbnail_url属性を追加
+                $item->thumbnail_url = $item->getThumbnailUrl();
                 return $item;
             });
 

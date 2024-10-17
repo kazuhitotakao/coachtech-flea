@@ -22,7 +22,7 @@
                 <input class="visually-hidden" type="radio" name="payment_method_id" id="bank" value="3" onchange="handlePaymentMethodChange(this.value);">
                 <label class="payment-method__radio-label" for="bank">銀行振込</label>
             </div>
-            <div class="payment-method__detail-radio" id="credit-details" style="display:none;">
+            <div class="payment-method__detail-radio" id="credit_details" style="display:none;">
                 <h3 class="payment-method__detail-title">クレジットカード詳細</h3>
                 @foreach ($payment_details_credit as $detail)
                 <div class="payment-method__detail-entry">
@@ -61,8 +61,8 @@
         <div class="payment-method__update col-md-5">
             <form class="payment-method__update-form" action="{{ route('payment_method.update', ['item_id' => $item_id]) }}" method="POST">
                 @csrf
-                <input type="hidden" id="payment-method-id-input" name="payment_method_id" value="">
-                <input type="hidden" id="payment-detail-id-input" name="payment_detail_id" value="">
+                <input type="hidden" id="payment_method_id_input" name="payment_method_id" value="">
+                <input type="hidden" id="payment_detail_id_input" name="payment_detail_id" value="">
                 <button class="payment-method__update-button" type="submit">変更する</button>
             </form>
         </div>

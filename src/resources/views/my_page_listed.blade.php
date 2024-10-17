@@ -1,16 +1,28 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/my_list.css') }}">
+<link rel="stylesheet" href="{{ asset('css/my_page_listed.css') }}">
 @endsection
 
 @section('content')
 
-<a href="/" class="top-page__recommended">おすすめ</a>
-<a href="/my-list" class="top-page__my-list">マイリスト</a>
+<div class="my-page__profile">
+    <div class="my-page__user-icon-background">
+        <div class="my-page__user-icon">
+            <img src="{{ $user->user_image_id ? $user->thumbnail_url : asset('images/user_no-name.jpeg') }}" alt="item_thumbnail">
+        </div>
+    </div>
+    <h1 class="my-page__user-name">{{ $user->name ?: '名前未設定' }}</h1>
+    <div class="my-page__profile-link-wrapper">
+        <a href="/my-page/profile" class="my-page__profile-link">プロフィールを編集</a>
+    </div>
+</div>
+
+<a href="/my-page/listed" class="my-page__listed-items">出品した商品</a>
+<a href="/my-page/purchased" class="my-page__purchased-items">購入した商品</a>
 <hr>
 
-<div class="top-page__wrapper top-page__grid">
+<div class="my-page__wrapper my-page__grid">
     @foreach($items as $item)
     <div class="item-card">
         <div class="item-card__container">

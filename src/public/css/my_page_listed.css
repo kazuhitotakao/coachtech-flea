@@ -1,4 +1,54 @@
-.top-page__recommended {
+/* s マイページ プロフィール */
+.my-page__profile {
+    display: flex;
+    align-items: center;
+    margin: 20px 15% 20px;
+}
+
+.my-page__user-icon-background {
+    border: none;
+    background-color: rgb(200, 200, 200, 0.6);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+}
+
+.my-page__user-icon {
+    padding: 5px;
+    text-align: center;
+}
+
+.my-page__user-icon img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.my-page__user-name {
+    margin-left: 2rem;
+    margin-bottom: 0;
+}
+
+.my-page__profile-link-wrapper {
+    margin-left: auto;
+}
+
+.my-page__profile-link {
+    border: 2px solid #ff5555;
+    border-radius: 5px;
+    color: #ff5555;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 5px 20px;
+}
+
+/* e マイページ プロフィール */
+
+/* s マイページ タグ */
+.my-page__listed-items {
     display: inline-block;
     text-decoration: none;
     font-size: 24px;
@@ -6,23 +56,22 @@
     margin: 20px 0px 0px 100px;
     padding: 10px 0;
     width: 150px;
-    color: #000;
-    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 15px 15px 0 0; /* 角を丸める */
     text-align: center;
 }
 
-.top-page__my-list {
+.my-page__purchased-items {
     display: inline-block;
     text-decoration: none;
-    color: #000;
     font-size: 24px;
     font-weight: bold;
     margin: 20px 0px 0px 40px;
     padding: 10px 0;
     width: 150px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.7);
+    color: #000;
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 15px 15px 0 0; /* 角を丸める */
     text-align: center;
 }
@@ -33,14 +82,16 @@ hr {
     background-color: #000;
     margin: 0;
 }
+/* e マイページ タグ */
 
-.top-page__wrapper {
+/* s 商品 */
+.my-page__wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 4%;
 }
 
-.top-page__grid {
+.my-page__grid {
     display: grid;
     gap: 1.5rem 1.5rem;
     grid-template-columns: repeat(5, 1fr);
@@ -90,6 +141,7 @@ hr {
 .item-card__name {
     padding: 10px 5px;
     font-weight: 800;
+    margin-bottom: 0;
 }
 
 /* s いいねボタン */
@@ -104,7 +156,7 @@ hr {
 .liked {
     font-size: 2rem;
     color: red;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     font-weight: 900;
     z-index: 10;
 }
@@ -117,39 +169,75 @@ hr {
     height: 50px;
 }
 /* e いいねボタン */
+/* e 商品 */
 
 /* 画面幅が1024px以下の場合、カラム数を4に減らす */
 @media (max-width: 1024px) {
-    .top-page__grid {
+    .my-page__grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .my-page__profile {
+        margin: 20px 5% 20px;
     }
 }
 
 /* 画面幅が768px以下の場合、カラム数を3に減らす */
 @media (max-width: 768px) {
-    .top-page__grid {
+    .my-page__grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .my-page__profile {
+        flex-wrap: wrap;
+    }
+
+    .my-page__profile-link-wrapper {
+        margin-left: 0;
+        width: 100%; /* コンテナ全体の幅を使う 折り返すため*/
+        text-align: right; /* 右寄せにする */
     }
 }
 
 /* 画面幅が480px以下の場合、カラム数を2に減らす */
 @media (max-width: 480px) {
-    .top-page__grid {
+    .my-page__grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
-    .top-page__recommended {
+
+    .my-page__listed-items {
         margin: 20px 0px 0px 20px;
     }
 
-    .top-page__my-list {
+    .my-page__purchased-items {
         margin: 20px 0px 0px 20px;
+    }
+
+    .my-page__user-icon-background {
+        width: 60px;
+        height: 60px;
+    }
+
+    .my-page__user-icon {
+        padding: 3px;
+    }
+
+    .my-page__user-name {
+        margin-left: 1rem;
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+
+    .my-page__profile-link {
+        color: #ff5555;
+        font-size: 16px;
+        padding: 5px 10px;
     }
 }
 
 /* 画面幅が320px以下の場合、カラム数を1に減らす */
 @media (max-width: 320px) {
-    .top-page__grid {
+    .my-page__grid {
         grid-template-columns: 1fr; /* 1列のみ */
     }
 }

@@ -14,14 +14,14 @@ class CommentController extends Controller
         $item = Item::getItem($request->item_id);
         
         //商品画像関連処理 URL変換をモデル内で処理
-        $imageUrls = $item->getImageUrls();
-        $imageUrl_thumbnail = $item->getThumbnailUrl();
+        $image_urls = $item->getImageUrls();
+        $image_url_thumbnail = $item->getThumbnailUrl();
 
         return view('comment', [
             'item' => $item,
             'brand_name' => optional($item->brand)->name,
-            'imageUrls' => $imageUrls,
-            'imageUrl_thumbnail' => $imageUrl_thumbnail,
+            'image_urls' => $image_urls,
+            'image_url_thumbnail' => $image_url_thumbnail,
             'favorites_count' => $item->favorites->count(),
             'comments' => $item->comments,
             'comments_count' => $item->comments->count(),

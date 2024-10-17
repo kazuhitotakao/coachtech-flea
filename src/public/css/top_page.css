@@ -1,7 +1,6 @@
 .top-page__recommended {
     display: inline-block;
     text-decoration: none;
-    color: #000;
     font-size: 24px;
     font-weight: bold;
     margin: 20px 0px 0px 100px;
@@ -22,7 +21,6 @@
     margin: 20px 0px 0px 40px;
     padding: 10px 0;
     width: 150px;
-    color: #000;
     background-color: rgba(0, 0, 0, 0);
     border-radius: 15px 15px 0 0; /* 角を丸める */
     text-align: center;
