@@ -60,19 +60,19 @@
         @method('PUT')
         <div class="profile__form-group">
             <label class="profile__form-label" for="user_name">ユーザー名</label>
-            <input class="profile__form-input" type="text" name="user_name" id="user_name" value="{{ $user->name ?? '' }}">
+            <input class="profile__form-input form-control" type="text" name="user_name" id="user_name" value="{{ $user->name ?? '' }}">
         </div>
         <div class="profile__form-group">
             <label class="profile__form-label" for="postcode">郵便番号</label>
-            <input class="profile__form-input" type="text" name="postcode" id="postcode" value="{{ $address->postcode ?? '' }}">
+            <input class="profile__form-input form-control" type="text" name="postcode" id="postcode" value="{{ $address->postcode ?? '' }}">
         </div>
         <div class="profile__form-group">
             <label class="profile__form-label" for="address">住所</label>
-            <input class="profile__form-input" type="text" name="address" id="address" value="{{ $address->address ?? '' }}">
+            <input class="profile__form-input form-control" type="text" name="address" id="address" value="{{ $address->address ?? '' }}">
         </div>
         <div class="profile__form-group">
             <label class="profile__form-label" for="building">建物名</label>
-            <input class="profile__form-input" type="text" name="building" id="building" value="{{ $address->building ?? '' }}">
+            <input class="profile__form-input form-control" type="text" name="building" id="building" value="{{ $address->building ?? '' }}">
         </div>
         <div class="profile__form-group">
             <input type="hidden" id="profile_image_thumbnail_id" name="thumbnail_id" value="">

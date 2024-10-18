@@ -15,7 +15,7 @@
             <div class="form__group-content">
                 <div class="form__input--text">
                     <label for="email">メールアドレス</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" />
+                    <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" />
                 </div>
                 <div class="form__error">
                     @error('email')
@@ -28,7 +28,7 @@
             <div class="form__group-content">
                 <div class="form__input--text">
                     <label for="password">パスワード</label>
-                    <input type="password" name="password" id="password" />
+                    <input class="form-control" type="password" name="password" id="password" />
                 </div>
                 <div class="form__error">
                     @error('password')

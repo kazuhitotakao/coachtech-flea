@@ -36,7 +36,7 @@ class PaymentDetail extends Model
             });
     }
 
-    // コンビニ・銀行振込の支払詳細を作成 すでにある阿合は取得する
+    // コンビニ・銀行振込の支払詳細を作成 すでにある場合は取得する
         public static function updateOrCreateNonCredit($user_id, $payment_method_id)
     {
         $detail = self::firstOrCreate(

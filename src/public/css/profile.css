@@ -5,8 +5,13 @@
 
 .profile-image,
 .profile {
-    width: 45%;
+    width: 50%;
     margin: 1rem auto;
+}
+
+.profile-image p {
+    font-size: 14px;
+    margin: 0.5rem 0;
 }
 
 /* s サムネイル画像・画像一覧 */
@@ -68,10 +73,6 @@
     cursor: pointer;
 }
 
-.profile-image__button {
-    margin-top: 1rem;
-}
-
 .profile-image__upload-btn {
     width: 7rem;
     height: 40px;
@@ -123,6 +124,10 @@
     .profile {
         width: 55%;
     }
+
+    .profile-image-thumbnail-title {
+        font-size: 18px;
+    }
 }
 
 /* 画面幅が768px以下の場合 */
@@ -138,6 +143,10 @@
     .profile-image,
     .profile {
         width: 80%;
+    }
+
+    .profile-image-thumbnail-title {
+        font-size: 14px;
     }
 }
 

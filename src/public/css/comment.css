@@ -54,7 +54,6 @@
 
 /* s いいねボタン */
 .icon__like-btn {
-    position: relative;
     border: none;
     background-color: rgba(255, 255, 255);
     border-radius: 50%;
@@ -64,7 +63,6 @@
 }
 
 .icon__like-btn::after {
-    position: absolute;
     content: attr(data-favorites); /* 表示したいお気に入りの数 */
     font-size: 16px;
     top: 70%;
@@ -97,7 +95,6 @@
 }
 
 .icon__comment-btn {
-    position: relative;
     border: none;
     background-color: rgba(255, 255, 255);
     border-radius: 50%;
@@ -107,7 +104,6 @@
 }
 
 .icon__comment-btn::after {
-    position: absolute;
     content: attr(data-comments);
     font-size: 16px;
     top: 70%;
@@ -123,6 +119,28 @@
 /* e コメントボタン */
 
 /* s コメント一覧 */
+.comment__user-icon-background {
+    border: none;
+    background-color: rgb(200, 200, 200, 0.6);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.comment__user-icon {
+    padding: 1px;
+    text-align: center;
+}
+
+.comment__user-icon img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .comment__list {
     margin-top: 2rem;
     overflow: auto;
@@ -140,9 +158,11 @@
     border-radius: 5px;
     background-color: #f4f4f4;
     max-width: 80%;
+    margin-bottom: 10px;
 }
 
 .comment__content.left {
+    margin-right: auto;
     background-color: #a9ffe2; /* 出品者用の色 */
 }
 
@@ -152,37 +172,19 @@
 }
 
 .comment__user-name {
-    display: block;
-    max-width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
 }
 
 .comment__user-name.left {
-    position: relative;
-    margin-left: 1rem;
-    padding-left: 3rem;
-}
-
-.comment__user-name.left::before {
-    position: absolute;
-    content: "画像";
-    top: 0;
-    left: 0;
-    font-size: 16px;
-    width: 3rem;
+    justify-content: left;
 }
 
 .comment__user-name.right {
-    position: relative;
-    text-align: right;
-}
-
-.comment__user-name.right::after {
-    position: absolute;
-    content: "画像";
-    top: 0;
-    left: 100%;
-    font-size: 16px;
-    width: 3rem;
+    justify-content: right;
+    padding-right: 5px;
 }
 
 .comment__form {

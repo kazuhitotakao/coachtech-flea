@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="purchase__payment-method">
-                <h3 class=" purchase__payment-method-title">支払い方法</h3>
+                <h3 class="purchase__payment-method-title">支払い方法</h3>
                 <a class="purchase__link" href="{{ route('payment_method.show', ['item_id' => $item->id]) }}">変更する</a>
             </div>
             <div class="purchase__payment-method-details">

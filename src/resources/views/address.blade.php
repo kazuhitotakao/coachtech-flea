@@ -15,15 +15,15 @@
         @method('PUT')
         <div class="address__form-group">
             <label class="address__form-label" for="postcode">郵便番号</label>
-            <input class="address__form-input" type="text" name="postcode" id="postcode" value="{{ $address->postcode ?? '' }}">
+            <input class="address__form-input form-control" type="text" name="postcode" id="postcode" value="{{ $address->postcode ?? '' }}">
         </div>
         <div class="address__form-group">
             <label class="address__form-label" for="address">住所</label>
-            <input class="address__form-input" type="text" name="address" id="address" value="{{ $address->address ?? '' }}">
+            <input class="address__form-input form-control" type="text" name="address" id="address" value="{{ $address->address ?? '' }}">
         </div>
         <div class="address__form-group">
             <label class="address__form-label" for="building">建物名</label>
-            <input class="address__form-input" type="text" name="building" id="building" value="{{ $address->building ?? '' }}">
+            <input class="address__form-input form-control" type="text" name="building" id="building" value="{{ $address->building ?? '' }}">
         </div>
         <div class="address__form-group">
             <button class="address__form-button">更新する</button>

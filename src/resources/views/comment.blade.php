@@ -53,18 +53,37 @@
             </div>
             <div class="comment__list">
                 @foreach ($comments as $comment)
-                <div class="comment__user-name {{ $comment->user_id === $item->user_id ? 'left' : 'right' }}">
-                    <p>{{ $comment->user->name }}</p>
+                @if($comment->user_id === $item->user_id)
+                <div class="comment__user-name left">
+                    <div class="comment__user-icon-background">
+                        <div class="comment__user-icon">
+                            <img src="{{ $comment->user_url_thumbnail ? $comment->user_url_thumbnail : asset('images/user_no-name.jpeg')}}" alt="user_thumbnail">
+                        </div>
+                    </div>
+                    <span>{{ $comment->user->name }}</span>
                 </div>
-                <div class="comment__content {{ $comment->user_id === $item->user_id ? 'left' : 'right' }}">
+                <div class="comment__content left">
                     <p>{{ $comment->comment }}</p>
                 </div>
+                @else
+                <div class="comment__user-name right">
+                    <span>{{ $comment->user->name }}</span>
+                    <div class="comment__user-icon-background">
+                        <div class="comment__user-icon">
+                            <img src="{{ $comment->user_url_thumbnail ? $comment->user_url_thumbnail : asset('images/user_no-name.jpeg')}}" alt="user_thumbnail">
+                        </div>
+                    </div>
+                </div>
+                <div class="comment__content right">
+                    <p>{{ $comment->comment }}</p>
+                </div>
+                @endif
                 @endforeach
             </div>
             <form class="comment__form" action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="POST">
                 @csrf
                 <h4 class="comment__form-title">商品へのコメント</h4>
-                <textarea name="comment" class="comment__form-content"></textarea>
+                <textarea name="comment" class="comment__form-content form-control"></textarea>
                 <button class="comment__form-button">コメントを送信する</button>
             </form>
         </div>
