@@ -13,7 +13,7 @@ class ItemDetailController extends Controller
 
         //カテゴリ関連処理
         $categories_name = $item->getCategoryNames();
-        
+
         //商品画像関連処理 URL変換をモデル内で処理
         $image_urls = $item->getImageUrls();
         $image_url_thumbnail = $item->getThumbnailUrl();

@@ -111,6 +111,15 @@ class Item extends Model
         })->unique()->toArray(); // 重複を排除して、配列として返す
     }
 
+    // カテゴリーIDを取得する（重複なしの一覧を配列として返す）
+    public function getCategoryIds()
+    {
+        return $this->categories->flatMap(function ($category) {
+            // ここで各カテゴリーのすべての祖先カテゴリーを取得し、その名前だけをリスト化
+            return $category->getAncestors()->pluck('id');
+        })->unique()->toArray(); // 重複を排除して、配列として返す
+    }
+
     /**
      * すべての画像のURLを取得する。
      */
