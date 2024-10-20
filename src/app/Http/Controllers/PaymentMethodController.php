@@ -73,7 +73,7 @@ class PaymentMethodController extends Controller
             'details' => json_encode([
                 'card_number' => $request->card_number,
                 'cardholder_name' => $request->cardholder_name,
-                'expiration_date' => $request->expiration_date,
+                'expiration_date' => $request->expiration_year . '-' . $request->expiration_month,
             ])
         ]);
         return redirect()->route('payment_method.show', ['item_id' => $request->item_id]);

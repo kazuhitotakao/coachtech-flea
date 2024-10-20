@@ -26,9 +26,16 @@
     @foreach($items as $item)
     <div class="item-card">
         <div class="item-card__container">
+            @if($item -> isSold())
+            <img class="item-card__image" src="{{ $item->thumbnail_url }}" alt="item_image">
+            <div class="item-card__sold">
+                <p class="item-card__sold-text">SOLD</p>
+            </div>
+            @else
             <a href="{{ route('item.user_detail', ['item_id' => $item->id]) }}">
                 <img class="item-card__image" src="{{ $item->thumbnail_url }}" alt="item_image">
             </a>
+            @endif
             <div class="item-card__favorite">
                 @if(count($item->favorites) === 0)
                 <form action="{{ route('like', ['item_id' => $item->id]) }}" method="POST">

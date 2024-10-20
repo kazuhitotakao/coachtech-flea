@@ -75,7 +75,7 @@ hr {
 }
 
 .item-card__price {
-    display: inline;
+    display: inline-block;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -85,6 +85,28 @@ hr {
     border-radius: 0 15px 15px 0; /* 角を丸める */
     font-size: 20px;
     font-weight: bold;
+}
+
+.item-card__sold {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    width: 65%; /* 三角形の底辺の長さ */
+    height: 65%; /* 三角形の高さ */
+    background-color: rgb(244, 0, 161); /* ファッションピンク色 */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 0 100%); /* 左上から右上、左下への三角形 */
+}
+
+.item-card__sold-text {
+    position: absolute;
+    transform: rotate(-45deg); /* テキストを元に戻すために45度時計回りに回転 */
+    left: 17%;
+    bottom: 41%; /* テキスト位置の微調整 */
 }
 
 .item-card__name {

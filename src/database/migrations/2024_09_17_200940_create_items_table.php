@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration
             $table->string('description', 255)->nullable();
             $table->decimal('sale_price', 9, 2)->nullable();
             $table->unsignedBigInteger('user_id');
+            $table->string('status', 255)->default('available');
             $table->timestamps();
 
             // 外部キー制約

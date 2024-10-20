@@ -8,8 +8,30 @@ h6 {
     font-weight: bold;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 body {
     background-color: #fff;
+}
+
+input::placeholder {
+    color: gray; /* プレースホルダーの文字色をグレーに設定 */
+    opacity: 0.6; /* 透明度（省略可能、デフォルトは0.5で半透明） */
+}
+
+.form-control::placeholder {
+    color: gray; /* プレースホルダーの文字色をグレーに設定 */
+    opacity: 0.6; /* 透明度（省略可能、デフォルトは0.5で半透明） */
 }
 
 .form-select {
@@ -23,6 +45,7 @@ body {
 .header {
     background: #000;
     height: 70px;
+    width: 100%;
 }
 
 .header__inner {
@@ -140,7 +163,7 @@ body {
 
     .header__search-input {
         padding: 5px 10px;
-         font-size: 1.8vw;
+        font-size: 1.8vw;
     }
 }
 

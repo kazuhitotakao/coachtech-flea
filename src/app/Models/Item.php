@@ -20,8 +20,10 @@ class Item extends Model
         'description',
         'sale_price',
         'user_id',
+        'status',
     ];
 
+    // 全商品取得
     public static function getItems()
     {
         $items = Item::with(['condition', 'brand', 'user', 'itemImages'])->with(
@@ -34,6 +36,7 @@ class Item extends Model
         return $items;
     }
 
+    // 商品取得
     public static function getItem($item_id)
     {
         $item = Item::with(['condition', 'brand', 'user', 'itemImages'])->with(
@@ -46,6 +49,7 @@ class Item extends Model
         return $item;
     }
 
+    // 出品した全商品取得
     public static function getListedItems()
     {
         $items = Item::with(['condition', 'brand', 'user', 'itemImages'])->with(
@@ -54,12 +58,13 @@ class Item extends Model
                 $query->where('user_id', Auth::id());
             }
         )
-        ->where('user_id',Auth::id())
-        ->get();
+            ->where('user_id', Auth::id())
+            ->get();
 
         return $items;
     }
 
+    // 購入した全商品取得
     public static function getPurchasedItems()
     {
         $purchased_ids = Purchase::where('buyer_id', Auth::id())->pluck('item_id');
@@ -71,6 +76,7 @@ class Item extends Model
         return $items;
     }
 
+    // お気に入りをした全商品取得
     public static function getLikeItems()
     {
         $user_id = Auth::id();
@@ -80,10 +86,10 @@ class Item extends Model
                 $query->where('user_id', $user_id);
             })
             ->get();
-
         return $items;
     }
 
+    // 検索処理
     public function scopeSearch($query, $keyword)
     {
         if (!empty($keyword)) {
@@ -158,6 +164,7 @@ class Item extends Model
         return strpos($image_path, 'http') === 0 ? $image_path : Storage::url($image_path);
     }
 
+    // 購入時の手数料計算
     public function calculatePaidPrice($payment_method_id)
     {
         $paid_price = $this->sale_price;
@@ -196,6 +203,7 @@ class Item extends Model
         session()->forget('uploaded_images_items');
     }
 
+    // 商品画像をデーターベースに保存する処理
     public function storeImages($image_paths)
     {
         $images_data = [];
@@ -205,6 +213,7 @@ class Item extends Model
         $this->itemImages()->saveMany($images_data); // すべての画像データを一括でデータベースに保存
     }
 
+    // itemsテーブルのitem_image_idにサムネイルの画像IDを保存   
     public function setThumbnail($index)
     {
         $thumbnail = $this->itemImages()->skip($index)->first(); //ユーザーが選択したインデックス（$index で指定）の数だけ画像レコードの取得をスキップ。
@@ -214,11 +223,13 @@ class Item extends Model
         }
     }
 
+    // categoryテーブルとの中間テーブルにデータを保存
     public function attachCategories($category_ids)
     {
         $this->categories()->attach($category_ids);
     }
 
+    // 商品の詳細情報を更新
     public function updateItemDetails(Request $request)
     {
         $this->update([
@@ -227,6 +238,19 @@ class Item extends Model
             'description' => $request->description,
             'sale_price' => $request->sale_price,
         ]);
+    }
+
+    // 売り切れかどうかをチェックするメソッド
+    public function isSold()
+    {
+        return $this->status === 'sold';
+    }
+
+    // ステータスを「販売済み」に変更するメソッド
+    public function markAsSold()
+    {
+        $this->status = 'sold';
+        $this->save();
     }
 
     /**

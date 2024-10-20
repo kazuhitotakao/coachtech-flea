@@ -45,6 +45,7 @@ class PurchaseController extends Controller
     {
         $item = Item::find($request->item_id);
 
+        // 購入処理
         Purchase::create([
             'item_id' => $item->id,
             'buyer_id' => Auth::id(),
@@ -53,6 +54,9 @@ class PurchaseController extends Controller
             'address_id' => $request->address_id,
             'paid_price' => $request->paid_price,
         ]);
+
+        // 購入完了後のステータス変更処理
+        $item->markAsSold();
 
         // 購入完了後のリダイレクト処理
         return redirect('/')->with('success', "{$item->name}を購入しました。");

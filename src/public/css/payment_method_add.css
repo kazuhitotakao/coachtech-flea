@@ -11,6 +11,12 @@
     margin: 2.5rem;
 }
 
+.payment-method__input-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 200px;
+}
+
 .payment-method__label {
     display: block;
     font-weight: bold;
@@ -38,28 +44,37 @@
     margin-top: 1rem;
 }
 
-/* 画面幅が1024px以下の場合、カラム数を4に減らす */
+.break-point {
+    display: inline;
+}
+
+/* 画面幅が1024px以下の場合 */
 @media (max-width: 1024px) {
     .payment-method {
         width: 60%;
     }
 }
 
-/* 画面幅が768px以下の場合、カラム数を3に減らす */
+/* 画面幅が768px以下の場合 */
 @media (max-width: 768px) {
     .payment-method {
         width: 70%;
     }
+
+    .break-point {
+        display: block; /* ブロック要素にして改行 */
+        white-space: nowrap;
+    }
 }
 
-/* 画面幅が480px以下の場合、カラム数を2に減らす */
+/* 画面幅が480px以下の場合*/
 @media (max-width: 480px) {
     .payment-method {
         width: 80%;
     }
 }
 
-/* 画面幅が320px以下の場合、カラム数を1に減らす */
+/* 画面幅が320px以下の場合 */
 @media (max-width: 320px) {
     .payment-method {
         width: 90%;

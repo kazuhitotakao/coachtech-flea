@@ -6,10 +6,10 @@
 
 @section('content')
 @if (session('success'))
-    <div class="alert__success">
-        {!! session('success') !!}
-    </div>
-    @endif
+<div class="alert__success">
+    {!! session('success') !!}
+</div>
+@endif
 <a href="/" class="top-page__recommended">おすすめ</a>
 <a href="/my-list" class="top-page__my-list">マイリスト</a>
 <hr>
@@ -18,9 +18,16 @@
     @foreach($items as $item)
     <div class="item-card">
         <div class="item-card__container">
+            @if($item -> isSold())
+            <img class="item-card__image" src="{{ $item->thumbnail_url }}" alt="item_image">
+            <div class="item-card__sold">
+                <p class="item-card__sold-text">SOLD</p>
+            </div>
+            @else
             <a href="{{ route('item.user_detail', ['item_id' => $item->id]) }}">
                 <img class="item-card__image" src="{{ $item->thumbnail_url }}" alt="item_image">
             </a>
+            @endif
             <div class="item-card__favorite">
                 @if(count($item->favorites) === 0)
                 <form action="{{ route('like', ['item_id' => $item->id]) }}" method="POST">
@@ -41,6 +48,7 @@
         <div class="item-card__name">
             {{ $item->name }}
         </div>
+
     </div>
     @endforeach
 </div>

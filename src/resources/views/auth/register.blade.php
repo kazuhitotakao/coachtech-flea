@@ -15,13 +15,13 @@
             <div class="form__group-content">
                 <div class="form__input--text">
                     <label for="email">メールアドレス</label>
-                    <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" />
+                    <input class="form-control" type="mail" name="email" id="email" value="{{ old('email') }}" />
                 </div>
+                @error('email')
                 <div class="form__error">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
+                    ※{{ $message }}
                 </div>
+                @enderror
             </div>
         </div>
         <div class="form__group">
@@ -30,11 +30,11 @@
                     <label for="password">パスワード</label>
                     <input class="form-control" type="password" name="password" id="password" />
                 </div>
+                @error('password')
                 <div class="form__error">
-                    @error('password')
-                    {{ $message }}
-                    @enderror
+                    ※{{ $message }}
                 </div>
+                @enderror
             </div>
         </div>
         <div class="form__button">
