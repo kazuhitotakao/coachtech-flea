@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PurchaseRequest;
 use App\Models\Address;
 use App\Models\Item;
 use App\Models\Purchase;
@@ -41,7 +42,7 @@ class PurchaseController extends Controller
         ]);
     }
 
-    public function purchase(Request $request)
+    public function purchase(PurchaseRequest $request)
     {
         $item = Item::find($request->item_id);
 

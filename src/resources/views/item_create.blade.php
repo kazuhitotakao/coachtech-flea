@@ -2,6 +2,7 @@
 
 @section('js')
     <script src="{{ asset('js/item_image_upload.js') }}" defer></script>
+    <script src="{{ asset('js/price.js') }}" defer></script>
 @endsection
 
 @section('css')
@@ -9,6 +10,16 @@
 @endsection
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger custom-alert">
+            <button class="btn-close float-end" data-bs-dismiss="alert" type="button" aria-label="Close"></button>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="item">
         <h1 class="item-title">商品の出品</h1>
         <h3 class="item-image__title">商品画像</h3>
@@ -16,16 +27,23 @@
         @if (session()->has('uploaded_images_items'))
             <div class="item-image-thumbnail__wrapper">
                 <div class="item-image-thumbnail">
-                    <img src="{{ asset('images/item_no-image.jpeg') }}" alt="item_thumbnail">
+                    @php
+                        $selected_image =
+                            old('thumbnail_index') !== null
+                                ? Storage::url(session('uploaded_images_items')[old('thumbnail_index')])
+                                : asset('images/item_no-image.jpeg');
+                    @endphp
+                    <img src="{{ $selected_image }}" alt="item_thumbnail">
                 </div>
-
                 <h3 class="item-image-thumbnail-title">※ サムネイル画像を選択してください</h3>
                 <div class="item-images">
                     @foreach (session('uploaded_images_items') as $index => $image)
                         <label for="{{ $index }}">
                             <input id="{{ $index }}" name="thumbnail_index" type="radio"
-                                value="{{ $index }}" style="display: none;" onclick="updateThumbNailId(this.value);">
-                            <img class="item-images_image" src="{{ Storage::url($image) }}" alt="uploaded image">
+                                value="{{ $index }}" style="display: none;" onclick="updateThumbNailId(this.value);"
+                                {{ old('thumbnail_index') == $index ? 'checked' : '' }}>
+                            <img class="item-images_image  {{ is_null(old('thumbnail_index')) ? 'default-class' : (old('thumbnail_index') == $index ? 'selected-image' : '') }}"
+                                src="{{ Storage::url($image) }}" alt="uploaded image">
                         </label>
                     @endforeach
                 </div>
@@ -57,7 +75,10 @@
                     <label for="categories">カテゴリー（複数選択可）</label>
                     <select class="form-select mb-3" id="categories" name="category_ids[]" multiple>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"
+                                {{ in_array($category->id, old('category_ids', [])) ? 'selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -66,17 +87,19 @@
                     <select class="form-select mb-3" id="condition" name="condition_id">
                         <option disabled selected>商品の状態を選択してください</option>
                         @foreach ($conditions as $condition)
-                            <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                            <option value="{{ $condition->id }}"
+                                {{ old('condition_id') == $condition->id ? 'selected' : '' }}>{{ $condition->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="item-detail__brand">
-                    <label for="brand">ブランド</label>
+                    <label for="brand">ブランド（任意）</label>
                     <select class="form-select mb-3" id="brand" name="brand_id">
                         <option disabled selected>ブランドを選択してください</option>
-
                         @foreach ($brands as $brand)
-                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                            <option value="{{ $brand->id }}" {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
+                                {{ $brand->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -89,24 +112,24 @@
                     <input class="form-control" id="name" name="name" type="text" value="{{ old('name') }}">
                 </div>
                 <div>
-                    <label for="description">商品の説明</label>
-                    <textarea class="form-control" id="description" name="description"></textarea>
+                    <label for="description">商品の説明（任意）</label>
+                    <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
                 </div>
-            </div>
-            <h3 class="item-sale-price__title">販売価格</h3>
-            <hr>
-            <div class="item-sale-price">
-                <label for="sale_price">販売価格</label>
-                <div class="input-container">
-                    <span class="currency-symbol">¥</span>
-                    <input class="form-control item-sale-price__input" id="sale_price" name="sale_price" type="number">
+                <h3 class="item-sale-price__title">販売価格</h3>
+                <hr>
+                <div class="item-sale-price">
+                    <label for="sale_price">販売価格</label>
+                    <div class="input-container">
+                        <span class="currency-symbol">¥</span>
+                        <input class="form-control item-sale-price__input" id="sale_price" name="sale_price" type="tel"
+                            value="{{ old('sale_price') }}">
+                    </div>
                 </div>
-            </div>
-            <div>
-                <input id="item_image_thumbnail_id" name="thumbnail_index" type="hidden" value="">
-                <button class="item__button" type="submit">出品する</button>
-            </div>
+                <div>
+                    <input id="item_image_thumbnail_id" name="thumbnail_index" type="hidden"
+                        value=" {{ old('thumbnail_index') }}">
+                    <button class="item__button" type="submit">出品する</button>
+                </div>
         </form>
     </div>
-
 @endsection

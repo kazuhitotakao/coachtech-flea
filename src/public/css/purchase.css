@@ -135,6 +135,18 @@
 .purchase__address-data {
     width: 70%;
 }
+
+.purchase__address-wrapper--alert {
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.purchase__address-label--alert {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0;
+    width: 100%;
+}
 /* e 配送先テーブル */
 /* e 商品セクション */
 
@@ -228,6 +240,21 @@
         width: 65%;
     }
 
+    .purchase__payment-method-type {
+        border: 1px solid #000;
+        border-radius: 5px;
+        width: 100%;
+        padding: 1rem 0;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .purchase__payment-method-label {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
     .purchase__address-label {
         width: 35%;
         white-space: nowrap;
@@ -235,5 +262,17 @@
 
     .purchase__address-data {
         width: 65%;
+    }
+
+    .purchase__address-wrapper--alert {
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    .purchase__address-label--alert {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 0;
+        width: 100%;
     }
 }

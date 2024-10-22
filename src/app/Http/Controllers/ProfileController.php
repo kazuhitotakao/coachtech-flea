@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\Models\Address;
 use App\Models\User;
 use App\Models\UserImage;
@@ -22,16 +23,16 @@ class ProfileController extends Controller
         return view('profile', compact('user', 'address', 'image_urls', 'image_url_thumbnail'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         $user = User::find(Auth::id());
-        
+
         // ユーザー名とサムネイル画像更新
         $user->update([
             'name' => $request->user_name,
             'user_image_id' => $request->thumbnail_id,
         ]);
-        
+
         // 住所更新 or 追加
         $param = [
             "user_id" => Auth::id(),

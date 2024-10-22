@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->unsignedBigInteger('item_image_id')->nullable();
             $table->unsignedBigInteger('condition_id')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
-            $table->string('description', 255)->nullable();
+            $table->text('description')->nullable();
             $table->decimal('sale_price', 9, 2)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->string('status', 255)->default('available');

@@ -43,7 +43,8 @@
                 </div>
             </div>
             <form class="item__purchase-form" action="/guest/unauthorized_access" method="GET">
-                <button class="item__purchase-button">購入する</button>
+                  <button class="item__purchase-button"
+                        style="display: {{ $item->isSold() ? 'none' : 'inline-block' }}">購入する</button>
             </form>
             <h4 class="item__description">商品説明</h4>
             <p class="item__description-content">{{$item->description}}</p>

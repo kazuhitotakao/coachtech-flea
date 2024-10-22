@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddressRequest;
 use App\Models\Address;
 use App\Models\Item;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class AddressController extends Controller
         return view('address', compact('item', 'address'));
     }
 
-    public function updateAddress(Request $request)
+    public function updateAddress(AddressRequest $request)
     {
         $item_id = $request->item_id;
 

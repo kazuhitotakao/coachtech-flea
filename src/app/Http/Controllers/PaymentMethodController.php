@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PaymentMethodAddRequest;
+use App\Http\Requests\PaymentMethodRequest;
 use App\Models\Address;
 use App\Models\Item;
 use App\Models\PaymentDetail;
@@ -21,7 +23,7 @@ class PaymentMethodController extends Controller
             'item_id' => $request->item_id,
         ]);
     }
-    public function updatePaymentMethod(Request $request) //支払方法変更処理
+    public function updatePaymentMethod(PaymentMethodRequest $request) //支払方法変更処理
     {
         $item = Item::getItem($request->item_id);
         $payment_method_id = $request->payment_method_id;
@@ -65,7 +67,7 @@ class PaymentMethodController extends Controller
         ]);
     }
 
-    public function addPaymentMethod(Request $request) //新規クレカ追加処理
+    public function addPaymentMethod(PaymentMethodAddRequest $request) //新規クレカ追加処理
     {
         PaymentDetail::create([
             'payment_method_id' => 1,

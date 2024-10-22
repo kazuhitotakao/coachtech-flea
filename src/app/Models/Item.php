@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class Item extends Model
@@ -213,7 +214,7 @@ class Item extends Model
         $this->itemImages()->saveMany($images_data); // すべての画像データを一括でデータベースに保存
     }
 
-    // itemsテーブルのitem_image_idにサムネイルの画像IDを保存   
+    // itemsテーブルのitem_image_idにサムネイルの画像IDを保存
     public function setThumbnail($index)
     {
         $thumbnail = $this->itemImages()->skip($index)->first(); //ユーザーが選択したインデックス（$index で指定）の数だけ画像レコードの取得をスキップ。
@@ -236,7 +237,7 @@ class Item extends Model
             'condition_id' => $request->condition_id,
             'brand_id' => $request->brand_id,
             'description' => $request->description,
-            'sale_price' => $request->sale_price,
+            'sale_price' => $this->convertToNumber($request->sale_price),
         ]);
     }
 
@@ -251,6 +252,15 @@ class Item extends Model
     {
         $this->status = 'sold';
         $this->save();
+    }
+
+    //3桁区切りの金額を数値に変換する
+    public function convertToNumber($number)
+    {
+        $formatted_number = str_replace(',', '', $number);
+        // 文字列を整数に変換
+        $formatted_number = (int)$formatted_number;
+        return $formatted_number;
     }
 
     /**

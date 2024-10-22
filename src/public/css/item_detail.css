@@ -3,7 +3,6 @@
     padding: 0 5rem;
 }
 
-
 .item__image-thumbnail {
     text-align: center;
 }
@@ -120,6 +119,7 @@
 .comment-btn {
     cursor: pointer;
     font-size: 2rem;
+    transform: translateY(-10%);
 }
 /* e コメントボタン */
 

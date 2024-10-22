@@ -54,6 +54,7 @@
 
 /* s いいねボタン */
 .icon__like-btn {
+    position: relative;
     border: none;
     background-color: rgba(255, 255, 255);
     border-radius: 50%;
@@ -63,6 +64,7 @@
 }
 
 .icon__like-btn::after {
+    position: absolute;
     content: attr(data-favorites); /* 表示したいお気に入りの数 */
     font-size: 16px;
     top: 70%;
@@ -95,6 +97,7 @@
 }
 
 .icon__comment-btn {
+    position: relative;
     border: none;
     background-color: rgba(255, 255, 255);
     border-radius: 50%;
@@ -104,6 +107,7 @@
 }
 
 .icon__comment-btn::after {
+    position: absolute;
     content: attr(data-comments);
     font-size: 16px;
     top: 70%;
@@ -115,6 +119,7 @@
 .comment-btn {
     cursor: pointer;
     font-size: 2rem;
+        transform: translateY(-10%);
 }
 /* e コメントボタン */
 

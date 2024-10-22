@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Item;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -37,7 +39,7 @@ class ItemController extends Controller
         return redirect()->route('item.create');
     }
 
-      public function store(Request $request)
+    public function store(ItemRequest $request)
     {
         Item::createWithDetails($request);
         return redirect('/');
