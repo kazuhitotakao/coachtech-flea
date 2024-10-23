@@ -66,33 +66,6 @@
     display: inline-block;
 }
 
-/* s 支払方法クレジットカードテーブル */
-.purchase__payment-method-card {
-    border: 1px solid #000;
-    border-radius: 5px;
-    width: 80%;
-    margin: 0.5rem auto;
-    padding: 1rem;
-}
-
-.purchase__payment-method-card-table {
-    width: 100%;
-}
-
-.purchase__payment-method-card-row {
-    height: 2rem;
-    font-size: 18px;
-}
-
-.purchase__payment-method-card-label {
-    width: 30%;
-}
-
-.purchase__payment-method-card-data {
-    width: 70%;
-}
-/* e 支払方法クレジットカードテーブル */
-
 .purchase__payment-method-type {
     border: 1px solid #000;
     border-radius: 5px;
@@ -202,42 +175,12 @@
 }
 /* e 購入セクション */
 
-/* 画面幅が992px以下の場合 */
-@media (max-width: 992px) {
-    .purchase__payment-method-card-type {
-        padding: 0;
-    }
-}
 
 /* 画面幅が768px以下の場合 */
 @media (max-width: 768px) {
-    .purchase__payment-method-card {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .purchase__payment-method-type {
-        width: 100%;
-        margin: 0 auto;
-    }
-
     .purchase__address-wrapper {
         width: 100%;
         margin: 0 auto;
-    }
-
-    .purchase__payment-method-card-type {
-        margin: 0;
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .purchase__payment-method-card-label {
-        width: 35%;
-    }
-
-    .purchase__payment-method-card-data {
-        width: 65%;
     }
 
     .purchase__payment-method-type {

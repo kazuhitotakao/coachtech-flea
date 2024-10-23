@@ -11,6 +11,7 @@
 @section('content')
 
 <div class="container">
+    <a class="item__back-button" href="/guest">&lt</a>
     <div class="row">
         <div class="item__image col-md-6 mt-5">
             <div class="item__image-thumbnail">

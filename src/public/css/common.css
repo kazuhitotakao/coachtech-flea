@@ -42,6 +42,31 @@ input::placeholder {
     border: 1px solid gray;
 }
 
+/* s 戻るボタン */
+.container {
+    position: relative;
+}
+
+.item__back-button {
+    position: absolute;
+    top: 2rem;
+    left: 0.5rem;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff5555;
+    border: none;
+    width: 3rem;
+    height: 2rem;
+    border-radius: 10%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* e 戻るボタン */
+
 /* s バリデーション表示 */
 .form__error {
     margin-top: 2px;

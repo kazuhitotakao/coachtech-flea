@@ -17,57 +17,6 @@
 }
 /* e 支払方法 */
 
-/* s クレジットカード詳細*/
-.payment-method__detail-radio {
-    display: flex;
-    flex-direction: column;
-}
-
-.payment-method__detail-entry {
-    display: flex;
-    align-items: center; /* 中央揃えを行う */
-    margin-bottom: 10px;
-}
-
-.payment-method__detail-entry-label {
-    width: 90%;
-}
-
-.payment-method__detail-wrapper {
-    border: 1px solid #000;
-    border-radius: 5px;
-    width: 90%;
-    margin: 0.5rem 1rem;
-    padding: 0.2rem 1rem;
-}
-
-.payment-method__detail-table {
-    width: 100%;
-}
-
-.payment-method__detail-row {
-    height: 1.5rem;
-    font-size: 18px;
-}
-
-.payment-method__detail-label {
-    width: 30%;
-}
-
-.payment-method__detail-data {
-    width: 70%;
-}
-
-.payment-method__delete-button {
-    padding: 5px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    background: #ff5555;
-    color: #fff;
-}
-/* e クレジットカード詳細*/
-
 .payment-method__update-form {
     margin: 3rem 0;
     width: 100%;
@@ -150,26 +99,9 @@ input:checked + label::after {
 
 /* 画面幅が992px以下の場合 */
 @media (max-width: 992px) {
-    .payment-method__detail-wrapper {
-        margin: 0.5rem 0 0.5rem 0.5rem;
-        padding: 0.2rem 0.5rem;
-    }
-
     .payment-method__radio-label {
         margin: 2rem 0rem;
         font-size: 20px;
-    }
-
-    .payment-method__detail-data {
-        padding-left: 1rem;
-    }
-
-    .payment-method__detail-row {
-        font-size: 18px;
-    }
-
-    .payment-method__detail-entry-label {
-        width: 85%;
     }
 }
 
@@ -181,32 +113,8 @@ input:checked + label::after {
 }
 /* 画面幅が480px以下の場合 */
 @media (max-width: 480px) {
-    .payment-method__detail-wrapper {
-        width: 90%;
-        margin: 0.3rem 0 0.3rem 0.3rem;
-        padding: 0.2rem 0.5rem;
-    }
-
     .payment-method__radio-label {
         margin: 2rem 0rem;
         font-size: 20px;
-    }
-
-    .payment-method__detail-label {
-        width: 30%;
-        white-space: nowrap;
-    }
-
-    .payment-method__detail-data {
-        padding-left: 1rem;
-    }
-
-    .payment-method__detail-row {
-        height: 1.5rem;
-        font-size: 16px;
-    }
-
-    .payment-method__detail-entry-label {
-        width: 85%;
     }
 }

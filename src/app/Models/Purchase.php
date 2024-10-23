@@ -14,7 +14,6 @@ class Purchase extends Model
         'buyer_id',
         'seller_id',
         'payment_detail_id',
-        'address_id',
         'paid_price'
     ];
 
@@ -39,20 +38,12 @@ class Purchase extends Model
             'payment_detail_id' => null,
             'payment_method_id' => null,
             'payment_method_name' => null,
-            'card_number' => null,
-            'expiration_date' => null,
         ];
 
         if ($latest_payment_detail) {
             $payment_details['payment_detail_id'] = $latest_payment_detail->id;
             $payment_details['payment_method_id'] = $latest_payment_detail->payment_method_id;
             $payment_details['payment_method_name'] = $latest_payment_detail->paymentMethod->name;
-
-            if ($payment_details['payment_method_id'] == 1) {
-                $details = json_decode($latest_payment_detail->details);
-                $payment_details['card_number'] = $details->card_number;
-                $payment_details['expiration_date'] = $details->expiration_date;
-            }
         }
 
         return $payment_details;
@@ -90,12 +81,6 @@ class Purchase extends Model
         return $this->belongsTo(PaymentDetail::class);
     }
 
-    /**
-     * 配送先住所を取得。
-     */
-    public function address()
-    {
-        return $this->belongsTo(Address::class);
-    }
+
 
 }

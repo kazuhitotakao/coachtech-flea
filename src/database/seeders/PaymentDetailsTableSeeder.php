@@ -18,33 +18,14 @@ class PaymentDetailsTableSeeder extends Seeder
             [
                 'user_id' => 2,
                 'payment_method_id' => 1,
-                'details' => json_encode([
-                    'card_number' => '4000 1234 1234 1234',
-                    'cardholder_name' => '利用者1',
-                    'expiration_date' => '2026-01',
-                ])
-            ],
-            [
-                'user_id' => 2,
-                'payment_method_id' => 1,
-                'details' => json_encode([
-                    'card_number' => '4000 1234 1234 9999',
-                    'cardholder_name' => '利用者1',
-                    'expiration_date' => '2026-08',
-                ])
-            ],
-            [
-                'user_id' => 2,
-                'payment_method_id' => 3,
             ],
             [
                 'user_id' => 3,
                 'payment_method_id' => 1,
-                'details' => json_encode([
-                    'card_number' => '4000 4321 4321 4321',
-                    'cardholder_name' => '利用者2',
-                    'expiration_date' => '2027-01',
-                ])
+            ],
+            [
+                'user_id' => 4,
+                'payment_method_id' => 1,
             ],
         ];
 

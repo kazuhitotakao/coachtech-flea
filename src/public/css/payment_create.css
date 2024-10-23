@@ -1,0 +1,32 @@
+.container {
+    margin: 6rem auto;
+}
+
+.card {
+    width: 30rem;
+}
+
+.custom-button {
+    background-color: #ff5555;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 4rem;
+    height: 2rem;
+}
+
+/* マウスカーソルをのっけたとき */
+.custom-button:hover {
+    background-color: #ff8a8a;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+}
+
+/* 768px以下 */
+@media screen and (max-width: 768px) {
+    .card {
+        width: 20rem;
+    }
+}

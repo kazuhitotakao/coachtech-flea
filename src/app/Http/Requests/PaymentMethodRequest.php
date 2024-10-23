@@ -25,7 +25,6 @@ class PaymentMethodRequest extends FormRequest
     {
         return [
             'payment_method_id' => ['required'],
-            'payment_detail_id' => ['sometimes', 'required_if:payment_method_id,1'],  // payment_method_idが1の場合に必須
         ];
     }
 
@@ -33,7 +32,6 @@ class PaymentMethodRequest extends FormRequest
     {
         return [
             'payment_method_id.required' => '支払い方法を選択してください。',
-            'payment_detail_id.required_if' => '支払い方法がクレジットカードの場合、カードの詳細を入力してください。'
         ];
     }
 }

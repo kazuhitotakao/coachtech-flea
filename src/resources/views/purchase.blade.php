@@ -16,6 +16,7 @@
         </div>
     @endif
     <div class="container">
+        <a class="item__back-button" href="{{ route('item.user_detail', ['item_id' => $item->id]) }}">&lt</a>
         <div class="row">
             <div class="purchase__item-content col-lg-7 mt-5">
                 <div class="purchase__item-wrapper">
@@ -33,18 +34,8 @@
                 </div>
                 <div class="purchase__payment-method-details">
                     @if ($payment_method_id == 1)
-                        <p class="purchase__payment-method-card-type">クレジットカード</p>
-                        <div class="purchase__payment-method-card">
-                            <table class="purchase__payment-method-card-table">
-                                <tr class="purchase__payment-method-card-row">
-                                    <th class="purchase__payment-method-card-label">カード番号</th>
-                                    <td class="purchase__payment-method-card-data">{{ $formatted_card_number }}</td>
-                                </tr>
-                                <tr class="purchase__payment-method-card-row">
-                                    <th class="purchase__payment-method-card-label">有効期限</th>
-                                    <td class="purchase__payment-method-card-data">{{ $expiration_date }}</td>
-                                </tr>
-                            </table>
+                        <div class="purchase__payment-method-type">
+                            <p class="purchase__payment-method-label">クレジットカード</p>
                         </div>
                     @endif
                     @if ($payment_method_id == 2)
@@ -115,12 +106,13 @@
                         </tr>
                     </table>
                 </div>
-                <form class="purchase__form" action="{{ route('items.purchase', ['item_id' => $item->id]) }}"
-                    method="POST">
-                    @csrf
-                    @if (!empty($address))
-                        <input name="address_id" type="hidden" value="{{ $address->id }}">
+                <form class="purchase__form"
+                    action="{{ $payment_method_id == 1 ? route('payment.create', ['item_id' => $item->id]) : route('items.purchase', ['item_id' => $item->id]) }}"
+                    method="{{ $payment_method_id == 1 ? 'GET' : 'POST' }}">
+                    @if ($payment_method_id != 1)
+                        @csrf
                     @endif
+                    <input name="address_id" type="hidden" value="{{ $address_id }}">
                     <input name="payment_method_id" type="hidden" value="{{ $payment_method_id }}">
                     <input name="payment_detail_id" type="hidden" value="{{ $payment_detail_id }}">
                     <input name="paid_price" type="hidden" value="{{ $paid_price }}">
