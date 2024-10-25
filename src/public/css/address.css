@@ -40,28 +40,28 @@
 }
 
 /* 画面幅が1024px以下の場合、カラム数を4に減らす */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .address {
         width: 60%;
     }
 }
 
 /* 画面幅が768px以下の場合、カラム数を3に減らす */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .address {
         width: 70%;
     }
 }
 
 /* 画面幅が480px以下の場合、カラム数を2に減らす */
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .address {
         width: 80%;
     }
 }
 
 /* 画面幅が320px以下の場合、カラム数を1に減らす */
-@media (max-width: 320px) {
+@media screen and (max-width: 320px) {
     .address {
         width: 90%;
     }

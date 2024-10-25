@@ -175,9 +175,8 @@
 }
 /* e 購入セクション */
 
-
 /* 画面幅が768px以下の場合 */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .purchase__address-wrapper {
         width: 100%;
         margin: 0 auto;

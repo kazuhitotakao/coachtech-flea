@@ -61,9 +61,16 @@
                                 <li class="header__nav-item">
                                     <a class="header__nav-link" href="/my-page/listed">マイページ</a>
                                 </li>
+                                @can('user')
                                 <form action="/item/create" method="GET">
                                     <button class="header__nav-button header__nav-button--listing">出品</button>
                                 </form>
+                                @endcan
+                                @can('delete')
+                                <form action="/admin-page/users" method="GET">
+                                    <button class="header__nav-button header__nav-button--admin">管理画面</button>
+                                </form>
+                                @endcan
                             @endauth
                             @guest
                                 <li class="header__nav-item">
@@ -110,10 +117,18 @@
                                 <li class="header__hamburger-nav-item">
                                     <a class="header__hamburger-nav-link" href="/my-page/listed">マイページ</a>
                                 </li>
+                                @can('user')
                                 <form action="/item/create" method="GET">
                                     <button
                                         class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>
                                 </form>
+                                @endcan
+                                @can('delete')
+                                <form action="/admin-page/users" method="GET">
+                                    <button
+                                        class="header__hamburger-nav-button header__hamburger-nav-button--admin">管理画面</button>
+                                </form>
+                                @endcan
                             @endauth
                             @guest
                                 <li class="header__hamburger-nav-item">

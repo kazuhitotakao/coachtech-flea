@@ -15,7 +15,6 @@ class AddressController extends Controller
         $item_id = $request->item_id;
         $item = Item::find($item_id);
         $address = Address::with('user')->where('user_id', Auth::id())->first();
-
         return view('address', compact('item', 'address'));
     }
 

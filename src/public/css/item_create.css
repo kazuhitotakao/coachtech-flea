@@ -47,7 +47,7 @@ hr {
 
 .item-image-thumbnail-title {
     font-size: 20px;
-    color: #ff5555;;
+    color: #ff5555;
 }
 
 .item-images label {
@@ -140,7 +140,6 @@ hr {
 
 .item-sale-price__input {
     padding-left: 30px;
-    
 }
 
 .item__button {
@@ -158,7 +157,7 @@ hr {
 /* e 商品詳細 */
 
 /* 画面幅が768px以下の場合 */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .item {
         width: 62%;
     }
@@ -167,10 +166,9 @@ hr {
         width: 80%;
     }
 
-        .item-image-thumbnail-title {
+    .item-image-thumbnail-title {
         font-size: 18px;
     }
-
 
     .item-images label {
         width: 23%;
@@ -178,7 +176,7 @@ hr {
 }
 
 /* 画面幅が480px以下の場 */
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .item {
         width: 75%;
     }

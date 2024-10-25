@@ -141,8 +141,8 @@ hr {
 }
 /* e いいねボタン */
 
-/* 画面幅が480px以下の場合、カラム数を2に減らす */
-@media (max-width: 480px) {
+/* 画面幅が480px以下の場合 */
+@media screen and (max-width: 480px) {
     .top-page__grid {
         grid-template-columns: repeat(auto-fill, 150px);
         justify-content: center;
@@ -168,8 +168,8 @@ hr {
     }
 }
 
-/* 画面幅が320px以下の場合、カラム数を1に減らす */
-@media (max-width: 320px) {
+/* 画面幅が320px以下の場合 */
+@media screen and (max-width: 320px) {
     .top-page__grid {
         grid-template-columns: 200px; /* 1列のみ */
     }

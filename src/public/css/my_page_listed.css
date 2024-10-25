@@ -195,14 +195,14 @@ hr {
 /* e 商品 */
 
 /* 画面幅が992px以下の場合 */
-@media (max-width: 992px) {
+@media screen and (max-width: 992px) {
     .my-page__profile {
         margin: 20px 5% 20px;
     }
 }
 
 /* 画面幅が768px以下の場合*/
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .my-page__profile {
         flex-wrap: wrap;
     }
@@ -215,7 +215,7 @@ hr {
 }
 
 /* 画面幅が480px以下の場合 */
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .my-page__grid {
         grid-template-columns: repeat(auto-fill, 150px);
         justify-content: center;
@@ -265,7 +265,7 @@ hr {
 }
 
 /* 画面幅が320px以下の場合 */
-@media (max-width: 320px) {
+@media screen and (max-width: 320px) {
     .my-page__grid {
         grid-template-columns: 200px; /* 1列のみ */
     }

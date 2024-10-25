@@ -3,6 +3,7 @@
 @section('js')
     <script src="{{ asset('js/item_image_upload.js') }}" defer></script>
     <script src="{{ asset('js/price.js') }}" defer></script>
+    <script src="{{ asset('js/item_create_dropdown.js') }}" defer></script>
 @endsection
 
 @section('css')

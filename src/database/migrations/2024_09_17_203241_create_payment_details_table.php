@@ -17,15 +17,18 @@ class CreatePaymentDetailsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('payment_method_id');
             $table->unsignedBigInteger('user_id');
-            $table->json('details')->nullable(); // JSON型のカラム 詳細情報を追加可能にしておく。
+            /**
+             * テーブル設計時に、データベース内にクレジットカード情報を持たせる予定だったが、
+             * セキュリティの問題があるため、中止した。
+             * 今後、他の用途で使えるかもしれないので、JASONで詳細情報を追加可能で残しておく。
+             */
+            $table->json('details')->nullable();
             $table->timestamps();
 
             // 外部キー制約
             $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
-
-
     }
 
     /**

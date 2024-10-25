@@ -81,6 +81,7 @@ input::placeholder {
     font-size: 18px;
     border-radius: 0;
     margin-bottom: 0;
+    padding-left: 5rem;
 }
 
 .custom-alert {
@@ -114,7 +115,7 @@ input::placeholder {
 
 .header__inner {
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 5px 0 5px;
     max-width: 1230px;
 }
 
@@ -142,6 +143,7 @@ input::placeholder {
 .header__search-form {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 35%;
 }
 
@@ -159,7 +161,7 @@ input::placeholder {
     background-color: #fff;
     border: none;
     border-radius: 3px;
-    padding: 0.2rem 1rem;
+    padding: 0.3rem 1rem 0.1rem 1rem;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -199,7 +201,18 @@ input::placeholder {
     background-color: #fff;
     border: none;
     border-radius: 3px;
-    padding: 0.2rem 1rem;
+    padding: 0.3rem 1rem 0.1rem 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.header__nav-button--admin {
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 0.3rem 0.5rem 0.1rem 0.5rem;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -212,7 +225,7 @@ input::placeholder {
 }
 
 /* レスポンシブ対応：992pxのデバイス */
-@media (max-width: 992px) {
+@media screen and (max-width: 992px) {
     .header-nav-list {
         margin-top: 0.9rem;
     }
@@ -325,6 +338,14 @@ input::placeholder {
         font-size: 20px;
         font-weight: bold;
     }
+
+    .header__hamburger-nav-button--admin {
+        color: #000;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-weight: bold;
+    }
     /* s 検索フォーム（ハンバーガーメニュー） */
     .header__hamburger-search-form {
         display: flex;
@@ -427,7 +448,7 @@ input::placeholder {
     }
 }
 
-@media (max-width: 320px) {
+@media screen and (max-width: 320px) {
     .header__logo {
         width: 200px;
     }

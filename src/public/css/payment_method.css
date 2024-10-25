@@ -98,7 +98,7 @@ input:checked + label::after {
 /* e ラジオボタン共通 */
 
 /* 画面幅が992px以下の場合 */
-@media (max-width: 992px) {
+@media screen and (max-width: 992px) {
     .payment-method__radio-label {
         margin: 2rem 0rem;
         font-size: 20px;
@@ -106,13 +106,13 @@ input:checked + label::after {
 }
 
 /* 画面幅が768px以下の場合 */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .payment-method-update {
         margin-top: 0;
     }
 }
 /* 画面幅が480px以下の場合 */
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .payment-method__radio-label {
         margin: 2rem 0rem;
         font-size: 20px;

@@ -127,7 +127,7 @@ hr {
 .liked {
     font-size: 2rem;
     color: red;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     font-weight: 900;
     z-index: 10;
 }
@@ -139,10 +139,10 @@ hr {
     width: 50px;
     height: 50px;
 }
-/* e いいねボタン 
+/* e いいねボタン
 
 //* 画面幅が480px以下の場合、カラム数を2に減らす */
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .top-page__grid {
         grid-template-columns: repeat(auto-fill, 150px);
         justify-content: center;
@@ -169,7 +169,7 @@ hr {
 }
 
 /* 画面幅が320px以下の場合、カラム数を1に減らす */
-@media (max-width: 320px) {
+@media screen and (max-width: 320px) {
     .top-page__grid {
         grid-template-columns: 200px; /* 1列のみ */
     }

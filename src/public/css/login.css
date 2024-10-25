@@ -71,14 +71,14 @@
 }
 
 /* 画面幅が768px以下の場合*/
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .login {
         width: 60%;
     }
 }
 
 /* 画面幅が480px以下の場合*/
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .login {
         width: 80%;
     }

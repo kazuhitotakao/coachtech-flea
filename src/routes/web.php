@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GuestController;
@@ -45,12 +46,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('items.purchase');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'editAddress'])->name('purchase.edit.address');
     Route::put('/purchase/address/{item_id}', [AddressController::class, 'updateAddress'])->name('purchase.update.address');
+    Route::get('/comment/{item_id}', [CommentController::class, 'show'])->name('comment.show');
+    Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
+    Route::get('/admin-page/users', [AdminController::class, 'indexUsers'])->name('admin.users.index');
+    Route::get('/admin-page/users/search', [AdminController::class, 'searchUser'])->name('admin.users.search');
+    Route::delete('/admin-page/users/{user_id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
+    Route::get('/admin-page/comments', [AdminController::class, 'indexComments'])->name('admin.comments.index');
+    Route::get('/admin-page/comments/search', [AdminController::class, 'searchComment'])->name('admin.comments.search');
+    Route::delete('/admin-page/comments/{comment_id}', [AdminController::class, 'destroyComment'])->name('admin.comments.destroy');
     Route::get('/payment-method/{item_id}', [PaymentMethodController::class, 'showPaymentMethod'])->name('payment_method.show');
     Route::post('/payment-method/{item_id}', [PaymentMethodController::class, 'updatePaymentMethod'])->name('payment_method.update');
     Route::get('/payment/create/{item_id}', [PaymentController::class, 'create'])->name('payment.create');
     Route::post('/payment/store/{item_id}', [PaymentController::class, 'store'])->name('payment.store');
-    Route::get('/comment/{item_id}', [CommentController::class, 'show'])->name('comment.show');
-    Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
     Route::get('/my-page/listed', [MyPageController::class, 'indexListed']);
     Route::get('/my-page/purchased', [MyPageController::class, 'indexPurchased']);
     Route::get('/my-page/profile', [ProfileController::class, 'edit']);

@@ -1,0 +1,469 @@
+.admin-page__users {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0px 0px 100px;
+    padding: 10px 0;
+    width: 150px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px 15px 0 0; /* 角を丸める */
+    text-align: center;
+}
+
+.admin-page__comments {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0px 0px 40px;
+    padding: 10px 0;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 15px 15px 0 0; /* 角を丸める */
+    text-align: center;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #000;
+    margin: 0;
+}
+
+/* s ユーザー一覧 */
+.admin-page {
+    width: 60%;
+    margin: 1rem auto 2rem;
+}
+
+.admin-page__name-container {
+    text-align: center;
+}
+
+/* s 検索 */
+.admin-page__search {
+    margin-top: 1rem;
+}
+
+.admin-page__search-form {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+    height: 32px;
+}
+
+.admin-page__search-keyword-input {
+    width: 50%;
+}
+
+.admin-page__search-button-wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.admin-page__search-button {
+    width: 4.5rem;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5555;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* e 検索 */
+
+/* sテーブル */
+.admin-page__table {
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-page__label {
+    color: #000;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* sラベルとデータ共通 */
+.admin-page__row {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-top: 1px solid;
+}
+
+.admin-page__row:last-child {
+    border-bottom: 1px solid;
+}
+
+.admin-page__label,
+.admin-page__data {
+    font-weight: bold;
+    padding: 12px 8px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* テキストがはみ出した場合に...で省略表示 */
+}
+
+.admin-page__label-name,
+.admin-page__data-name {
+    width: 25%;
+}
+
+.admin-page__label-email,
+.admin-page__data-email {
+    width: 45%;
+}
+
+.admin-page__label-mail,
+.admin-page__data-mail {
+    width: 15%;
+    text-align: center;
+}
+
+.admin-page__label-delete,
+.admin-page__data-delete {
+    width: 15%;
+    text-align: center;
+}
+
+.admin-page__data-mail,
+.admin-page__data-delete {
+    padding-bottom: 16px;
+}
+/* s mail,delete modal button */
+.admin-page__mail-modal-link,
+.admin-page__delete-modal-link {
+    border: none;
+}
+
+.la-envelope {
+    font-size: 1.5rem;
+    color: blue;
+    vertical-align: middle;
+}
+
+.la-trash {
+    font-size: 1.5rem;
+    color: red;
+    vertical-align: middle;
+}
+/* e mail,delete modal button */
+/* eラベルとデータ共通 */
+/* eテーブル */
+
+/* s mailモーダル共通 */
+.admin-page__mail-modal {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 40px 10px;
+    text-align: center;
+}
+
+.admin-page__mail-modal:not(:target) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.admin-page__mail-modal:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-page__mail-modal::after {
+    /* モーダルウィンドウ（.modal-window）を上下中央に揃える */
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+}
+
+.admin-page__mail-modal-overlay {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.admin-page__mail-modal-window {
+    box-sizing: border-box;
+    display: inline-block;
+    z-index: 20;
+    position: relative;
+    width: 450px;
+    max-width: 600px;
+    padding: 30px 30px 15px;
+    border-radius: 2px;
+    background: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    vertical-align: middle;
+}
+
+.admin-page__mail-modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.admin-page__mail-modal-close {
+    z-index: 20;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    color: #95979c !important;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 35px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+}
+
+.admin-page__mail-modal-close:hover {
+    color: #2b2e38 !important;
+}
+/* e mailモーダル共通 */
+
+/* s mailモーダル */
+.admin-page__mail-modal-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.admin-page__mail-modal-table {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+
+.admin-page__mail-modal-row {
+    height: 1.7rem;
+    font-size: 1rem;
+}
+
+.admin-page__mail-modal-label {
+    width: 20%;
+}
+
+.admin-page__mail-modal-data {
+    width: 80%;
+    font-weight: bold;
+}
+
+.admin-page__mail-modal-button {
+    display: block;
+    border: none;
+    background-color: #2384cf;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 7rem;
+    height: 3rem;
+    border-radius: 3px;
+    margin: 20px auto;
+}
+
+.admin-page__mail-modal-data-subject {
+    width: 100%;
+}
+
+.admin-page__mail-modal-data-content {
+    height: 10rem;
+    width: 100%;
+}
+
+.admin-page__mail-modal-data-user-name {
+    border: none;
+}
+/* e mailモーダル */
+
+/* s deleteモーダル共通 */
+.admin-page__delete-modal {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 40px 10px;
+    text-align: center;
+}
+
+.admin-page__delete-modal:not(:target) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.admin-page__delete-modal:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.admin-page__delete-modal::after {
+    /* モーダルウィンドウ（.modal-window）を上下中央に揃える */
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+}
+
+.admin-page__delete-modal-overlay {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.admin-page__delete-modal-window {
+    box-sizing: border-box;
+    display: inline-block;
+    z-index: 20;
+    position: relative;
+    width: 450px;
+    max-width: 600px;
+    padding: 30px 30px 15px;
+    border-radius: 2px;
+    background: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    vertical-align: middle;
+}
+
+.admin-page__delete-modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.admin-page__delete-modal-close {
+    z-index: 20;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    color: #95979c !important;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 35px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+}
+
+.admin-page__delete-modal-close:hover {
+    color: #2b2e38 !important;
+}
+/* e deleteモーダル共通 */
+
+/* s deleteモーダル */
+.admin-page__delete-modal-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.admin-page__delete-modal-text {
+    margin: 1rem 1rem 2rem 3rem;
+    font-size: 18px;
+}
+
+.admin-page__delete-modal-button-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+}
+
+.admin-page__delete-modal-button {
+    display: block;
+    text-decoration: none;
+    border: none;
+    background-color: #ff5555;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 7rem;
+    height: 3rem;
+    border-radius: 3px;
+}
+/* e deleteモーダル */
+/* e ユーザー一覧 */
+
+/* 992px以下 */
+@media screen and (max-width: 992px) {
+    .admin-page {
+        width: 70%;
+    }
+}
+
+/* 768px以下 */
+@media screen and (max-width: 768px) {
+    .admin-page {
+        width: 80%;
+    }
+}
+
+/* 画面幅が480px以下の場合 */
+@media screen and (max-width: 480px) {
+    .admin-page {
+        width: 95%;
+    }
+    .admin-page__users {
+        font-size: 18px;
+        margin: 20px 0px 0px 20px;
+        width: 120px;
+    }
+
+    .admin-page__comments {
+        font-size: 18px;
+        margin: 20px 0px 0px 20px;
+        width: 120px;
+    }
+
+    .admin-page__label-mail,
+    .admin-page__data-mail {
+        width: 13%;
+        text-align: center;
+    }
+
+    .admin-page__label-delete,
+    .admin-page__data-delete {
+        width: 17%;
+        text-align: center;
+    }
+}
+
+/* 画面幅が320px以下の場合 */
+@media screen and (max-width: 320px) {
+    .admin-page {
+        width: 95%;
+    }
+    .admin-page__users {
+        margin: 20px 0px 0px 20px;
+        width: 100px;
+    }
+
+    .admin-page__comments {
+        margin: 20px 0px 0px 20px;
+        width: 100px;
+    }
+}

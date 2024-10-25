@@ -28,7 +28,7 @@ class PaymentDetail extends Model
     {
         $detail = self::firstOrCreate(
             ['user_id' => $user_id, 'payment_method_id' => $payment_method_id],
-            ['details' => json_encode([])]  // 初期値で空のJSONをセット
+            ['details' => null]
         );
 
         return $detail->id;
