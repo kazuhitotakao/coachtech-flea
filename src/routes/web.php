@@ -7,6 +7,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ItemDetailController;
+use App\Http\Controllers\MailSendController;
 use App\Http\Controllers\MyListController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PaymentController;
@@ -53,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin-page/users/{user_id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
     Route::get('/admin-page/comments', [AdminController::class, 'indexComments'])->name('admin.comments.index');
     Route::get('/admin-page/comments/search', [AdminController::class, 'searchComment'])->name('admin.comments.search');
+    Route::delete('/admin-page/comments/bulk-delete', [AdminController::class, 'destroyComments'])->name('admin.comments.bulkDestroy');
     Route::delete('/admin-page/comments/{comment_id}', [AdminController::class, 'destroyComment'])->name('admin.comments.destroy');
     Route::get('/payment-method/{item_id}', [PaymentMethodController::class, 'showPaymentMethod'])->name('payment_method.show');
     Route::post('/payment-method/{item_id}', [PaymentMethodController::class, 'updatePaymentMethod'])->name('payment_method.update');
@@ -65,4 +67,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/images', [UserImageController::class, 'upload'])->name('user.images.upload');
     Route::post('/like/{item_id}', [FavoriteController::class, 'store'])->name('like');
     Route::post('/unlike/{item_id}', [FavoriteController::class, 'delete'])->name('unlike');
+    Route::get('/mail/admin-to-user', [MailSendController::class, 'adminToUser']);
+    Route::get('/mail/admin-to-users', [MailSendController::class, 'adminToUsers']);
 });

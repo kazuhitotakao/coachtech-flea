@@ -78,6 +78,16 @@ class AdminController extends Controller
         return redirect('/admin-page/comments')->with('message', $comment->user->name . 'さんの『' . $comment->item->name . '』へのコメントを1つ削除しました。');
     }
 
+    // コメント一括削除
+    public function destroyComments(Request $request)
+    {
+        $comments = json_decode($request->comments, true); // 配列に直す
+        $comment_ids = array_column($comments, 'id'); // 配列から "id" のみを取り出す
+        Comment::whereIn('id', $comment_ids)->delete(); // コメントの一括削除
+
+        return redirect('/admin-page/comments')->with('message', 'コメントを一括削除しました。');
+    }
+
     // コメント検索
     public function searchComment(Request $request)
     {

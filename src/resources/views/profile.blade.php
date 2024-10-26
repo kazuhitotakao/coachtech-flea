@@ -80,17 +80,17 @@
             <div class="profile__form-group">
                 <label class="profile__form-label" for="postcode">郵便番号</label>
                 <input class="profile__form-input form-control" id="postcode" name="postcode" type="number"
-                    value="{{ old('postcode', $address->postcode) }}">
+                    value="{{ old('postcode', $address->postcode ?? '') }}">
             </div>
             <div class="profile__form-group">
                 <label class="profile__form-label" for="address">住所</label>
                 <input class="profile__form-input form-control" id="address" name="address" type="text"
-                    value="{{ old('address', $address->address) }}">
+                    value="{{ old('address', $address->address ?? '') }}">
             </div>
             <div class="profile__form-group">
                 <label class="profile__form-label" for="building">建物名</label>
                 <input class="profile__form-input form-control" id="building" name="building" type="text"
-                    value="{{ old('building', $address->building) }}">
+                    value="{{ old('building', $address->building ?? '') }}">
             </div>
             <div class="profile__form-group">
                 <input id="profile_image_thumbnail_id" name="thumbnail_id" type="hidden"

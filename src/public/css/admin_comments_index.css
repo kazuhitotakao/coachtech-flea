@@ -96,10 +96,6 @@ hr {
     border-top: 1px solid;
 }
 
-.admin-page__row:last-child {
-    border-bottom: 1px solid;
-}
-
 .admin-page__label,
 .admin-page__data {
     font-weight: bold;
@@ -107,6 +103,7 @@ hr {
     text-align: left;
     white-space: normal;
     overflow: visible;
+    overflow: hidden;
 }
 
 .admin-page__label-name,
@@ -134,10 +131,32 @@ hr {
 .admin-page__data-delete {
     padding-bottom: 16px;
 }
+
 /* s mail,delete modal button */
 .admin-page__mail-modal-link,
 .admin-page__delete-modal-link {
     border: none;
+}
+
+.admin-page__delete-all-modal-link {
+    display: flex;
+    justify-content: center; /* 水平方向中央 */
+    align-items: center; /* 垂直方向中央 */
+    width: 4.5rem;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5555;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.admin-page__delete-all-modal-link-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.4rem;
 }
 
 .la-envelope {

@@ -50,7 +50,7 @@
                             <div class="admin-page__mail-modal-window">
                                 <div class="admin-page__mail-modal-content">
                                     <h2 class="admin-page__mail-modal-title">メール送信</h2>
-                                    <form class="admin-page__mail-modal-form" action="/mail/admin-to-each" method="get">
+                                    <form class="admin-page__mail-modal-form" action="/mail/admin-to-user" method="get">
                                         <input name="user_id" type="hidden" value="{{ $user->id }}">
                                         <table class="admin-page__mail-modal-table">
                                             <tr class="admin-page__mail-modal-row">
@@ -63,8 +63,8 @@
                                             <tr class="admin-page__mail-modal-row">
                                                 <th class="admin-page__mail-modal-label">件名</th>
                                                 <td class="admin-page__mail-modal-data">
-                                                    <input class="admin-page__mail-modal-data-subject" name="subject"
-                                                        type="text">
+                                                    <input class="form-control admin-page__mail-modal-data-subject"
+                                                        name="subject" type="text">
                                                     @error('subject')
                                                         <div class="form__error">
                                                             ※{{ $message }}
@@ -75,7 +75,7 @@
                                             <tr class="admin-page__mail-modal-row">
                                                 <th class="admin-page__mail-modal-label">本文</th>
                                                 <td class="admin-page__mail-modal-data">
-                                                    <textarea class="admin-page__mail-modal-data-content" name="content" type="text"></textarea>
+                                                    <textarea class="form-control admin-page__mail-modal-data-content" name="content" type="text"></textarea>
                                                     @error('content')
                                                         <div class="form__error">
                                                             ※{{ $message }}
@@ -121,9 +121,67 @@
                         </div>
                         {{-- e deleteモーダル --}}
                     </td>
-
                 </tr>
             @endforeach
+            <tr class="admin-page__row">
+                <td colspan="2"></td>
+                <td class="admin-page__data admin-page__data-delete">
+                    <div class="admin-page__mail-users-modal-link-wrapper">
+                        <a class="admin-page__mail-users-modal-link" href="#mail_users">一括送信</a>
+                    </div>
+                </td>
+            </tr>
         </table>
+        {{-- s mail_usersモーダル --}}
+        <div class="admin-page__mail-modal" id="mail_users">
+            <a class="admin-page__mail-modal-overlay" href="#!"></a>
+            <div class="admin-page__mail-modal-window">
+                <div class="admin-page__mail-modal-content">
+                    <h2 class="admin-page__mail-modal-title">メール一括送信</h2>
+                    <form class="admin-page__mail-modal-form" action="/mail/admin-to-users" method="get">
+                        <input name="users" type="hidden" value="{{ $users }}">
+                        <table class="admin-page__mail-modal-table">
+                            <tr class="admin-page__mail-modal-row">
+                                <th class="admin-page__mail-modal-label">宛先</th>
+                                <td class="admin-page__mail-modal-data">
+                                    <div class="admin-page__mail-modal-data-user-name">
+                                        @foreach ($users as $user)
+                                            {{ $user->name }}@if(!$loop->last), @endif
+                                        @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="admin-page__mail-modal-row">
+                                <th class="admin-page__mail-modal-label">件名</th>
+                                <td class="admin-page__mail-modal-data">
+                                    <input class="form-control admin-page__mail-modal-data-subject" name="subject"
+                                        type="text">
+                                    @error('subject')
+                                        <div class="form__error">
+                                            ※{{ $message }}
+                                        </div>
+                                    @enderror
+                                </td>
+                            </tr>
+                            <tr class="admin-page__mail-modal-row">
+                                <th class="admin-page__mail-modal-label">本文</th>
+                                <td class="admin-page__mail-modal-data">
+                                    <textarea class="form-control admin-page__mail-modal-data-content" name="content" type="text"></textarea>
+                                    @error('content')
+                                        <div class="form__error">
+                                            ※{{ $message }}
+                                        </div>
+                                    @enderror
+                                </td>
+                            </tr>
+                        </table>
+                        <button class="admin-page__mail-modal-button">一括送信</button>
+
+                    </form>
+                </div>
+                <a class="admin-page__mail-modal-close" href="#!">×</a>
+            </div>
+        </div>
+        {{-- e mail_usersモーダル --}}
     </div>
 @endsection

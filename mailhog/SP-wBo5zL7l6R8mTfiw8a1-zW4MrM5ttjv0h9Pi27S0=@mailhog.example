@@ -1,0 +1,38 @@
+HELO:<localhost>
+FROM:<info@example.com>
+TO:<user1@sample.com>
+
+Message-ID: <d89a5df03b641cd9e2488bae83592ba6@localhost>
+Date: Sat, 26 Oct 2024 15:46:14 +0900
+Subject: test
+From: coachtech-flea <info@example.com>
+To: =?utf-8?Q?=E5=88=A9=E7=94=A8=E8=80=851?= <user1@sample.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_1729925174_24241bd94510eb82af2e19cf5e26a1fb_=_"
+
+
+--_=_swift_1729925174_24241bd94510eb82af2e19cf5e26a1fb_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+=E3=83=86=E3=82=B9=E3=83=88=E3=81=A7=E3=81=99
+
+--_=_swift_1729925174_24241bd94510eb82af2e19cf5e26a1fb_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"ja">
+
+<body>
+   =20
+    <p>=E3=83=
+=86=E3=82=B9=E3=83=88=E3=81=A7=E3=81=99</p>
+
+</body>
+
+</html>
+
+
+--_=_swift_1729925174_24241bd94510eb82af2e19cf5e26a1fb_=_--

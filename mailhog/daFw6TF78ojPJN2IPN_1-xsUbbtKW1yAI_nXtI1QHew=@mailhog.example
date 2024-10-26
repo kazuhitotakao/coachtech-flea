@@ -1,0 +1,45 @@
+HELO:<localhost>
+FROM:<info@example.com>
+TO:<admin@sample.com>
+
+Message-ID: <1c1bcfdd251676b56b49e2bdcf40a058@localhost>
+Date: Sat, 26 Oct 2024 15:49:11 +0900
+Subject: =?utf-8?Q?=E5=85=88=E3=81=BB=E3=81=A9=E3=81=AE?=
+ =?utf-8?Q?=E3=83=A1=E3=83=BC=E3=83=AB=E3=81=AB?=
+ =?utf-8?Q?=E3=81=A4=E3=81=84=E3=81=A6=E3=81=82?=
+ =?utf-8?Q?=E3=81=82=E3=81=82=E3=81=82=E3=81=82?=
+ =?utf-8?Q?=E3=81=82=E3=81=82=E3=81=82=E3=81=82?=
+ =?utf-8?Q?=E3=81=82=E3=81=82=E3=81=82=E3=81=82=E3=81=82=E3=81=82?=
+From: coachtech-flea <info@example.com>
+To: =?utf-8?Q?=E7=AE=A1=E7=90=86=E8=80=85?= <admin@sample.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_1729925351_f6e283330f7061f0bdd21692b11cfa04_=_"
+
+
+--_=_swift_1729925351_f6e283330f7061f0bdd21692b11cfa04_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+=E5=A4=B1=E7=A4=BC=E3=81=97=E3=81=BE=E3=81=97=E3=81=9F=E3=81=97=E3=82=83=
+=E3=81=8B=E3=82=8A=E3=81=8D
+
+--_=_swift_1729925351_f6e283330f7061f0bdd21692b11cfa04_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"ja">
+
+<body>
+   =20
+    <p>=E5=A4=
+=B1=E7=A4=BC=E3=81=97=E3=81=BE=E3=81=97=E3=81=9F=E3=81=97=E3=82=83=E3=81=
+=8B=E3=82=8A=E3=81=8D</p>
+
+</body>
+
+</html>
+
+
+--_=_swift_1729925351_f6e283330f7061f0bdd21692b11cfa04_=_--

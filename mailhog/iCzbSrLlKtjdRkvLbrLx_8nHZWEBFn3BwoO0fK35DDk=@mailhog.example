@@ -1,0 +1,44 @@
+HELO:<localhost>
+FROM:<info@example.com>
+TO:<admin@sample.com>
+TO:<user1@sample.com>
+TO:<user2@sample.com>
+TO:<user3@sample.com>
+
+Message-ID: <79e6adc2d79ab890cc1be83b771922be@localhost>
+Date: Sat, 26 Oct 2024 16:34:57 +0900
+Subject: 1
+From: coachtech-flea <info@example.com>
+To: =?utf-8?Q?=E7=AE=A1=E7=90=86=E8=80=85?= <admin@sample.com>,
+ =?utf-8?Q?=E5=88=A9=E7=94=A8=E8=80=851?= <user1@sample.com>,
+ =?utf-8?Q?=E5=88=A9=E7=94=A8=E8=80=852?= <user2@sample.com>,
+ =?utf-8?Q?=E5=88=A9=E7=94=A8=E8=80=853?= <user3@sample.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_1729928097_879cf429ceed3106cba1b56c9725bf09_=_"
+
+
+--_=_swift_1729928097_879cf429ceed3106cba1b56c9725bf09_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+1
+
+--_=_swift_1729928097_879cf429ceed3106cba1b56c9725bf09_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"ja">
+
+<body>
+   =20
+    <p>1</p>
+=
+
+</body>
+
+</html>
+
+
+--_=_swift_1729928097_879cf429ceed3106cba1b56c9725bf09_=_--

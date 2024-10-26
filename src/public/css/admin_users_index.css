@@ -92,14 +92,8 @@ hr {
 
 /* sラベルとデータ共通 */
 .admin-page__row {
-    display: flex;
-    align-items: center;
     height: 50px;
     border-top: 1px solid;
-}
-
-.admin-page__row:last-child {
-    border-bottom: 1px solid;
 }
 
 .admin-page__label,
@@ -142,6 +136,27 @@ hr {
 .admin-page__mail-modal-link,
 .admin-page__delete-modal-link {
     border: none;
+}
+
+.admin-page__mail-users-modal-link {
+    display: flex;
+    justify-content: center; /* 水平方向中央 */
+    align-items: center; /* 垂直方向中央 */
+    width: 4.5rem;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    background: #2384cf;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.admin-page__mail-users-modal-link-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.4rem;
 }
 
 .la-envelope {

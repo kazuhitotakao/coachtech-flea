@@ -71,9 +71,39 @@
                         </div>
                         {{-- e deleteモーダル --}}
                     </td>
-
                 </tr>
             @endforeach
+            <tr class="admin-page__row">
+                <td colspan="3"></td>
+                <td class="admin-page__data admin-page__data-delete">
+                    <div class="admin-page__delete-all-modal-link-wrapper">
+                        <a class="admin-page__delete-all-modal-link" href="#delete_all">一括削除</a>
+                    </div>
+                </td>
+            </tr>
         </table>
+        {{-- s delete_allモーダル --}}
+        <div class="admin-page__delete-modal" id="delete_all">
+            <a class="admin-page__delete-modal-overlay" href="#!"></a>
+            <div class="admin-page__delete-modal-window">
+                <div class="admin-page__delete-modal-content">
+                    <h2 class="admin-page__delete-modal-title">一括削除確認</h2>
+                    <p class="admin-page__delete-modal-text">本当に一括削除しますか？<br>この操作は取り消せません。</p>
+                    <div class="admin-page__delete-modal-button-wrapper">
+                        <form action="{{ route('admin.comments.bulkDestroy') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input name="comments" type="hidden" value="{{ $comments }}">
+                            <button class="admin-page__delete-modal-button">一括削除</button>
+                        </form>
+                        <form action="#!" method="GET">
+                            <button class="admin-page__delete-modal-button">キャンセル</button>
+                        </form>
+                    </div>
+                </div>
+                <a class="admin-page__delete-modal-close" href="#!">×</a>
+            </div>
+        </div>
+        {{-- e delete_allモーダル --}}
     </div>
 @endsection
