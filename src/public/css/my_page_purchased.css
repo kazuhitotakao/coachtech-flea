@@ -2,7 +2,7 @@
 .my-page__profile {
     display: flex;
     align-items: center;
-    margin: 20px 15% 20px;
+    margin: 20px 10% 20px;
 }
 
 .my-page__user-icon-background {
@@ -29,10 +29,12 @@
 .my-page__user-name {
     margin-left: 2rem;
     margin-bottom: 0;
+    width: 45%;
 }
 
 .my-page__profile-link-wrapper {
     margin-left: auto;
+    margin-top: 1rem;
 }
 
 .my-page__profile-link {
@@ -197,7 +199,7 @@ hr {
 /* 画面幅が1024px以下の場合、カラム数を4に減らす */
 @media screen and (max-width: 1024px) {
     .my-page__profile {
-        margin: 20px 5% 20px;
+        margin: 20px 1% 20px;
     }
 }
 

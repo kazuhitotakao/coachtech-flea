@@ -159,12 +159,12 @@ hr {
 
     .top-page__recommended {
         margin: 20px 0px 0px 20px;
-        width: 120px;
+        width: 130px;
     }
 
     .top-page__my-list {
         margin: 20px 0px 0px 20px;
-        width: 120px;
+        width: 130px;
     }
 }
 
@@ -177,12 +177,12 @@ hr {
     .top-page__recommended {
         margin: 20px 0px 0px 20px;
         font-size: 20px;
-        width: 100px;
+        width: 120px;
     }
 
     .top-page__my-list {
         margin: 20px 0px 0px 20px;
         font-size: 20px;
-        width: 100px;
+        width: 120px;
     }
 }

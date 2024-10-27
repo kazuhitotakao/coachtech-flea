@@ -82,6 +82,8 @@ hr {
     margin-top: 1rem;
     width: 100%;
     border-collapse: collapse;
+    /* table-layout: fixed」はテキスト量による自動調整をなくします。*/
+    /* table-layout: fixed; */
 }
 
 .admin-page__label {
@@ -101,9 +103,6 @@ hr {
     font-weight: bold;
     padding: 12px 8px;
     text-align: left;
-    white-space: normal;
-    overflow: visible;
-    overflow: hidden;
 }
 
 .admin-page__label-name,
@@ -127,13 +126,11 @@ hr {
     text-align: center;
 }
 
-.admin-page__data-mail,
 .admin-page__data-delete {
     padding-bottom: 16px;
 }
 
-/* s mail,delete modal button */
-.admin-page__mail-modal-link,
+/* s delete modal button */
 .admin-page__delete-modal-link {
     border: none;
 }
@@ -170,145 +167,9 @@ hr {
     color: red;
     vertical-align: middle;
 }
-/* e mail,delete modal button */
+/* e delete modal button */
 /* eラベルとデータ共通 */
 /* eテーブル */
-
-/* s mailモーダル共通 */
-.admin-page__mail-modal {
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 40px 10px;
-    text-align: center;
-}
-
-.admin-page__mail-modal:not(:target) {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.admin-page__mail-modal:target {
-    opacity: 1;
-    visibility: visible;
-}
-
-.admin-page__mail-modal::after {
-    /* モーダルウィンドウ（.modal-window）を上下中央に揃える */
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    content: "";
-}
-
-.admin-page__mail-modal-overlay {
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.admin-page__mail-modal-window {
-    box-sizing: border-box;
-    display: inline-block;
-    z-index: 20;
-    position: relative;
-    width: 450px;
-    max-width: 600px;
-    padding: 30px 30px 15px;
-    border-radius: 2px;
-    background: #fff;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-    vertical-align: middle;
-}
-
-.admin-page__mail-modal-content {
-    max-height: 80vh;
-    overflow-y: auto;
-    text-align: left;
-}
-
-.admin-page__mail-modal-close {
-    z-index: 20;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 35px;
-    color: #95979c !important;
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 35px;
-    text-align: center;
-    text-decoration: none;
-    text-indent: 0;
-}
-
-.admin-page__mail-modal-close:hover {
-    color: #2b2e38 !important;
-}
-/* e mailモーダル共通 */
-
-/* s mailモーダル */
-.admin-page__mail-modal-title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-.admin-page__mail-modal-table {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 5px;
-}
-
-.admin-page__mail-modal-row {
-    height: 1.7rem;
-    font-size: 1rem;
-}
-
-.admin-page__mail-modal-label {
-    width: 20%;
-}
-
-.admin-page__mail-modal-data {
-    width: 80%;
-    font-weight: bold;
-}
-
-.admin-page__mail-modal-button {
-    display: block;
-    border: none;
-    background-color: #2384cf;
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    width: 7rem;
-    height: 3rem;
-    border-radius: 3px;
-    margin: 20px auto;
-}
-
-.admin-page__mail-modal-data-subject {
-    width: 100%;
-}
-
-.admin-page__mail-modal-data-content {
-    height: 10rem;
-    width: 100%;
-}
-
-.admin-page__mail-modal-data-user-name {
-    border: none;
-}
-/* e mailモーダル */
 
 /* s deleteモーダル共通 */
 .admin-page__delete-modal {
@@ -355,7 +216,7 @@ hr {
     display: inline-block;
     z-index: 20;
     position: relative;
-    width: 450px;
+    width: 90%;
     max-width: 600px;
     padding: 30px 30px 15px;
     border-radius: 2px;
@@ -435,6 +296,10 @@ hr {
     .admin-page {
         width: 80%;
     }
+    .admin-page__label,
+    .admin-page__data {
+        font-size: 12px;
+    }
 }
 
 /* 画面幅が480px以下の場合 */
@@ -447,23 +312,9 @@ hr {
         margin: 20px 0px 0px 20px;
         width: 120px;
     }
-
-    .admin-page__comments {
+    .admin-page__delete-modal-text {
+        margin: 1rem auto 2rem;
         font-size: 18px;
-        margin: 20px 0px 0px 20px;
-        width: 120px;
-    }
-
-    .admin-page__label-mail,
-    .admin-page__data-mail {
-        width: 13%;
-        text-align: center;
-    }
-
-    .admin-page__label-delete,
-    .admin-page__data-delete {
-        width: 17%;
-        text-align: center;
     }
 }
 
@@ -473,11 +324,6 @@ hr {
         width: 95%;
     }
     .admin-page__users {
-        margin: 20px 0px 0px 20px;
-        width: 100px;
-    }
-
-    .admin-page__comments {
         margin: 20px 0px 0px 20px;
         width: 100px;
     }

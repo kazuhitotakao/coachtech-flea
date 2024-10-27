@@ -9,8 +9,8 @@
 
 .purchase__item-image-thumbnail {
     display: inline-block;
-    width: 20%;
-    margin: 1rem;
+    width: 30%;
+    margin: 2rem 1rem 1rem;
 }
 
 .purchase__item-image-thumbnail img {
@@ -21,7 +21,7 @@
 }
 
 .purchase__item-info {
-    margin: 1rem 0 0 3rem;
+    margin: 1rem 0 0 1rem;
 }
 
 .purchase__item-name {

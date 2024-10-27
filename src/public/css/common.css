@@ -401,6 +401,10 @@ input::placeholder {
     /* e ハンバーガーメニュー */
 }
 
+.custom-success {
+    padding-left: 2rem;
+}
+
 /* 480px以下 */
 @media screen and (max-width: 480px) {
     .header__logo {
@@ -445,6 +449,10 @@ input::placeholder {
 
     .header__hamburger-search-button {
         font-size: 20px;
+    }
+
+    .header__hamburger-toggle.show i:nth-child(3) {
+        transform: translateY(-9px) rotate(45deg);
     }
 }
 
