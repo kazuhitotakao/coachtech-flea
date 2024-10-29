@@ -37,8 +37,8 @@ Route::get('/search', [SearchController::class, 'resultSearch']);
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [TopPageController::class, 'userIndex']);
-    Route::get('/my-list', [MyListController::class, 'index']);
+    Route::get('/', [TopPageController::class, 'userIndex'])->name('top.page');
+    Route::get('/my-list', [MyListController::class, 'index'])->name('my.list');
     Route::get('/item/create', [ItemController::class, 'create'])->name('item.create');
     Route::post('/item/store', [ItemController::class, 'store'])->name('item.store');
     Route::post('/item/images', [ItemController::class, 'upload'])->name('item.images.upload');
@@ -60,13 +60,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/payment-method/{item_id}', [PaymentMethodController::class, 'updatePaymentMethod'])->name('payment_method.update');
     Route::get('/payment/create/{item_id}', [PaymentController::class, 'create'])->name('payment.create');
     Route::post('/payment/store/{item_id}', [PaymentController::class, 'store'])->name('payment.store');
-    Route::get('/my-page/listed', [MyPageController::class, 'indexListed']);
-    Route::get('/my-page/purchased', [MyPageController::class, 'indexPurchased']);
-    Route::get('/my-page/profile', [ProfileController::class, 'edit']);
-    Route::put('/my-page/profile', [ProfileController::class, 'update']);
+    Route::get('/my-page/listed', [MyPageController::class, 'indexListed'])->name('my_page.listed');
+    Route::get('/my-page/purchased', [MyPageController::class, 'indexPurchased'])->name('my_page.purchased');
+    Route::get('/my-page/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/my-page/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/user/images', [UserImageController::class, 'upload'])->name('user.images.upload');
     Route::post('/like/{item_id}', [FavoriteController::class, 'store'])->name('like');
     Route::post('/unlike/{item_id}', [FavoriteController::class, 'delete'])->name('unlike');
-    Route::get('/mail/admin-to-user', [MailSendController::class, 'adminToUser']);
-    Route::get('/mail/admin-to-users', [MailSendController::class, 'adminToUsers']);
+    Route::get('/mail/admin-to-user', [MailSendController::class, 'adminToUser'])->name('mail.send.admin_to_user');
+    Route::get('/mail/admin-to-users', [MailSendController::class, 'adminToUsers'])->name('mail.send.admin_to_users');
 });
