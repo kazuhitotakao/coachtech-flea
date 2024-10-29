@@ -10,6 +10,11 @@ jobs:
           MYSQL_DATABASE: demo_test    # テスト用のデータベース名
     steps:
       - checkout
+      - run: ls
+      - run:
+          name: ls2
+          command: ls
+          working_directory: ./src
       - run: sudo composer self-update --2
       - restore_cache:
           key: composer-v2-{{ checksum "./src/composer.lock" }}
