@@ -4,16 +4,25 @@ jobs:
     working_directory: ./src
     docker:
       - image: cimg/php:8.1-node
-      - image: mysql:8.0.35
+      # - image: mysql:8.0.35
+      #   environment:
+      #     MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
+      #     MYSQL_DATABASE: demo_test    # テスト用のデータベース名
+      - image: circleci/postgres:11.6-alpine
         environment:
-          MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
-          MYSQL_DATABASE: demo_test    # テスト用のデータベース名
+          POSTGRES_DB: larasns
+          POSTGRES_USER: default
+          POSTGRES_PASSWORD: secret
+    environment:
+      APP_ENV: testing
+      DB_CONNECTION: pgsql
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_DATABASE: larasns
+      DB_USERNAME: default
+      DB_PASSWORD: secret
     steps:
       - checkout
-      - run:
-          name: Move to src
-          command: cd src
-      - run: ls # src ディレクトリで ls 実行
       - run: sudo composer self-update --2
       - restore_cache:
           key: composer-v2-{{ checksum "./src/composer.lock" }}
@@ -41,6 +50,13 @@ jobs:
       - run:
           command: npm run dev
           working_directory: ./src
+      - run:
+          name: get ready for postgres
+          command: |
+            sudo apt-get update
+            sudo apt-get install libpq-dev
+            sudo docker-php-ext-install pdo_pgsql
+            dockerize -wait tcp://localhost:5432 -timeout 1m
       # - run:
       #     name: Wait for MySQL to be ready
       #     command: |
@@ -52,8 +68,11 @@ jobs:
       #       echo "MySQL failed to start" && exit 1
       - run:
           name: php test
-          command: |
-            php artisan migrate --env=testing  # テスト用データベースのマイグレーション
-            vendor/bin/phpunit
-          working_directory: src
-          timeout: 20m
+          command: vendor/bin/phpunit
+      # - run:
+      #     name: php test
+      #     command: |
+      #       php artisan migrate --env=testing  # テスト用データベースのマイグレーション
+      #       vendor/bin/phpunit
+      #     working_directory: src
+      #     timeout: 20m
