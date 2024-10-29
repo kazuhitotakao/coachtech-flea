@@ -8,6 +8,8 @@ jobs:
         environment:
           MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
           MYSQL_DATABASE: demo_test    # テスト用のデータベース名
+    environment:
+      - DB_HOST: 127.0.0.1
       # - image: circleci/postgres:11.6-alpine
       #   environment:
       #     POSTGRES_DB: larasns
@@ -50,13 +52,19 @@ jobs:
       - run:
           command: npm run dev
           working_directory: ./src
-      - run:
-          name: get ready for postgres
-          command: |
-            sudo apt-get update
-            sudo apt-get install libpq-dev
-            sudo docker-php-ext-install pdo_pgsql
-            dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: sudo apt update
+      - run: sudo docker-php-ext-install zip pdo_mysql
+      - run: sudo composer self-update
+      - run: php ./src/artisan --env=testing
+      - run: php ./src/vendor/bin/phpunit --configuration=./src/hogehuga/phpunit.xml
+
+      # - run:
+      #     name: get ready for postgres
+      #     command: |
+      #       sudo apt-get update
+      #       sudo apt-get install libpq-dev
+      #       sudo docker-php-ext-install pdo_pgsql
+      #       dockerize -wait tcp://localhost:5432 -timeout 1m
       # - run:
       #     name: Wait for MySQL to be ready
       #     command: |
@@ -66,10 +74,10 @@ jobs:
       #         sleep 2
       #       done
       #       echo "MySQL failed to start" && exit 1
-      - run:
-          name: php test
-          command: |
-            php artisan migrate --env=testing  # テスト用データベースのマイグレーション
-            vendor/bin/phpunit
-          working_directory: ./src
+      # - run:
+      #     name: php test
+      #     command: |
+      #       php artisan migrate --env=testing  # テスト用データベースのマイグレーション
+      #       vendor/bin/phpunit
+      #     working_directory: ./src
       #     timeout: 20m
