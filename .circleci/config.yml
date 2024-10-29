@@ -8,10 +8,15 @@ jobs:
       - checkout
       - run: sudo composer self-update --2
       - run:
-          working_directory: src
           command: composer install -n --prefer-dist
-      - run: npm ci
-      - run: npm run dev
+          working_directory: src
+      - run:
+          command: npm ci
+          working_directory: src
+      - run:
+          command: npm run dev
+          working_directory: src
       - run:
           name: php test
           command: vendor/bin/phpunit
+          working_directory: src          
