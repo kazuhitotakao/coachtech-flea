@@ -6,7 +6,7 @@ jobs:
       - image: cimg/php:8.1-node
       - image: mysql:8.0.35
         environment:
-          DB_HOST: 127.0.0.1
+          DB_HOST: mysql
           MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
           MYSQL_DATABASE: demo_test    # テスト用のデータベース名
     steps:
@@ -25,7 +25,7 @@ jobs:
           name: Wait for MySQL to be ready
           command: |
             for i in `seq 1 20`; do
-              nc -z localhost 3306 && echo Success && exit 0
+              nc -z mysql 3306 && echo Success && exit 0
               echo -n .
               sleep 1
             done
