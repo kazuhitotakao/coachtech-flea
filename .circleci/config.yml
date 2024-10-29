@@ -10,11 +10,10 @@ jobs:
           MYSQL_DATABASE: demo_test    # テスト用のデータベース名
     steps:
       - checkout
-      - run: ls
       - run:
-          name: ls2
-          command: ls
-          working_directory: ./src
+          name: Move to src
+          command: cd src
+      - run: ls # src ディレクトリで ls 実行
       - run: sudo composer self-update --2
       - restore_cache:
           key: composer-v2-{{ checksum "./src/composer.lock" }}
@@ -25,6 +24,7 @@ jobs:
           key: composer-v2-{{ checksum "./src/composer.lock" }}
           paths:
             - vendor
+      - run: ls
       - restore_cache:
           key: npm-v2-{{ checksum "./src/package-lock.json" }}
       - run:
