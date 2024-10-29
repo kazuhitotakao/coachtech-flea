@@ -4,9 +4,11 @@ jobs:
     working_directory: ~/src
     docker:
       - image: cimg/php:8.1-node
+      - image: mysql:8.0.35
         environment:
           DB_HOST: 127.0.0.1
-      - image: circleci/mysql:8.0
+          MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
+          MYSQL_DATABASE: demo_test    # テスト用のデータベース名
     steps:
       - checkout
       - run: sudo composer self-update --2
