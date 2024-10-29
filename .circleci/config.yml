@@ -66,14 +66,14 @@ jobs:
       #         sleep 2
       #       done
       #       echo "MySQL failed to start" && exit 1
-      - run:
-          name: php test
-          command: ./src/vendor/bin/phpunit
-          working_directory: ./src
       # - run:
       #     name: php test
-      #     command: |
-      #       php artisan migrate --env=testing  # テスト用データベースのマイグレーション
-      #       vendor/bin/phpunit
-      #     working_directory: src
+      #     command: vendor/bin/phpunit
+      #     working_directory: ./src
+      - run:
+          name: php test
+          command: |
+            php ./src/artisan migrate --env=testing  # テスト用データベースのマイグレーション
+            vendor/bin/phpunit
+          working_directory: ./src
       #     timeout: 20m
