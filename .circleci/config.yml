@@ -49,8 +49,3 @@ jobs:
           command: |
             php ./src/artisan --env=testing
             php ./src/vendor/bin/phpunit --configuration=./src/phpunit.xml
-      # - run: sudo apt update
-      # - run: sudo docker-php-ext-install zip pdo_mysql
-      # - run: sudo composer self-update
-      # - run: php ./src/artisan --env=testing
-      # - run: php ./src/vendor/bin/phpunit --configuration=./src/phpunit.xml
