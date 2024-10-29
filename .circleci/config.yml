@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/src
+    working_directory: ./src
     docker:
       - image: cimg/php:8.1-node
       - image: mysql:8.0.35
@@ -12,30 +12,30 @@ jobs:
       - checkout
       - run: sudo composer self-update --2
       - restore_cache:
-          key: composer-v2-{{ checksum "composer.lock" }}
+          key: composer-v2-{{ checksum "./src/composer.lock" }}
       - run:
           command: composer install -n --prefer-dist
-          working_directory: src
+          working_directory: ./src
       - save_cache:
-          key: composer-v2-{{ checksum "composer.lock" }}
+          key: composer-v2-{{ checksum "./src/composer.lock" }}
           paths:
             - vendor
       - restore_cache:
-          key: npm-v2-{{ checksum "package-lock.json" }}
+          key: npm-v2-{{ checksum "./src/package-lock.json" }}
       - run:
           name: npm ci
           command: |
             if [ ! -d node_modules ]; then
               npm ci
             fi
-          working_directory: src
+          working_directory: ./src
       - save_cache:
-          key: npm-v1-{{ checksum "package-lock.json" }}
+          key: npm-v1-{{ checksum "./src/package-lock.json" }}
           paths:
             - node_modules
       - run:
           command: npm run dev
-          working_directory: src
+          working_directory: ./src
       # - run:
       #     name: Wait for MySQL to be ready
       #     command: |
@@ -45,7 +45,6 @@ jobs:
       #         sleep 2
       #       done
       #       echo "MySQL failed to start" && exit 1
-      - run: ls
       - run:
           name: php test
           command: |
