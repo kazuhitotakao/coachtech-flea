@@ -16,7 +16,7 @@ jobs:
     environment:
       APP_ENV: testing
       DB_CONNECTION: pgsql
-      DB_HOST: localhost
+      DB_HOST: postgres
       DB_PORT: 5432
       DB_DATABASE: larasns
       DB_USERNAME: default
@@ -73,7 +73,7 @@ jobs:
       - run:
           name: php test
           command: |
-            php ./src/artisan migrate --env=testing  # テスト用データベースのマイグレーション
+            php artisan migrate --env=testing  # テスト用データベースのマイグレーション
             vendor/bin/phpunit
           working_directory: ./src
       #     timeout: 20m
