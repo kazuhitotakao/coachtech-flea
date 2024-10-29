@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/project/src
+    working_directory: ~/flea-market/src
     docker:
       - image: circleci/php:7.3-node-browsers
     steps:
