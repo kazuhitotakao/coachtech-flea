@@ -56,7 +56,7 @@ jobs:
       - run: sudo docker-php-ext-install zip pdo_mysql
       - run: sudo composer self-update
       - run: php ./src/artisan --env=testing
-      - run: php ./src/vendor/bin/phpunit --configuration=./src/hogehuga/phpunit.xml
+      - run: php ./src/vendor/bin/phpunit --configuration=./src/phpunit.xml
 
       # - run:
       #     name: get ready for postgres
