@@ -22,6 +22,7 @@
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
         <server name="DB_CONNECTION" value="mysql_test"/>
+        <server name="DB_HOST" value="mysql"/> <!-- 追加: MySQLコンテナのホスト名 -->
         <server name="DB_DATABASE" value="demo_test"/>
         <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>

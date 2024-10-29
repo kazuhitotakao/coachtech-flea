@@ -6,7 +6,6 @@ jobs:
       - image: cimg/php:8.1-node
       - image: mysql:8.0.35
         environment:
-          DB_HOST: mysql
           MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
           MYSQL_DATABASE: demo_test    # テスト用のデータベース名
     steps:
@@ -27,7 +26,7 @@ jobs:
             for i in `seq 1 60`; do
               nc -z mysql 3306 && echo Success && exit 0
               echo -n .
-              sleep 1
+              sleep 2
             done
             echo "MySQL failed to start" && exit 1
       - run:
@@ -36,3 +35,4 @@ jobs:
             php artisan migrate --env=testing  # テスト用データベースのマイグレーション
             vendor/bin/phpunit
           working_directory: src
+          timeout: 20m
