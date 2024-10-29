@@ -4,23 +4,23 @@ jobs:
     working_directory: ./src
     docker:
       - image: cimg/php:8.1-node
-      # - image: mysql:8.0.35
-      #   environment:
-      #     MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
-      #     MYSQL_DATABASE: demo_test    # テスト用のデータベース名
-      - image: circleci/postgres:11.6-alpine
+      - image: mysql:8.0.35
         environment:
-          POSTGRES_DB: larasns
-          POSTGRES_USER: default
-          POSTGRES_PASSWORD: secret
-    environment:
-      APP_ENV: testing
-      DB_CONNECTION: pgsql
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_DATABASE: larasns
-      DB_USERNAME: default
-      DB_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
+          MYSQL_DATABASE: demo_test    # テスト用のデータベース名
+      # - image: circleci/postgres:11.6-alpine
+      #   environment:
+      #     POSTGRES_DB: larasns
+      #     POSTGRES_USER: default
+      #     POSTGRES_PASSWORD: secret
+    # environment:
+    #   APP_ENV: testing
+    #   DB_CONNECTION: pgsql
+    #   DB_HOST: postgres
+    #   DB_PORT: 5432
+    #   DB_DATABASE: larasns
+    #   DB_USERNAME: default
+    #   DB_PASSWORD: secret
     steps:
       - checkout
       - run: sudo composer self-update --2
@@ -66,10 +66,6 @@ jobs:
       #         sleep 2
       #       done
       #       echo "MySQL failed to start" && exit 1
-      # - run:
-      #     name: php test
-      #     command: vendor/bin/phpunit
-      #     working_directory: ./src
       - run:
           name: php test
           command: |
