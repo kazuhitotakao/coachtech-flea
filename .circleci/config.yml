@@ -18,7 +18,7 @@ jobs:
           # working_directory: src
       - run:
           name: php test
-          command:
+          command: |
             php artisan migrate --env=testing  # テスト用データベースのマイグレーション
-          command: vendor/bin/phpunit
+            vendor/bin/phpunit
           # working_directory: src          
