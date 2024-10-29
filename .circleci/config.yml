@@ -22,6 +22,15 @@ jobs:
           command: npm run dev
           working_directory: src
       - run:
+          name: Wait for MySQL to be ready
+          command: |
+            for i in `seq 1 20`; do
+              nc -z localhost 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo "MySQL failed to start" && exit 1
+      - run:
           name: php test
           command: |
             php artisan migrate --env=testing  # テスト用データベースのマイグレーション
