@@ -34,7 +34,6 @@ class TopPageController extends Controller
             return $category_counts[$first_category_id] ?? 0;
         });
 
-        // トップページを表示
         return view('top_page', [
             'items' => $sorted_items,
         ]);
