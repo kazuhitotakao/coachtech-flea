@@ -68,7 +68,7 @@ jobs:
       #       echo "MySQL failed to start" && exit 1
       - run:
           name: php test
-          command: vendor/bin/phpunit
+          command: ./src/vendor/bin/phpunit
           working_directory: ./src
       # - run:
       #     name: php test
