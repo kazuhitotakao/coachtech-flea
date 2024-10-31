@@ -6,8 +6,8 @@ jobs:
       - image: cimg/php:8.1-node
       - image: mysql:8.0.35
         environment:
-          MYSQL_ROOT_PASSWORD: root  # MySQLのrootパスワード
-          MYSQL_DATABASE: demo_test    # テスト用のデータベース名
+          MYSQL_ROOT_PASSWORD: root # MySQLのrootパスワード
+          MYSQL_DATABASE: demo_test # テスト用のデータベース名
     environment:
       - DB_HOST: 127.0.0.1
     steps:
@@ -22,7 +22,6 @@ jobs:
           key: composer-v2-{{ checksum "./src/composer.lock" }}
           paths:
             - vendor
-      - run: ls
       - restore_cache:
           key: npm-v2-{{ checksum "./src/package-lock.json" }}
       - run:
