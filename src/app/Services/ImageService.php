@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\Storage;
 
 class ImageService
 {
@@ -23,8 +23,13 @@ class ImageService
         // リクエストからファイルを取得して保存
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $path = $image->store($directory);
-                $imagePaths[] = $path;
+                if (app('env') == 'local') {
+                    $path = $image->store($directory);
+                } elseif (app('env') == 'production') {
+                    $path = Storage::disk('s3')->putFile('items', $image); //S3バケットのusersフォルダに、$imageを保存
+                    $path = Storage::disk('s3')->url($path); //直前に保存した画像のS3上で付与されたurlを取得 https://~
+                }
+                $image_paths[] = $path;
             }
         }
 
