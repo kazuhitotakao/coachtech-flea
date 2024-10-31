@@ -34,6 +34,6 @@ class ImageService
         }
 
         // 更新された画像パスリストをセッションに保存
-        Session::put($sessionKey, $imagePaths);
+        Session::put($sessionKey, $image_paths);
     }
 }
