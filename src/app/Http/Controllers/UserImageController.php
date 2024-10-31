@@ -22,7 +22,7 @@ class UserImageController extends Controller
                 if (app('env') == 'local') {
                     $path = $image->store($directory);
                 } elseif (app('env') == 'production') {
-                    $path = Storage::disk('s3')->putFile('users/', $image, 'public');
+                    $path = Storage::disk('s3')->putFile('users', $image);
                 }
                 $image_paths[] = $path;
             }
