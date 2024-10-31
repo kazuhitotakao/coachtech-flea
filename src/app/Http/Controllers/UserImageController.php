@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserImageController extends Controller
 {
@@ -18,12 +19,16 @@ class UserImageController extends Controller
         $image_paths = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $path = $image->store($directory);
+                if (app('env') == 'local') {
+                    $path = $image->store($directory);
+                } elseif (app('env') == 'production') {
+                    $path = Storage::disk('s3')->putFile('users', $image, 'public');
+                }
                 $image_paths[] = $path;
             }
         }
 
-        // 前処理でストレージに保存したものをuser_magesテーブルに保存
+        // 前処理でストレージに保存したものをuser_imagesテーブルに保存
         $images_data = [];
         foreach ($image_paths as $path) {
             $images_data[] = new UserImage(['image_path' => $path]);
