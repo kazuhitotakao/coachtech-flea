@@ -15,20 +15,38 @@ class ItemImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        $item_images = [
-            ['item_id' => 1, 'image_path' => 'public/images/items/item1.jpeg'],
-            ['item_id' => 1, 'image_path' => 'public/images/items/item2.jpeg'],
-            ['item_id' => 2, 'image_path' => 'public/images/items/item4.jpeg'],
-            ['item_id' => 2, 'image_path' => 'public/images/items/item3.jpeg'],
-            ['item_id' => 3, 'image_path' => 'public/images/items/item5.jpeg'],
-            ['item_id' => 3, 'image_path' => 'public/images/items/item6.jpeg'],
-            ['item_id' => 4, 'image_path' => 'public/images/items/item7.jpeg'],
-            ['item_id' => 4, 'image_path' => 'public/images/items/item8.jpeg'],
-            ['item_id' => 5, 'image_path' => 'public/images/items/item9.jpeg'],
-            ['item_id' => 5, 'image_path' => 'public/images/items/item10.jpeg'],
-            ['item_id' => 6, 'image_path' => 'public/images/items/item11.jpeg'],
-            ['item_id' => 6, 'image_path' => 'public/images/items/item12.jpeg'],
-        ];
+        if (app('env') == 'local') {
+            $item_images = [
+                ['item_id' => 1, 'image_path' => 'public/images/items/item1.jpeg'],
+                ['item_id' => 1, 'image_path' => 'public/images/items/item2.jpeg'],
+                ['item_id' => 2, 'image_path' => 'public/images/items/item4.jpeg'],
+                ['item_id' => 2, 'image_path' => 'public/images/items/item3.jpeg'],
+                ['item_id' => 3, 'image_path' => 'public/images/items/item5.jpeg'],
+                ['item_id' => 3, 'image_path' => 'public/images/items/item6.jpeg'],
+                ['item_id' => 4, 'image_path' => 'public/images/items/item7.jpeg'],
+                ['item_id' => 4, 'image_path' => 'public/images/items/item8.jpeg'],
+                ['item_id' => 5, 'image_path' => 'public/images/items/item9.jpeg'],
+                ['item_id' => 5, 'image_path' => 'public/images/items/item10.jpeg'],
+                ['item_id' => 6, 'image_path' => 'public/images/items/item11.jpeg'],
+                ['item_id' => 6, 'image_path' => 'public/images/items/item12.jpeg'],
+            ];
+        }
+        if (app('env') == 'production') {
+            $item_images = [
+                ['item_id' => 1, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item1.jpeg'],
+                ['item_id' => 1, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item2.jpeg'],
+                ['item_id' => 2, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item3.jpeg'],
+                ['item_id' => 2, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item4.jpeg'],
+                ['item_id' => 3, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item5.jpeg'],
+                ['item_id' => 3, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item6.jpeg'],
+                ['item_id' => 4, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item7.jpeg'],
+                ['item_id' => 4, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item8.jpeg'],
+                ['item_id' => 5, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item9.jpeg'],
+                ['item_id' => 5, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item10.jpeg'],
+                ['item_id' => 6, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item11.jpeg'],
+                ['item_id' => 6, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/items/item12.jpeg'],
+            ];
+        }
 
         foreach ($item_images as $item_image) {
             ItemImage::create($item_image);
