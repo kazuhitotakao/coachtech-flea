@@ -22,7 +22,8 @@ class UserImageController extends Controller
                 if (app('env') == 'local') {
                     $path = $image->store($directory);
                 } elseif (app('env') == 'production') {
-                    $path = Storage::disk('s3')->putFile('users', $image);
+                    $path = Storage::disk('s3')->putFile('users', $image); //S3バケットのusersフォルダに、$imageを保存
+                    $path = Storage::disk('s3')->url($path); //直前に保存した画像のS3上で付与されたurlを取得 https://~
                 }
                 $image_paths[] = $path;
             }
