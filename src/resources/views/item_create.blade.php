@@ -24,7 +24,7 @@
     <div class="item">
         <h1 class="item-title">商品の出品</h1>
         <h3 class="item-image__title">商品画像</h3>
-        <!-- アップロードされた画像のプレビュー（セッションから取得して表示） -->
+        {{--  アップロードされた画像のプレビュー（セッションから取得して表示） --}}
         @if (session()->has('uploaded_images_items'))
             <div class="item-image-thumbnail__wrapper">
                 <div class="item-image-thumbnail">

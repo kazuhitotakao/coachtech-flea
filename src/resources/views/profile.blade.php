@@ -23,7 +23,7 @@
         <h2>プロフィール設定</h2>
     </div>
 
-    <!-- アップロードされた画像のプレビュー -->
+    {{-- アップロードされた画像のプレビュー --}}
     <div class="profile-image">
         @if (!empty($image_urls))
             <div class="profile-image-thumbnail__wrapper">
