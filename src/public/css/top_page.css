@@ -8,7 +8,7 @@
     width: 150px;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 15px 15px 0 0; /* 角を丸める */
+    border-radius: 15px 15px 0 0;  /* 角を丸める */
     text-align: center;
 }
 
@@ -22,7 +22,7 @@
     padding: 10px 0;
     width: 150px;
     background-color: rgba(0, 0, 0, 0);
-    border-radius: 15px 15px 0 0; /* 角を丸める */
+    border-radius: 15px 15px 0 0;  /* 角を丸める */
     text-align: center;
 }
 
