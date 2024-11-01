@@ -24,7 +24,7 @@ class PurchaseController extends Controller
         $payment_detail_id = session('payment_detail_id') ?? $payment_details['payment_detail_id'];
 
         // 支払金額計算（手数料）
-        $paid_price_info = $item->calculatePaidPrice($payment_details['payment_method_id']);
+        $paid_price_info = $item->calculatePaidPrice($payment_method_id);
 
         // ユーザー住所取得
         $address = Address::getUserAddress(Auth::id());
