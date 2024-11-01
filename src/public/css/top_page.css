@@ -170,8 +170,8 @@ hr {
     }
 
     .item-card__sold-text {
-        left: 10%;
-        bottom: 30%;
+        left: 14%;
+        bottom: 37%; /* テキスト位置の微調整 */
     }
 }
 
