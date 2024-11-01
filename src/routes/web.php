@@ -49,13 +49,15 @@ Route::middleware('auth')->group(function () {
     Route::put('/purchase/address/{item_id}', [AddressController::class, 'updateAddress'])->name('purchase.update.address');
     Route::get('/comment/{item_id}', [CommentController::class, 'show'])->name('comment.show');
     Route::post('/comment/{item_id}', [CommentController::class, 'store'])->name('comment.store');
-    Route::get('/admin-page/users', [AdminController::class, 'indexUsers'])->name('admin.users.index');
-    Route::get('/admin-page/users/search', [AdminController::class, 'searchUser'])->name('admin.users.search');
-    Route::delete('/admin-page/users/{user_id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
-    Route::get('/admin-page/comments', [AdminController::class, 'indexComments'])->name('admin.comments.index');
-    Route::get('/admin-page/comments/search', [AdminController::class, 'searchComment'])->name('admin.comments.search');
-    Route::delete('/admin-page/comments/bulk-delete', [AdminController::class, 'destroyComments'])->name('admin.comments.bulkDestroy');
-    Route::delete('/admin-page/comments/{comment_id}', [AdminController::class, 'destroyComment'])->name('admin.comments.destroy');
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::get('/admin-page/users', [AdminController::class, 'indexUsers'])->name('admin.users.index');
+        Route::get('/admin-page/users/search', [AdminController::class, 'searchUser'])->name('admin.users.search');
+        Route::delete('/admin-page/users/{user_id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
+        Route::get('/admin-page/comments', [AdminController::class, 'indexComments'])->name('admin.comments.index');
+        Route::get('/admin-page/comments/search', [AdminController::class, 'searchComment'])->name('admin.comments.search');
+        Route::delete('/admin-page/comments/bulk-delete', [AdminController::class, 'destroyComments'])->name('admin.comments.bulkDestroy');
+        Route::delete('/admin-page/comments/{comment_id}', [AdminController::class, 'destroyComment'])->name('admin.comments.destroy');
+    });
     Route::get('/payment-method/{item_id}', [PaymentMethodController::class, 'showPaymentMethod'])->name('payment_method.show');
     Route::post('/payment-method/{item_id}', [PaymentMethodController::class, 'updatePaymentMethod'])->name('payment_method.update');
     Route::get('/payment/create/{item_id}', [PaymentController::class, 'create'])->name('payment.create');
