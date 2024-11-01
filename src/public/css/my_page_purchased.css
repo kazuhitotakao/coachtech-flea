@@ -266,6 +266,11 @@ hr {
         font-size: 16px;
         padding: 5px 10px;
     }
+    
+    .item-card__sold-text {
+        left: 10%;
+        bottom: 30%;
+    }
 }
 
 /* 画面幅が320px以下の場合、カラム数を1に減らす */

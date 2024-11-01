@@ -168,6 +168,11 @@ hr {
         margin: 20px 0px 0px 20px;
         width: 130px;
     }
+
+    .item-card__sold-text {
+        left: 10%;
+        bottom: 30%;
+    }
 }
 
 /* 画面幅が320px以下の場合、カラム数を1に減らす */
