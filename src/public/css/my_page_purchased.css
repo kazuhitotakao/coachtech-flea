@@ -266,12 +266,10 @@ hr {
         font-size: 16px;
         padding: 5px 10px;
     }
-
+    
     .item-card__sold-text {
-        position: absolute;
-        transform: rotate(-45deg);
-        left: 14%;
-        bottom: 37%; /* テキスト位置の微調整 */
+        left: 10%;
+        bottom: 30%;
     }
 }
 
