@@ -130,6 +130,7 @@
                         <a class="admin-page__mail-users-modal-link" href="#mail_users">一括送信</a>
                     </div>
                 </td>
+                <td></td>
             </tr>
         </table>
         {{-- s mail_usersモーダル --}}

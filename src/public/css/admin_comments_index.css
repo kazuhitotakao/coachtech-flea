@@ -218,7 +218,7 @@ hr {
     position: relative;
     width: 90%;
     max-width: 600px;
-    padding: 30px 30px 15px;
+    padding: 30px 15px 15px;
     border-radius: 2px;
     background: #fff;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
@@ -277,7 +277,7 @@ hr {
     color: #fff;
     font-size: 1.1rem;
     cursor: pointer;
-    width: 7rem;
+    width: 8rem;
     height: 3rem;
     border-radius: 3px;
 }
@@ -300,6 +300,11 @@ hr {
     .admin-page__data {
         font-size: 12px;
     }
+
+    .admin-page__search-button {
+        width: 5rem;
+        font-size: 14px;
+    }
 }
 
 /* 画面幅が480px以下の場合 */
@@ -312,6 +317,13 @@ hr {
         margin: 20px 0px 0px 20px;
         width: 120px;
     }
+
+    .admin-page__comments {
+        font-size: 18px;
+        margin: 20px 0px 0px 20px;
+        width: 120px;
+    }
+
     .admin-page__delete-modal-text {
         margin: 1rem auto 2rem;
         font-size: 18px;
@@ -323,7 +335,13 @@ hr {
     .admin-page {
         width: 95%;
     }
+
     .admin-page__users {
+        margin: 20px 0px 0px 20px;
+        width: 100px;
+    }
+
+    .admin-page__comments {
         margin: 20px 0px 0px 20px;
         width: 100px;
     }
