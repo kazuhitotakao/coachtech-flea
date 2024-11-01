@@ -116,7 +116,6 @@ hr {
 }
 
 /* s いいねボタン */
-
 .item-card__like-btn {
     display: flex;
     align-items: center;
@@ -143,7 +142,6 @@ hr {
     font-weight: 900;
     z-index: 10;
 }
-
 /* e いいねボタン */
 
 /* 画面幅が480px以下の場合 */
