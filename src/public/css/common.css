@@ -303,7 +303,7 @@ input::placeholder {
     }
 
     .header__hamburger-button.show .header__hamburger-close {
-        color: #fff;
+        color: #000;
         position: absolute;
         top: -10px;
         left: 5px;
@@ -394,7 +394,7 @@ input::placeholder {
         font-weight: bold;
         cursor: pointer;
         position: absolute;
-        right: 13%; /* 検索ボックス内の右端に配置 */
+        right: 11%;
         top: 50%;
         transform: translateY(-50%); /* 垂直方向に中央揃え */
     }
