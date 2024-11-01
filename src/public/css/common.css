@@ -283,15 +283,31 @@ input::placeholder {
         bottom: 0;
     }
 
+    .header__hamburger-close-wrapper {
+        display: none;
+    }
+
     /* クリックされた後のハンバーガーのマーク */
-    .header__hamburger-toggle.show i:nth-child(1) {
-        transform: translateY(10px) rotate(-45deg);
+    .header__hamburger-button.show .header__hamburger-toggle {
+        display: none;
     }
-    .header__hamburger-toggle.show i:nth-child(2) {
-        opacity: 0;
+
+    .header__hamburger-button.show .header__hamburger-close-wrapper {
+        display: block;
+        position: relative;
+        width: 2rem;
+        height: 1.5rem;
+        margin-right: 10px;
+        z-index: 2;
+        cursor: pointer;
     }
-    .header__hamburger-toggle.show i:nth-child(3) {
-        transform: translateY(-12px) rotate(45deg);
+
+    .header__hamburger-button.show .header__hamburger-close {
+        color: #fff;
+        position: absolute;
+        top: -10px;
+        left: 5px;
+        font-size: 28px;
     }
 
     /* クリックで表示されるメニュー：クリックされる前 */
