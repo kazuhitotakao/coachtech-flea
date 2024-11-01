@@ -106,7 +106,7 @@
                         <input class="header__hamburger-search-input" name="keyword" type="text"
                             value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
                         <div class="btn__wrap">
-                            <button class="header__hamburger-search-button">検索</button>
+                            <button class="header__hamburger-search-button"><i class="las la-search"></i></button>
                         </div>
                     </form>
                     <nav class="header__hamburger-nav">
