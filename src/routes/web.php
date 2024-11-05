@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/admin-page/users/{user_id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
         Route::get('/admin-page/comments', [AdminController::class, 'indexComments'])->name('admin.comments.index');
         Route::get('/admin-page/comments/search', [AdminController::class, 'searchComment'])->name('admin.comments.search');
-        Route::delete('/admin-page/comments/bulk-delete', [AdminController::class, 'destroyComments'])->name('admin.comments.bulkDestroy');
+        Route::delete('/admin-page/comments/bulk-delete', [AdminController::class, 'destroyComments'])->name('admin.comments.bulk_destroy');
         Route::delete('/admin-page/comments/{comment_id}', [AdminController::class, 'destroyComment'])->name('admin.comments.destroy');
     });
     Route::get('/payment-method/{item_id}', [PaymentMethodController::class, 'showPaymentMethod'])->name('payment_method.show');

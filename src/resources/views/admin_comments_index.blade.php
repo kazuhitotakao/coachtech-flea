@@ -90,7 +90,7 @@
                     <h2 class="admin-page__delete-modal-title">一括削除確認</h2>
                     <p class="admin-page__delete-modal-text">本当に一括削除しますか？<br>この操作は取り消せません。</p>
                     <div class="admin-page__delete-modal-button-wrapper">
-                        <form action="{{ route('admin.comments.bulkDestroy') }}" method="POST">
+                        <form action="{{ route('admin.comments.bulk_destroy') }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input name="comments" type="hidden" value="{{ $comments }}">
