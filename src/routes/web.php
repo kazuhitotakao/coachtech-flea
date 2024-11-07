@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/guest', [GuestController::class, 'guestIndex']);
-Route::get('/guest/item/{item_id}', [GuestController::class, 'guestItemDetail'])->name('items.guest_detail');
+Route::get('/guest/item/{item_id}', [GuestController::class, 'guestItemDetail'])->name('item.guest_detail');
 Route::get('/guest/unauthorized_access', [GuestController::class, 'unauthorizedAccess'])->name('guest.unauthorized_access');
 Route::get('/search', [SearchController::class, 'resultSearch']);
 
@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/item/images', [ItemController::class, 'upload'])->name('item.images.upload');
     Route::get('/item/{item_id}', [ItemDetailController::class, 'userItemDetail'])->name('item.user_detail');
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'showPurchase'])->name('purchase.show');
-    Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('items.purchase');
+    Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('item.purchase');
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'editAddress'])->name('purchase.edit.address');
     Route::put('/purchase/address/{item_id}', [AddressController::class, 'updateAddress'])->name('purchase.update.address');
     Route::get('/comment/{item_id}', [CommentController::class, 'show'])->name('comment.show');
@@ -69,6 +69,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/images', [UserImageController::class, 'upload'])->name('user.images.upload');
     Route::post('/like/{item_id}', [FavoriteController::class, 'store'])->name('like');
     Route::post('/unlike/{item_id}', [FavoriteController::class, 'delete'])->name('unlike');
-    Route::get('/mail/admin-to-user', [MailSendController::class, 'adminToUser'])->name('mail.send.admin_to_user');
-    Route::get('/mail/admin-to-users', [MailSendController::class, 'adminToUsers'])->name('mail.send.admin_to_users');
+    Route::post('/mail/admin-to-user', [MailSendController::class, 'adminToUser'])->name('mail.send.admin_to_user');
+    Route::post('/mail/admin-to-users', [MailSendController::class, 'adminToUsers'])->name('mail.send.admin_to_users');
 });

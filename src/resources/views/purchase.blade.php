@@ -107,7 +107,7 @@
                     </table>
                 </div>
                 <form class="purchase__form"
-                    action="{{ $payment_method_id == 1 ? route('payment.create', ['item_id' => $item->id]) : route('items.purchase', ['item_id' => $item->id]) }}"
+                    action="{{ $payment_method_id == 1 ? route('payment.create', ['item_id' => $item->id]) : route('item.purchase', ['item_id' => $item->id]) }}"
                     method="{{ $payment_method_id == 1 ? 'GET' : 'POST' }}">
                     @if ($payment_method_id != 1)
                         @csrf
