@@ -33,7 +33,7 @@ class GuestControllerTest extends TestCase
         $child_category = Category::factory()->withParent($parent_category->id)->create();
         $item = Item::factory()->hasAttached($child_category)->for($brand)->for($condition)->create(); // ブランドとカテゴリをアイテムに関連付ける
 
-        $response = $this->get(route('items.guest_detail', ['item_id' => $item->id]));
+        $response = $this->get(route('item.guest_detail', ['item_id' => $item->id]));
         $response->assertStatus(200);
         $response->assertViewIs('guest.item_detail');
         $response->assertViewHasAll([

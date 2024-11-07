@@ -37,7 +37,6 @@ class PaymentController extends Controller
         } catch (Exception $e) {
             return back()->with('flash_alert', '決済に失敗しました！(' . $e->getMessage() . ')');
         }
-
         $item = Item::find($request->item_id);
 
         // 購入処理
