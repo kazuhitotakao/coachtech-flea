@@ -23,7 +23,7 @@ class UserImageController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 // Intervention Imageを使用して画像をリサイズ
-                $img = ImageIntervention::make($image)->resize(300, null, function ($constraint) {
+                $img = ImageIntervention::make($image)->resize(400, null, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });
