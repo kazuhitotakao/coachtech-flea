@@ -29,18 +29,17 @@ class UserImageController extends Controller
                 });
                 // リサイズした画像を保存
                 $resize_img = $img->encode('jpg', 75); // JPEG形式で品質は75
+                $filename = $image->hashName();
 
                 // 環境によって場合分け
                 if (app('env') == 'local') {
-                    $filename = $image->hashName();
                     Storage::disk('public')->put(
                         $directory . '/' . $filename,
                         (string) $resize_img
                     );
                     $image_paths[] = $directory . '/' . $filename;
                 } elseif (app('env') == 'production') {
-                    $filename = $image->hashName();
-                    $path = Storage::disk('s3')->putFile('users', (string) $resize_img); //S3バケットのusersフォルダに、圧縮した画像を保存
+                    $path = Storage::disk('s3')->putFileAs('users', $resize_img, $filename); //S3バケットのusersフォルダに、圧縮した画像を保存
                     $image_paths[] = Storage::disk('s3')->url($path); //直前に保存した画像のS3上で付与されたurlを取得 https://~
                 } elseif (app('env') == 'testing') {
                     // テスト環境の処理を追加
