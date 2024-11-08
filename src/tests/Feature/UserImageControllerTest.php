@@ -15,7 +15,7 @@ class UserImageControllerTest extends TestCase
 
     public function testUpload()
     {
-        Storage::fake('local');
+        Storage::fake('public');
         $user = User::factory()->create();
         Auth::login($user);
 
@@ -31,7 +31,7 @@ class UserImageControllerTest extends TestCase
         // ファイルが指定したディレクトリに保存されたか確認
         // ここでは '/images/users' が保存先ディレクトリと仮定
         foreach ($files as $file) {
-            Storage::disk('local')->assertExists('public/images/users/' . $file->hashName());
+            Storage::disk('public')->assertExists('public/images/users/' . $file->hashName());
         }
 
         $response->assertRedirect('/my-page/profile');
