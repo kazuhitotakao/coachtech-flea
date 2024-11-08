@@ -44,8 +44,9 @@ class UserImageController extends Controller
                     $image_paths[] = Storage::disk('s3')->url($path); //直前に保存した画像のS3上で付与されたurlを取得 https://~
                 } elseif (app('env') == 'testing') {
                     // テスト環境の処理を追加
+                    $directory = 'public/images/users';
                     $path = $image->store($directory, 'public');
-                    $image_paths = $path;
+                    $image_paths[] = $path;
                 }
             }
         }
