@@ -39,8 +39,10 @@ class UserImageController extends Controller
                     );
                     $image_paths[] = $directory . '/' . $filename;
                 } elseif (app('env') == 'production') {
-                    $path = Storage::disk('s3')->put('users/' . $filename, (string) $resize_img, 'public'); //S3バケットのusersフォルダに、圧縮した画像を保存
-                    $image_paths[] = Storage::disk('s3')->url($path); //直前に保存した画像のS3上で付与されたurlを取得 https://~
+                    // $path = Storage::disk('s3')->put('users/' . $filename, (string) $resize_img, 'public'); //S3バケットのusersフォルダに、圧縮した画像を保存
+                    // $image_paths[] = Storage::disk('s3')->url($path); //直前に保存した画像のS3上で付与されたurlを取得 https://~
+                    $path = Storage::disk('s3')->putFile('users', $image); //S3バケットのusersフォルダに、$imageを保存
+                    $path = Storage::disk('s3')->url($path); //直前に保存した画像のS3上で付与されたurlを取得 https://~
                 } elseif (app('env') == 'testing') {
                     // テスト環境の処理を追加
                     $directory = 'public/images/users';
