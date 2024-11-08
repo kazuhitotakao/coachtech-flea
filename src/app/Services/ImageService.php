@@ -15,7 +15,7 @@ class ImageService
         $sessionKey = $type === 'items' ? 'uploaded_images_items' : 'uploaded_images_users';
 
         // 指定されたセッションキーから画像パスリストを取得
-        $imagePaths = Session::get($sessionKey, []);
+        $image_paths = Session::get($sessionKey, []);
 
         // 保存先ディレクトリを決定
         $directory = $type === 'items' ? 'public/images/items' : 'public/images/users';
