@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image as ImageIntervention;
 
@@ -30,6 +31,7 @@ class UserImageController extends Controller
                 // リサイズした画像を保存
                 $resize_img = $img->encode('jpg', 75); // JPEG形式で品質は75
                 $filename = $image->hashName();
+                dd($image);
 
                 // 環境によって場合分け
                 if (app('env') == 'local') {
@@ -39,7 +41,15 @@ class UserImageController extends Controller
                     );
                     $image_paths[] = $directory . '/' . $filename;
                 } elseif (app('env') == 'production') {
-                    $path = Storage::disk('s3')->put('users/' . $filename, $resize_img, 'public'); //S3バケットのusersフォルダに、圧縮した画像をファイル名指定して保存
+                    $path = Storage::disk('s3')->put('users/' . $filename, $resize_img); //S3バケットのusersフォルダに、圧縮した画像をファイル名指定して保存
+                    if ($path === false) {
+                        Log::error('Failed to upload file to S3.', ['filename' => $filename]);
+                    } else {
+                        Log::info(
+                            'File successfully uploaded to S3.',
+                            ['path' => $path]
+                        );
+                    }
                     $url = Storage::disk('s3')->url($path); //直前に保存した画像のS3上で付与されたurlを取得 https://~
                     $image_paths[] = $url;
                 } elseif (app('env') == 'testing') {
