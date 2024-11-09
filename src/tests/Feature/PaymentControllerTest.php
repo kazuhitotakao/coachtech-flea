@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Mockery;
 use Tests\TestCase;
 use Stripe\Charge;
-use Stripe\Exception\CardException;
 
 class PaymentControllerTest extends TestCase
 {
