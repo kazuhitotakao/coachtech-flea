@@ -5,11 +5,9 @@ namespace Tests\Feature;
 use App\Models\Address;
 use App\Models\Item;
 use App\Models\PaymentDetail;
-use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Session;
 use Tests\TestCase;
 
 class PurchaseControllerTest extends TestCase

@@ -6,7 +6,6 @@ use App\Models\Comment;
 use App\Models\Item;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
