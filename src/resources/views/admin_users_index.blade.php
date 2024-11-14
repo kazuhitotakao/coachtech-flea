@@ -50,7 +50,8 @@
                             <div class="admin-page__mail-modal-window">
                                 <div class="admin-page__mail-modal-content">
                                     <h2 class="admin-page__mail-modal-title">メール送信</h2>
-                                    <form class="admin-page__mail-modal-form" action="/mail/admin-to-user" method="get">
+                                    <form class="admin-page__mail-modal-form" action="/mail/admin-to-user" method="POST">
+                                        @csrf
                                         <input name="user_id" type="hidden" value="{{ $user->id }}">
                                         <table class="admin-page__mail-modal-table">
                                             <tr class="admin-page__mail-modal-row">
@@ -130,6 +131,7 @@
                         <a class="admin-page__mail-users-modal-link" href="#mail_users">一括送信</a>
                     </div>
                 </td>
+                <td></td>
             </tr>
         </table>
         {{-- s mail_usersモーダル --}}
@@ -138,7 +140,8 @@
             <div class="admin-page__mail-modal-window">
                 <div class="admin-page__mail-modal-content">
                     <h2 class="admin-page__mail-modal-title">メール一括送信</h2>
-                    <form class="admin-page__mail-modal-form" action="/mail/admin-to-users" method="get">
+                    <form class="admin-page__mail-modal-form" action="/mail/admin-to-users" method="POST">
+                        @csrf
                         <input name="users" type="hidden" value="{{ $users }}">
                         <table class="admin-page__mail-modal-table">
                             <tr class="admin-page__mail-modal-row">

@@ -37,7 +37,6 @@ class PaymentController extends Controller
         } catch (Exception $e) {
             return back()->with('flash_alert', '決済に失敗しました！(' . $e->getMessage() . ')');
         }
-
         $item = Item::find($request->item_id);
 
         // 購入処理
@@ -53,7 +52,7 @@ class PaymentController extends Controller
         $item->markAsSold();
 
         // 購入完了後、セッションから特定のデータを削除
-        session()->forget(['payment_method_id', 'payment_detail_id']);
+        session()->forget(['payment_method_id', 'payment_method_name', 'payment_detail_id']);
         // 購入完了後のリダイレクト処理
         return redirect('/')->with('success', "{$item->name}を購入しました。");
     }

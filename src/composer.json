@@ -9,11 +9,13 @@
         "barryvdh/laravel-debugbar": "^3.7",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.7",
         "laravel/fortify": "^1.19",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "league/flysystem-aws-s3-v3": "^1.0",
         "spatie/laravel-permission": "^6.9",
         "stripe/stripe-php": "^16.1"
     },

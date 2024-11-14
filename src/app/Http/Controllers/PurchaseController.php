@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PurchaseController extends Controller
 {
@@ -17,13 +18,14 @@ class PurchaseController extends Controller
         $user_id = Auth::id();
 
         // 直近の支払い詳細取得
-        // 支払方法の情報をセッションまたはリクエストから取得
+        // 支払方法の情報を「セッション（支払方法変更ページで選択した支払方法）」か「直近の支払い方法」から選択
         $payment_details = Purchase::getPaymentDetailsForUser($user_id);
-        $payment_method_id = $request->payment_method_id ?? session('payment_method_id') ?? $payment_details['payment_method_id'];
-        $payment_detail_id = $request->payment_detail_id ?? session('payment_detail_id') ?? $payment_details['payment_detail_id'];
+        $payment_method_id = session('payment_method_id') ?? $payment_details['payment_method_id'];
+        $payment_method_name = session('payment_method_name') ?? $payment_details['payment_method_name'];
+        $payment_detail_id = session('payment_detail_id') ?? $payment_details['payment_detail_id'];
 
         // 支払金額計算（手数料）
-        $paid_price_info = $item->calculatePaidPrice($payment_details['payment_method_id']);
+        $paid_price_info = $item->calculatePaidPrice($payment_method_id);
 
         // ユーザー住所取得
         $address = Address::getUserAddress(Auth::id());
@@ -34,7 +36,7 @@ class PurchaseController extends Controller
             'image_url_thumbnail' => $item->getThumbnailUrl(),
             'payment_detail_id' => $payment_detail_id,
             'payment_method_id' => $payment_method_id,
-            'payment_method_name' => $payment_details['payment_method_name'],
+            'payment_method_name' => $payment_method_name,
             'paid_price' => $paid_price_info['paid_price'],
             'paid_price_format' => $paid_price_info['paid_price_format'],
             'address' => $address,
@@ -54,13 +56,10 @@ class PurchaseController extends Controller
             'payment_detail_id' => $request->payment_detail_id,
             'paid_price' => $request->paid_price,
         ]);
-
         // 購入完了後のステータス変更処理
         $item->markAsSold();
-
         // 購入完了後、セッションから特定のデータを削除
-        session()->forget(['payment_method_id', 'payment_detail_id']);
-
+        session()->forget(['payment_method_id', 'payment_method_name', 'payment_detail_id']);
         // 購入完了後のリダイレクト処理
         return redirect('/')->with('success', "{$item->name}を購入しました。");
     }

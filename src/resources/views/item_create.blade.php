@@ -24,17 +24,28 @@
     <div class="item">
         <h1 class="item-title">商品の出品</h1>
         <h3 class="item-image__title">商品画像</h3>
-        <!-- アップロードされた画像のプレビュー（セッションから取得して表示） -->
+        {{--  アップロードされた画像のプレビュー（セッションから取得して表示） --}}
         @if (session()->has('uploaded_images_items'))
             <div class="item-image-thumbnail__wrapper">
                 <div class="item-image-thumbnail">
-                    @php
-                        $selected_image =
-                            old('thumbnail_index') !== null
-                                ? Storage::url(session('uploaded_images_items')[old('thumbnail_index')])
-                                : asset('images/item_no-image.jpeg');
-                    @endphp
-                    <img src="{{ $selected_image }}" alt="item_thumbnail">
+                    @if (app('env') == 'local')
+                        @php
+                            $selected_image =
+                                old('thumbnail_index') !== null
+                                    ? Storage::url(session('uploaded_images_items')[old('thumbnail_index')])
+                                    : asset('images/item_no-image.jpeg');
+                        @endphp
+                        <img src="{{ $selected_image }}" alt="item_thumbnail">
+                    @endif
+                    @if (app('env') == 'production')
+                        @php
+                            $selected_image =
+                                old('thumbnail_index') !== null
+                                    ? session('uploaded_images_items')[old('thumbnail_index')]
+                                    : asset('images/item_no-image.jpeg');
+                        @endphp
+                        <img src="{{ $selected_image }}" alt="item_thumbnail">
+                    @endif
                 </div>
                 <h3 class="item-image-thumbnail-title">※ サムネイル画像を選択してください</h3>
                 <div class="item-images">
@@ -44,7 +55,7 @@
                                 value="{{ $index }}" style="display: none;" onclick="updateThumbNailId(this.value);"
                                 {{ old('thumbnail_index') == $index ? 'checked' : '' }}>
                             <img class="item-images_image  {{ is_null(old('thumbnail_index')) ? 'default-class' : (old('thumbnail_index') == $index ? 'selected-image' : '') }}"
-                                src="{{ Storage::url($image) }}" alt="uploaded image">
+                                src="{{ app('env') == 'local' ? Storage::url($image) : $image }}" alt="uploaded image">
                         </label>
                     @endforeach
                 </div>

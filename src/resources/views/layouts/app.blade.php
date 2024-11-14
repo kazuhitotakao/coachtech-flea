@@ -62,14 +62,14 @@
                                     <a class="header__nav-link" href="/my-page/listed">マイページ</a>
                                 </li>
                                 @can('user')
-                                <form action="/item/create" method="GET">
-                                    <button class="header__nav-button header__nav-button--listing">出品</button>
-                                </form>
+                                    <form action="/item/create" method="GET">
+                                        <button class="header__nav-button header__nav-button--listing">出品</button>
+                                    </form>
                                 @endcan
                                 @can('delete')
-                                <form action="/admin-page/users" method="GET">
-                                    <button class="header__nav-button header__nav-button--admin">管理画面</button>
-                                </form>
+                                    <form action="/admin-page/users" method="GET">
+                                        <button class="header__nav-button header__nav-button--admin">管理画面</button>
+                                    </form>
                                 @endcan
                             @endauth
                             @guest
@@ -90,19 +90,23 @@
 
                         </ul>
                     </nav>
-                    <!-- ハンバーガーメニュー -->
-                    <!-- クリックする３本線の部分 -->
-                    <span class="header__hamburger-toggle">
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                    </span>
-                    <!-- クリックで表示されるメニュー -->
+                    {{-- ハンバーガーボタン --}}
+                    <div class="header__hamburger-button">
+                        <span class="header__hamburger-toggle">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </span>
+                        <div class="header__hamburger-close-wrapper">
+                            <span class="header__hamburger-close">✕</span>
+                        </div>
+                    </div>
+                    {{-- クリックで表示されるメニュー --}}
                     <form class="header__hamburger-search-form" action="/search" method="GET">
                         <input class="header__hamburger-search-input" name="keyword" type="text"
                             value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
                         <div class="btn__wrap">
-                            <button class="header__hamburger-search-button">検索</button>
+                            <button class="header__hamburger-search-button"><i class="las la-search"></i></button>
                         </div>
                     </form>
                     <nav class="header__hamburger-nav">
@@ -118,16 +122,16 @@
                                     <a class="header__hamburger-nav-link" href="/my-page/listed">マイページ</a>
                                 </li>
                                 @can('user')
-                                <form action="/item/create" method="GET">
-                                    <button
-                                        class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>
-                                </form>
+                                    <form action="/item/create" method="GET">
+                                        <button
+                                            class="header__hamburger-nav-button header__hamburger-nav-button--listing">出品</button>
+                                    </form>
                                 @endcan
                                 @can('delete')
-                                <form action="/admin-page/users" method="GET">
-                                    <button
-                                        class="header__hamburger-nav-button header__hamburger-nav-button--admin">管理画面</button>
-                                </form>
+                                    <form action="/admin-page/users" method="GET">
+                                        <button
+                                            class="header__hamburger-nav-button header__hamburger-nav-button--admin">管理画面</button>
+                                    </form>
                                 @endcan
                             @endauth
                             @guest

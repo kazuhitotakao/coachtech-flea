@@ -37,7 +37,8 @@ class PaymentMethodController extends Controller
         // 支払方法の情報をセッションに保存
         session([
             'payment_method_id' => $payment_method_id,
-            'payment_detail_id' => $payment_detail_id
+            'payment_method_name' => PaymentMethod::find($payment_method_id)->name,
+            'payment_detail_id' => $payment_detail_id,
         ]);
 
         return view('purchase', [

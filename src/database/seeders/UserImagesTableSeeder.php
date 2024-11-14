@@ -15,14 +15,26 @@ class UserImagesTableSeeder extends Seeder
      */
     public function run()
     {
-        $user_images = [
-            ['user_id' => 2, 'image_path' => 'public/images/users/user1.jpeg'],
-            ['user_id' => 2, 'image_path' => 'public/images/users/user2.jpeg'],
-            ['user_id' => 3, 'image_path' => 'public/images/users/user3.jpeg'],
-            ['user_id' => 3, 'image_path' => 'public/images/users/user4.jpeg'],
-            ['user_id' => 4, 'image_path' => 'public/images/users/user5.jpeg'],
-            ['user_id' => 4, 'image_path' => 'public/images/users/user6.jpeg'],
-        ];
+        if (app('env') == 'local') {
+            $user_images = [
+                ['user_id' => 2, 'image_path' => 'public/images/users/user1.jpeg'],
+                ['user_id' => 2, 'image_path' => 'public/images/users/user2.jpeg'],
+                ['user_id' => 3, 'image_path' => 'public/images/users/user3.jpeg'],
+                ['user_id' => 3, 'image_path' => 'public/images/users/user4.jpeg'],
+                ['user_id' => 4, 'image_path' => 'public/images/users/user5.jpeg'],
+                ['user_id' => 4, 'image_path' => 'public/images/users/user6.jpeg'],
+            ];
+        }
+        if (app('env') == 'production') {
+            $user_images = [
+                ['user_id' => 2, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/users/user1.jpeg'],
+                ['user_id' => 2, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/users/user2.jpeg'],
+                ['user_id' => 3, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/users/user3.jpeg'],
+                ['user_id' => 3, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/users/user4.jpeg'],
+                ['user_id' => 4, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/users/user5.jpeg'],
+                ['user_id' => 4, 'image_path' => 'https://bucket-aws-flea.s3.ap-northeast-1.amazonaws.com/users/user6.jpeg'],
+            ];
+        }
 
         foreach ($user_images as $user_image) {
             UserImage::create($user_image);
