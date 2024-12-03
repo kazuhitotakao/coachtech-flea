@@ -51,7 +51,6 @@
                 <div class="item-card__name">
                     {{ $item->name }}
                 </div>
-
             </div>
         @endforeach
     </div>
